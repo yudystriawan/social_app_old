@@ -14,9 +14,9 @@ part 'sign_in_form_bloc.freezed.dart';
 
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
-  SignInFormBloc() : super(SignInFormState.initial());
+  SignInFormBloc(this._authRepository) : super(SignInFormState.initial());
 
-  IAuthRepository _authRepository;
+  final IAuthRepository _authRepository;
 
   @override
   Stream<SignInFormState> mapEventToState(
