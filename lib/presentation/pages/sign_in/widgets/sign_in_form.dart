@@ -1,10 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:my_social_app/presentation/pages/sign_in/widgets/email_field.dart';
 import 'package:my_social_app/presentation/pages/sign_in/widgets/password_field.dart';
+import 'package:my_social_app/presentation/routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key key}) : super(key: key);
@@ -27,7 +30,12 @@ class SignInForm extends StatelessWidget {
                     'Invalid email and password combination',
               ),
             ).show(context),
-            (_) => null,
+            (_) {
+              ExtendedNavigator.of(context).replace(Routes.homePage);
+              context
+                  .bloc<AuthBloc>()
+                  .add(const AuthEvent.authCheckRequested());
+            },
           ),
         );
       },
