@@ -63,7 +63,9 @@ class SignInForm extends StatelessWidget {
                 width: double.infinity,
                 child: SignInButton(
                   Buttons.Google,
-                  onPressed: () {},
+                  onPressed: () => context
+                      .bloc<SignInFormBloc>()
+                      .add(const SignInFormEvent.signInWithGooglePressed()),
                 ),
               ),
             ],

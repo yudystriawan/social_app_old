@@ -26,7 +26,7 @@ class LoadingOverlay extends StatelessWidget {
               const CircularProgressIndicator(),
               const SizedBox(height: 8),
               Text(
-                'Saving',
+                'Loading',
                 style: Theme.of(context).textTheme.bodyText2.copyWith(
                       color: Colors.white,
                       fontSize: 16,
