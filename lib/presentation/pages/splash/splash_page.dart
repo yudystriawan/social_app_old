@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget {
               ExtendedNavigator.of(context).replace(Routes.signInPage),
         );
       },
-      child: Scaffold(
+      child: const Scaffold(
         body: SafeArea(
           child: Center(
             child: CircularProgressIndicator(),

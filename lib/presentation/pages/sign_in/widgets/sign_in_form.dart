@@ -1,4 +1,3 @@
-import 'package:flushbar/flushbar.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,28 +38,28 @@ class SignInForm extends StatelessWidget {
               : AutovalidateMode.disabled,
           child: Column(
             children: [
-              EmailField(),
+              const EmailField(),
               const SizedBox(height: 16),
-              PasswordField(),
+              const PasswordField(),
               const SizedBox(height: 48),
               Row(
                 children: [
                   Expanded(
                     child: FlatButton(
                       onPressed: () {},
-                      child: Text('Register'),
+                      child: const Text('Register'),
                     ),
                   ),
                   Expanded(
                     child: RaisedButton(
                       onPressed: () {},
-                      child: Text('Sign In'),
+                      child: const Text('Sign In'),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 16),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: SignInButton(
                   Buttons.Google,

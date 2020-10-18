@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/injection.dart';
-import 'package:my_social_app/presentation/router/router.gr.dart' as myRouter;
+import 'package:my_social_app/presentation/router/router.gr.dart' as app_router;
 
 class AppWidget extends StatelessWidget {
   // This widget is the root of your application.
@@ -14,14 +14,14 @@ class AppWidget extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<AuthBloc>()
             ..add(
-              AuthEvent.authCheckRequested(),
+              const AuthEvent.authCheckRequested(),
             ),
         ),
       ],
       child: MaterialApp(
         title: 'My Social App',
         builder: ExtendedNavigator.builder(
-          router: myRouter.Router(),
+          router: app_router.Router(),
         ),
         theme: ThemeData(
           primarySwatch: Colors.blue,
