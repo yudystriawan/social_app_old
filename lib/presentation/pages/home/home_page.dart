@@ -2,11 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
-import 'package:my_social_app/presentation/pages/home/pages/feed_page.dart';
-import 'package:my_social_app/presentation/pages/home/pages/profile_page.dart';
-import 'package:my_social_app/presentation/pages/home/pages/search_page.dart';
-import 'package:my_social_app/presentation/pages/home/pages/timeline_page.dart';
-import 'package:my_social_app/presentation/pages/home/pages/upload_page.dart';
+import 'package:my_social_app/presentation/pages/feed/feed_page.dart';
+import 'package:my_social_app/presentation/pages/profile/profile_page.dart';
+import 'package:my_social_app/presentation/pages/search/search_page.dart';
+import 'package:my_social_app/presentation/pages/timeline/timeline_page.dart';
+import 'package:my_social_app/presentation/pages/upload/upload_page.dart';
 import 'package:my_social_app/presentation/routes/router.gr.dart';
 
 class HomePage extends StatefulWidget {
@@ -75,10 +75,8 @@ class _HomePageState extends State<HomePage> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _pageIndex,
-          onTap: (value) => _controller.animateToPage(
+          onTap: (value) => _controller.jumpToPage(
             value,
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.linear,
           ),
           unselectedItemColor: Theme.of(context).primaryColor,
           selectedItemColor: Theme.of(context).primaryColorDark,
