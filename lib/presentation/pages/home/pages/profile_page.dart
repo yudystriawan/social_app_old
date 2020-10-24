@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_social_app/application/auth/auth_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/presentation/common/app_bar.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -7,8 +9,28 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getAppBar(context: context, title: 'Profile'),
-      body: const Text('Profile'),
+      appBar: AppBar(
+        title: const Text('Profile'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () =>
+                context.bloc<AuthBloc>().add(const AuthEvent.signedOut()),
+          ),
+        ],
+      ),
+      body: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          return state.maybeMap(
+            orElse: () => Container(),
+            authenticated: (value) => Column(
+              children: [
+                Text(value.user.username.getOrCrash()),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

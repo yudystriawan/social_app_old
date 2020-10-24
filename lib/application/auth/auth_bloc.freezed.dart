@@ -89,12 +89,21 @@ class _$AuthCheckRequestedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$AuthCheckRequested implements AuthCheckRequested {
+class _$AuthCheckRequested
+    with DiagnosticableTreeMixin
+    implements AuthCheckRequested {
   const _$AuthCheckRequested();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthEvent.authCheckRequested()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthEvent.authCheckRequested'));
   }
 
   @override
@@ -177,12 +186,18 @@ class _$SignedOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$SignedOut implements SignedOut {
+class _$SignedOut with DiagnosticableTreeMixin implements SignedOut {
   const _$SignedOut();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthEvent.signedOut()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthEvent.signedOut'));
   }
 
   @override
@@ -258,8 +273,10 @@ class _$AuthStateTearOff {
   }
 
 // ignore: unused_element
-  Authenticated authenticated() {
-    return const Authenticated();
+  Authenticated authenticated(UserDomain user) {
+    return Authenticated(
+      user,
+    );
   }
 
 // ignore: unused_element
@@ -277,13 +294,13 @@ mixin _$AuthState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(),
+    @required Result authenticated(UserDomain user),
     @required Result unauthenticated(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(),
+    Result authenticated(UserDomain user),
     Result unauthenticated(),
     @required Result orElse(),
   });
@@ -334,12 +351,18 @@ class _$InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Initial implements Initial {
+class _$Initial with DiagnosticableTreeMixin implements Initial {
   const _$Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthState.initial'));
   }
 
   @override
@@ -354,7 +377,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(),
+    @required Result authenticated(UserDomain user),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
@@ -367,7 +390,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(),
+    Result authenticated(UserDomain user),
     Result unauthenticated(),
     @required Result orElse(),
   }) {
@@ -416,6 +439,9 @@ abstract class $AuthenticatedCopyWith<$Res> {
   factory $AuthenticatedCopyWith(
           Authenticated value, $Res Function(Authenticated) then) =
       _$AuthenticatedCopyWithImpl<$Res>;
+  $Res call({UserDomain user});
+
+  $UserDomainCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -427,49 +453,87 @@ class _$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
   @override
   Authenticated get _value => super._value as Authenticated;
+
+  @override
+  $Res call({
+    Object user = freezed,
+  }) {
+    return _then(Authenticated(
+      user == freezed ? _value.user : user as UserDomain,
+    ));
+  }
+
+  @override
+  $UserDomainCopyWith<$Res> get user {
+    if (_value.user == null) {
+      return null;
+    }
+    return $UserDomainCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 /// @nodoc
-class _$Authenticated implements Authenticated {
-  const _$Authenticated();
+class _$Authenticated with DiagnosticableTreeMixin implements Authenticated {
+  const _$Authenticated(this.user) : assert(user != null);
 
   @override
-  String toString() {
-    return 'AuthState.authenticated()';
+  final UserDomain user;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.authenticated(user: $user)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.authenticated'))
+      ..add(DiagnosticsProperty('user', user));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Authenticated);
+    return identical(this, other) ||
+        (other is Authenticated &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+
+  @override
+  $AuthenticatedCopyWith<Authenticated> get copyWith =>
+      _$AuthenticatedCopyWithImpl<Authenticated>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(),
+    @required Result authenticated(UserDomain user),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
-    return authenticated();
+    return authenticated(user);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(),
+    Result authenticated(UserDomain user),
     Result unauthenticated(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (authenticated != null) {
-      return authenticated();
+      return authenticated(user);
     }
     return orElse();
   }
@@ -504,7 +568,10 @@ class _$Authenticated implements Authenticated {
 }
 
 abstract class Authenticated implements AuthState {
-  const factory Authenticated() = _$Authenticated;
+  const factory Authenticated(UserDomain user) = _$Authenticated;
+
+  UserDomain get user;
+  $AuthenticatedCopyWith<Authenticated> get copyWith;
 }
 
 /// @nodoc
@@ -526,12 +593,20 @@ class _$UnauthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Unauthenticated implements Unauthenticated {
+class _$Unauthenticated
+    with DiagnosticableTreeMixin
+    implements Unauthenticated {
   const _$Unauthenticated();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.unauthenticated()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthState.unauthenticated'));
   }
 
   @override
@@ -546,7 +621,7 @@ class _$Unauthenticated implements Unauthenticated {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(),
+    @required Result authenticated(UserDomain user),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
@@ -559,7 +634,7 @@ class _$Unauthenticated implements Unauthenticated {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(),
+    Result authenticated(UserDomain user),
     Result unauthenticated(),
     @required Result orElse(),
   }) {

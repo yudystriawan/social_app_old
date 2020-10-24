@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_social_app/domain/auth/auth_failure.dart';
@@ -12,10 +14,12 @@ import 'firebase_user_mapper.dart';
 class AuthRepository implements IAuthRepository {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  final FirebaseFirestore _firestore;
 
   AuthRepository(
     this._firebaseAuth,
     this._googleSignIn,
+    this._firestore,
   );
 
   @override
@@ -67,4 +71,10 @@ class AuthRepository implements IAuthRepository {
         _googleSignIn.signOut(),
         _firebaseAuth.signOut(),
       ]);
+
+  @override
+  Future<Either<AuthFailure, Unit>> update(UserDomain user) {
+    // TODO: implement update
+    throw UnimplementedError();
+  }
 }

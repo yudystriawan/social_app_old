@@ -14,9 +14,10 @@ class _$UserDomainTearOff {
   const _$UserDomainTearOff();
 
 // ignore: unused_element
-  _UserDomain call({@required UniqueId id}) {
+  _UserDomain call({@required UniqueId id, @required Username username}) {
     return _UserDomain(
       id: id,
+      username: username,
     );
   }
 }
@@ -28,6 +29,7 @@ const $UserDomain = _$UserDomainTearOff();
 /// @nodoc
 mixin _$UserDomain {
   UniqueId get id;
+  Username get username;
 
   $UserDomainCopyWith<UserDomain> get copyWith;
 }
@@ -37,7 +39,7 @@ abstract class $UserDomainCopyWith<$Res> {
   factory $UserDomainCopyWith(
           UserDomain value, $Res Function(UserDomain) then) =
       _$UserDomainCopyWithImpl<$Res>;
-  $Res call({UniqueId id});
+  $Res call({UniqueId id, Username username});
 }
 
 /// @nodoc
@@ -51,9 +53,11 @@ class _$UserDomainCopyWithImpl<$Res> implements $UserDomainCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
+    Object username = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
+      username: username == freezed ? _value.username : username as Username,
     ));
   }
 }
@@ -64,7 +68,7 @@ abstract class _$UserDomainCopyWith<$Res> implements $UserDomainCopyWith<$Res> {
           _UserDomain value, $Res Function(_UserDomain) then) =
       __$UserDomainCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id});
+  $Res call({UniqueId id, Username username});
 }
 
 /// @nodoc
@@ -80,23 +84,30 @@ class __$UserDomainCopyWithImpl<$Res> extends _$UserDomainCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
+    Object username = freezed,
   }) {
     return _then(_UserDomain(
       id: id == freezed ? _value.id : id as UniqueId,
+      username: username == freezed ? _value.username : username as Username,
     ));
   }
 }
 
 /// @nodoc
-class _$_UserDomain implements _UserDomain {
-  const _$_UserDomain({@required this.id}) : assert(id != null);
+class _$_UserDomain extends _UserDomain {
+  const _$_UserDomain({@required this.id, @required this.username})
+      : assert(id != null),
+        assert(username != null),
+        super._();
 
   @override
   final UniqueId id;
+  @override
+  final Username username;
 
   @override
   String toString() {
-    return 'UserDomain(id: $id)';
+    return 'UserDomain(id: $id, username: $username)';
   }
 
   @override
@@ -104,23 +115,32 @@ class _$_UserDomain implements _UserDomain {
     return identical(this, other) ||
         (other is _UserDomain &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.username, username) ||
+                const DeepCollectionEquality()
+                    .equals(other.username, username)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(username);
 
   @override
   _$UserDomainCopyWith<_UserDomain> get copyWith =>
       __$UserDomainCopyWithImpl<_UserDomain>(this, _$identity);
 }
 
-abstract class _UserDomain implements UserDomain {
-  const factory _UserDomain({@required UniqueId id}) = _$_UserDomain;
+abstract class _UserDomain extends UserDomain {
+  const _UserDomain._() : super._();
+  const factory _UserDomain(
+      {@required UniqueId id, @required Username username}) = _$_UserDomain;
 
   @override
   UniqueId get id;
+  @override
+  Username get username;
   @override
   _$UserDomainCopyWith<_UserDomain> get copyWith;
 }
