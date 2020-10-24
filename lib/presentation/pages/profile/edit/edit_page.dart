@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/user/form/user_form_bloc.dart';
-import 'package:my_social_app/domain/auth/user.dart';
+import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/injection.dart';
 import 'package:my_social_app/presentation/common/app_bar.dart';
 import 'package:my_social_app/presentation/common/loading_overlay.dart';

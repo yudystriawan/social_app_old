@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:my_social_app/domain/auth/user.dart';
+import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/domain/auth/value_objects.dart';
 import 'package:my_social_app/domain/core/value_objects.dart';
+import 'package:my_social_app/domain/user/value_objects.dart';
 import 'package:my_social_app/infrastructure/core/timestamp.dart';
 
 part 'user_dtos.freezed.dart';

@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_social_app/domain/auth/auth_failure.dart';
 import 'package:my_social_app/domain/auth/i_auth_repository.dart';
-import 'package:my_social_app/domain/auth/user.dart';
+import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/domain/auth/value_objects.dart';
 import 'package:my_social_app/infrastructure/auth/user_dtos.dart';
 import 'package:my_social_app/infrastructure/core/firestore_helpers.dart';

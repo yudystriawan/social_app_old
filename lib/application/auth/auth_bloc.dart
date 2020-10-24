@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_social_app/domain/auth/i_auth_repository.dart';
-import 'package:my_social_app/domain/auth/user.dart';
+import 'package:my_social_app/domain/user/user.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

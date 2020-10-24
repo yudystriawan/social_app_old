@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:my_social_app/application/user/form/user_form_bloc.dart';
+import 'package:my_social_app/domain/user/value_objects.dart';
 
 class BioField extends HookWidget {
   const BioField({Key key}) : super(key: key);
@@ -27,6 +28,9 @@ class BioField extends HookWidget {
             decoration: const InputDecoration(
               labelText: 'Bio',
             ),
+            maxLength: Bio.maxLength,
+            maxLines: null,
+            minLines: 5,
             onChanged: (value) => context
                 .bloc<UserFormBloc>()
                 .add(UserFormEvent.bioChanged(value)),

@@ -4,6 +4,8 @@ import 'package:my_social_app/domain/auth/value_objects.dart';
 import 'package:my_social_app/domain/core/failures.dart';
 import 'package:my_social_app/domain/core/value_objects.dart';
 
+import 'value_objects.dart';
+
 part 'user.freezed.dart';
 
 @freezed

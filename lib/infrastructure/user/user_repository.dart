@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
-import 'package:my_social_app/domain/auth/user.dart';
+import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/domain/user/i_user_repository.dart';
 import 'package:my_social_app/domain/user/user_failure.dart';
 import 'package:my_social_app/infrastructure/auth/user_dtos.dart';

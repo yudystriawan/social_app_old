@@ -4,10 +4,11 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:my_social_app/domain/auth/user.dart';
+import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/domain/auth/value_objects.dart';
 import 'package:my_social_app/domain/user/i_user_repository.dart';
 import 'package:my_social_app/domain/user/user_failure.dart';
+import 'package:my_social_app/domain/user/value_objects.dart';
 
 part 'user_form_bloc.freezed.dart';
 part 'user_form_event.dart';
