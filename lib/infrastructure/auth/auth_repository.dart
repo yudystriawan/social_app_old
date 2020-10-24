@@ -26,9 +26,7 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Option<UserDomain>> getSignedInUser() async {
-    final currentUser = _firebaseAuth.currentUser;
-    final userDoc =
-        await (await _firestore.userDocument(currentUser?.uid)).get();
+    final userDoc = await (await _firestore.userDocument()).get();
 
     return userDoc.exists
         ? optionOf(UserDto.fromFirestore(userDoc).toDomain())
@@ -71,7 +69,7 @@ class AuthRepository implements IAuthRepository {
       await _firebaseAuth.signInWithCredential(authCredential);
 
       final currentUser = _firebaseAuth.currentUser;
-      final userDoc = await _firestore.userDocument(currentUser.uid);
+      final userDoc = await _firestore.userDocument();
       final user = await userDoc.get();
 
       if (!user.exists) {
@@ -91,10 +89,4 @@ class AuthRepository implements IAuthRepository {
         _googleSignIn.signOut(),
         _firebaseAuth.signOut(),
       ]);
-
-  @override
-  Future<Either<AuthFailure, Unit>> update(UserDomain user) async {
-    // TODO: implement update
-    throw UnimplementedError();
-  }
 }

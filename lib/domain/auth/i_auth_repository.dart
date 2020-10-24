@@ -17,5 +17,4 @@ abstract class IAuthRepository {
   });
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
   Future<void> signOut();
-  Future<Either<AuthFailure, Unit>> update(UserDomain user);
 }
