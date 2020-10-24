@@ -14,10 +14,20 @@ class _$UserDomainTearOff {
   const _$UserDomainTearOff();
 
 // ignore: unused_element
-  _UserDomain call({@required UniqueId id, @required Username username}) {
+  _UserDomain call(
+      {@required UniqueId id,
+      @required Username username,
+      @required Name name,
+      @required EmailAddress email,
+      @required PhotoUrl photoUrl,
+      @required Bio bio}) {
     return _UserDomain(
       id: id,
       username: username,
+      name: name,
+      email: email,
+      photoUrl: photoUrl,
+      bio: bio,
     );
   }
 }
@@ -30,6 +40,10 @@ const $UserDomain = _$UserDomainTearOff();
 mixin _$UserDomain {
   UniqueId get id;
   Username get username;
+  Name get name;
+  EmailAddress get email;
+  PhotoUrl get photoUrl;
+  Bio get bio;
 
   $UserDomainCopyWith<UserDomain> get copyWith;
 }
@@ -39,7 +53,13 @@ abstract class $UserDomainCopyWith<$Res> {
   factory $UserDomainCopyWith(
           UserDomain value, $Res Function(UserDomain) then) =
       _$UserDomainCopyWithImpl<$Res>;
-  $Res call({UniqueId id, Username username});
+  $Res call(
+      {UniqueId id,
+      Username username,
+      Name name,
+      EmailAddress email,
+      PhotoUrl photoUrl,
+      Bio bio});
 }
 
 /// @nodoc
@@ -54,10 +74,18 @@ class _$UserDomainCopyWithImpl<$Res> implements $UserDomainCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object username = freezed,
+    Object name = freezed,
+    Object email = freezed,
+    Object photoUrl = freezed,
+    Object bio = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
       username: username == freezed ? _value.username : username as Username,
+      name: name == freezed ? _value.name : name as Name,
+      email: email == freezed ? _value.email : email as EmailAddress,
+      photoUrl: photoUrl == freezed ? _value.photoUrl : photoUrl as PhotoUrl,
+      bio: bio == freezed ? _value.bio : bio as Bio,
     ));
   }
 }
@@ -68,7 +96,13 @@ abstract class _$UserDomainCopyWith<$Res> implements $UserDomainCopyWith<$Res> {
           _UserDomain value, $Res Function(_UserDomain) then) =
       __$UserDomainCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, Username username});
+  $Res call(
+      {UniqueId id,
+      Username username,
+      Name name,
+      EmailAddress email,
+      PhotoUrl photoUrl,
+      Bio bio});
 }
 
 /// @nodoc
@@ -85,29 +119,55 @@ class __$UserDomainCopyWithImpl<$Res> extends _$UserDomainCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object username = freezed,
+    Object name = freezed,
+    Object email = freezed,
+    Object photoUrl = freezed,
+    Object bio = freezed,
   }) {
     return _then(_UserDomain(
       id: id == freezed ? _value.id : id as UniqueId,
       username: username == freezed ? _value.username : username as Username,
+      name: name == freezed ? _value.name : name as Name,
+      email: email == freezed ? _value.email : email as EmailAddress,
+      photoUrl: photoUrl == freezed ? _value.photoUrl : photoUrl as PhotoUrl,
+      bio: bio == freezed ? _value.bio : bio as Bio,
     ));
   }
 }
 
 /// @nodoc
 class _$_UserDomain extends _UserDomain {
-  const _$_UserDomain({@required this.id, @required this.username})
+  const _$_UserDomain(
+      {@required this.id,
+      @required this.username,
+      @required this.name,
+      @required this.email,
+      @required this.photoUrl,
+      @required this.bio})
       : assert(id != null),
         assert(username != null),
+        assert(name != null),
+        assert(email != null),
+        assert(photoUrl != null),
+        assert(bio != null),
         super._();
 
   @override
   final UniqueId id;
   @override
   final Username username;
+  @override
+  final Name name;
+  @override
+  final EmailAddress email;
+  @override
+  final PhotoUrl photoUrl;
+  @override
+  final Bio bio;
 
   @override
   String toString() {
-    return 'UserDomain(id: $id, username: $username)';
+    return 'UserDomain(id: $id, username: $username, name: $name, email: $email, photoUrl: $photoUrl, bio: $bio)';
   }
 
   @override
@@ -118,14 +178,27 @@ class _$_UserDomain extends _UserDomain {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.username, username) ||
                 const DeepCollectionEquality()
-                    .equals(other.username, username)));
+                    .equals(other.username, username)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.photoUrl, photoUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.photoUrl, photoUrl)) &&
+            (identical(other.bio, bio) ||
+                const DeepCollectionEquality().equals(other.bio, bio)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(username);
+      const DeepCollectionEquality().hash(username) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(photoUrl) ^
+      const DeepCollectionEquality().hash(bio);
 
   @override
   _$UserDomainCopyWith<_UserDomain> get copyWith =>
@@ -135,12 +208,25 @@ class _$_UserDomain extends _UserDomain {
 abstract class _UserDomain extends UserDomain {
   const _UserDomain._() : super._();
   const factory _UserDomain(
-      {@required UniqueId id, @required Username username}) = _$_UserDomain;
+      {@required UniqueId id,
+      @required Username username,
+      @required Name name,
+      @required EmailAddress email,
+      @required PhotoUrl photoUrl,
+      @required Bio bio}) = _$_UserDomain;
 
   @override
   UniqueId get id;
   @override
   Username get username;
+  @override
+  Name get name;
+  @override
+  EmailAddress get email;
+  @override
+  PhotoUrl get photoUrl;
+  @override
+  Bio get bio;
   @override
   _$UserDomainCopyWith<_UserDomain> get copyWith;
 }

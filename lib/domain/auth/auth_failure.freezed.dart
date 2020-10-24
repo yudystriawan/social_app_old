@@ -32,6 +32,11 @@ class _$AuthFailureTearOff {
   InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
     return const InvalidEmailAndPasswordCombination();
   }
+
+// ignore: unused_element
+  UserDoesNotExists userDoesNotExists() {
+    return const UserDoesNotExists();
+  }
 }
 
 /// @nodoc
@@ -46,6 +51,7 @@ mixin _$AuthFailure {
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result userDoesNotExists(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -53,6 +59,7 @@ mixin _$AuthFailure {
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result userDoesNotExists(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -63,6 +70,7 @@ mixin _$AuthFailure {
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result userDoesNotExists(UserDoesNotExists value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -71,6 +79,7 @@ mixin _$AuthFailure {
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result userDoesNotExists(UserDoesNotExists value),
     @required Result orElse(),
   });
 }
@@ -134,11 +143,13 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result userDoesNotExists(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
     return cancelledByUser();
   }
 
@@ -149,6 +160,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result userDoesNotExists(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -167,11 +179,13 @@ class _$CancelledByUser implements CancelledByUser {
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result userDoesNotExists(UserDoesNotExists value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
     return cancelledByUser(this);
   }
 
@@ -183,6 +197,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result userDoesNotExists(UserDoesNotExists value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -239,11 +254,13 @@ class _$ServerError implements ServerError {
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result userDoesNotExists(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
     return serverError();
   }
 
@@ -254,6 +271,7 @@ class _$ServerError implements ServerError {
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result userDoesNotExists(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -272,11 +290,13 @@ class _$ServerError implements ServerError {
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result userDoesNotExists(UserDoesNotExists value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
     return serverError(this);
   }
 
@@ -288,6 +308,7 @@ class _$ServerError implements ServerError {
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result userDoesNotExists(UserDoesNotExists value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -345,11 +366,13 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result userDoesNotExists(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
     return emailAlreadyInUse();
   }
 
@@ -360,6 +383,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result userDoesNotExists(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -378,11 +402,13 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result userDoesNotExists(UserDoesNotExists value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
     return emailAlreadyInUse(this);
   }
 
@@ -394,6 +420,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result userDoesNotExists(UserDoesNotExists value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -456,11 +483,13 @@ class _$InvalidEmailAndPasswordCombination
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result userDoesNotExists(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -471,6 +500,7 @@ class _$InvalidEmailAndPasswordCombination
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result userDoesNotExists(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -489,11 +519,13 @@ class _$InvalidEmailAndPasswordCombination
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result userDoesNotExists(UserDoesNotExists value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
@@ -505,6 +537,7 @@ class _$InvalidEmailAndPasswordCombination
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result userDoesNotExists(UserDoesNotExists value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -518,4 +551,116 @@ class _$InvalidEmailAndPasswordCombination
 abstract class InvalidEmailAndPasswordCombination implements AuthFailure {
   const factory InvalidEmailAndPasswordCombination() =
       _$InvalidEmailAndPasswordCombination;
+}
+
+/// @nodoc
+abstract class $UserDoesNotExistsCopyWith<$Res> {
+  factory $UserDoesNotExistsCopyWith(
+          UserDoesNotExists value, $Res Function(UserDoesNotExists) then) =
+      _$UserDoesNotExistsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UserDoesNotExistsCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $UserDoesNotExistsCopyWith<$Res> {
+  _$UserDoesNotExistsCopyWithImpl(
+      UserDoesNotExists _value, $Res Function(UserDoesNotExists) _then)
+      : super(_value, (v) => _then(v as UserDoesNotExists));
+
+  @override
+  UserDoesNotExists get _value => super._value as UserDoesNotExists;
+}
+
+/// @nodoc
+class _$UserDoesNotExists implements UserDoesNotExists {
+  const _$UserDoesNotExists();
+
+  @override
+  String toString() {
+    return 'AuthFailure.userDoesNotExists()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is UserDoesNotExists);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result userDoesNotExists(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
+    return userDoesNotExists();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result userDoesNotExists(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (userDoesNotExists != null) {
+      return userDoesNotExists();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(CancelledByUser value),
+    @required Result serverError(ServerError value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            InvalidEmailAndPasswordCombination value),
+    @required Result userDoesNotExists(UserDoesNotExists value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(userDoesNotExists != null);
+    return userDoesNotExists(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(CancelledByUser value),
+    Result serverError(ServerError value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        InvalidEmailAndPasswordCombination value),
+    Result userDoesNotExists(UserDoesNotExists value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (userDoesNotExists != null) {
+      return userDoesNotExists(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserDoesNotExists implements AuthFailure {
+  const factory UserDoesNotExists() = _$UserDoesNotExists;
 }

@@ -13,14 +13,27 @@ abstract class UserDomain with _$UserDomain {
   const factory UserDomain({
     @required UniqueId id,
     @required Username username,
+    @required Name name,
+    @required EmailAddress email,
+    @required PhotoUrl photoUrl,
+    @required Bio bio,
   }) = _UserDomain;
 
   factory UserDomain.empty() => UserDomain(
         id: UniqueId(),
         username: Username(''),
+        name: Name(''),
+        email: EmailAddress(''),
+        photoUrl: PhotoUrl(''),
+        bio: Bio(''),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
-    return username.failureOrUnit.fold((f) => some(f), (r) => none());
+    return username.failureOrUnit
+        .andThen(name.failureOrUnit)
+        .andThen(email.failureOrUnit)
+        .andThen(photoUrl.failureOrUnit)
+        .andThen(bio.failureOrUnit)
+        .fold((f) => some(f), (r) => none());
   }
 }

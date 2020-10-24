@@ -7,7 +7,11 @@ extension FirebaseUserDomainX on User {
   UserDomain toDomain() {
     return UserDomain(
       id: UniqueId.fromUniqueString(uid),
-      username: Username(displayName),
+      username: Username(''),
+      name: Name(displayName),
+      email: EmailAddress(email),
+      photoUrl: PhotoUrl(photoURL),
+      bio: Bio(''),
     );
   }
 }
