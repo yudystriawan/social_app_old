@@ -41,6 +41,14 @@ class _HomePageState extends State<HomePage> {
             state.maybeMap(
               unauthenticated: (_) =>
                   ExtendedNavigator.of(context).replace(Routes.signInPage),
+              authenticated: (value) {
+                if (value.user.failureOption.isSome()) {
+                  ExtendedNavigator.of(context).replace(
+                    Routes.editProfilePage,
+                    arguments: EditProfilePageArguments(editedUser: value.user),
+                  );
+                }
+              },
               orElse: () {},
             );
           },

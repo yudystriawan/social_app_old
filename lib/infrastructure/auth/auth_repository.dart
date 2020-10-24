@@ -75,7 +75,6 @@ class AuthRepository implements IAuthRepository {
       if (!user.exists) {
         final userDto = UserDto.fromDomain(currentUser.toDomain());
         userDoc.set(userDto.toJson());
-        return left(const AuthFailure.userDoesNotExists());
       }
 
       return right(unit);

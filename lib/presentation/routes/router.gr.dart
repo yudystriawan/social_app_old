@@ -7,7 +7,9 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
+import '../../domain/auth/user.dart';
 import '../pages/home/home_page.dart';
 import '../pages/profile/edit/edit_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
@@ -57,10 +59,25 @@ class Router extends RouterBase {
       );
     },
     EditProfilePage: (data) {
+      final args = data.getArgs<EditProfilePageArguments>(nullOk: false);
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => const EditProfilePage(),
+        builder: (context) => EditProfilePage(
+          key: args.key,
+          editedUser: args.editedUser,
+        ).wrappedRoute(context),
         settings: data,
       );
     },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// EditProfilePage arguments holder class
+class EditProfilePageArguments {
+  final Key key;
+  final UserDomain editedUser;
+  EditProfilePageArguments({this.key, @required this.editedUser});
 }

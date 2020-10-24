@@ -13,10 +13,10 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) {},
-          authenticated: (value) => ExtendedNavigator.of(context).replace(
-              value.user.failureOption.isNone()
-                  ? Routes.homePage
-                  : Routes.editProfilePage),
+          authenticated: (value) => value.user.failureOption.isNone()
+              ? ExtendedNavigator.of(context).replace(Routes.homePage)
+              : ExtendedNavigator.of(context).replace(Routes.editProfilePage,
+                  arguments: EditProfilePageArguments(editedUser: value.user)),
           unauthenticated: (_) =>
               ExtendedNavigator.of(context).replace(Routes.signInPage),
         );
