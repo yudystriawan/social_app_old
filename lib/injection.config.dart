@@ -6,6 +6,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -41,6 +42,7 @@ GetIt $initGetIt(
   final imagePickerInjectableModule = _$ImagePickerInjectableModule();
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
+  gh.lazySingleton<FirebaseStorage>(() => firebaseInjectableModule.storage);
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
   gh.factory<IAuthRepository>(() => AuthRepository(
         get<FirebaseAuth>(),
@@ -49,12 +51,14 @@ GetIt $initGetIt(
       ));
   gh.factory<IPostRepository>(() => PostRepository(get<FirebaseFirestore>()));
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
-  gh.factory<PostFormBloc>(() => PostFormBloc(get<IPostRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthRepository>()));
   gh.factory<UserFormBloc>(() => UserFormBloc(get<IUserRepository>()));
   gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthRepository>()));
-  gh.factory<IFileRepository>(() => FileRepositoy(get<ImagePicker>()));
+  gh.factory<IFileRepository>(
+      () => FileRepositoy(get<ImagePicker>(), get<FirebaseStorage>()));
+  gh.factory<PostFormBloc>(
+      () => PostFormBloc(get<IPostRepository>(), get<IFileRepository>()));
   gh.factory<FileLoaderBloc>(() => FileLoaderBloc(get<IFileRepository>()));
 
   // Eager singletons must be registered in the right order

@@ -25,8 +25,7 @@ abstract class PostDomain with _$PostDomain {
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
-    return imageUrl.failureOrUnit
-        .andThen(body.failureOrUnit)
+    return body.failureOrUnit
         .andThen(location.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }

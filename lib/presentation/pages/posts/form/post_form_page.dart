@@ -36,6 +36,7 @@ class PostFormPage extends StatelessWidget implements AutoRouteWrapper {
             (f) => FlushbarHelper.createError(
               message: f.maybeMap(
                 orElse: () => 'Something went wrong.',
+                unexpected: (_) => 'Unexpected',
               ),
             ).show(context),
             (_) => ExtendedNavigator.of(context).popUntil(
@@ -78,7 +79,10 @@ class PostFormScaffold extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.save),
-            onPressed: () {},
+            onPressed: () {
+              FocusScope.of(context).unfocus();
+              context.bloc<PostFormBloc>().add(const PostFormEvent.submit());
+            },
           ),
         ],
       ),

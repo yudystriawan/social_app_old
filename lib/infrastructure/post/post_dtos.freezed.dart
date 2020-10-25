@@ -19,7 +19,7 @@ class _$PostDtoTearOff {
 // ignore: unused_element
   _PostDto call(
       {@JsonKey(ignore: true) String id,
-      @required @JsonKey(name: 'image_url') String imageUrl,
+      @JsonKey(name: 'image_url') String imageUrl,
       @required String body,
       @required String location,
       @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
@@ -145,12 +145,11 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
 class _$_PostDto implements _PostDto {
   const _$_PostDto(
       {@JsonKey(ignore: true) this.id,
-      @required @JsonKey(name: 'image_url') this.imageUrl,
+      @JsonKey(name: 'image_url') this.imageUrl,
       @required this.body,
       @required this.location,
       @required @ServerTimestampConverter() this.serverTimeStamp})
-      : assert(imageUrl != null),
-        assert(body != null),
+      : assert(body != null),
         assert(location != null),
         assert(serverTimeStamp != null);
 
@@ -217,7 +216,7 @@ class _$_PostDto implements _PostDto {
 abstract class _PostDto implements PostDto {
   const factory _PostDto(
           {@JsonKey(ignore: true) String id,
-          @required @JsonKey(name: 'image_url') String imageUrl,
+          @JsonKey(name: 'image_url') String imageUrl,
           @required String body,
           @required String location,
           @required @ServerTimestampConverter() FieldValue serverTimeStamp}) =

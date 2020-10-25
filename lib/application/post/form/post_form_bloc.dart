@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-
+import 'package:my_social_app/domain/file/i_file_repository.dart';
 import 'package:my_social_app/domain/post/i_post_repository.dart';
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/domain/post/post_failure.dart';
@@ -19,9 +19,11 @@ part 'post_form_state.dart';
 class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
   PostFormBloc(
     this._postRepository,
+    this._fileRepository,
   ) : super(PostFormState.initial());
 
   final IPostRepository _postRepository;
+  final IFileRepository _fileRepository;
 
   @override
   Stream<PostFormState> mapEventToState(
@@ -78,7 +80,28 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
         );
 
         if (state.post.failureOption.isNone()) {
-          failureOrSuccess = await _postRepository.create(state.post);
+          PostDomain newPost;
+          final downloadUrlFailureOrSuccess =
+              await _fileRepository.uploadPostFileImage(
+            imageFile: state.imageFile,
+            postId: state.post.id,
+          );
+          downloadUrlFailureOrSuccess.fold(
+            (_) => failureOrSuccess = left(const PostFailure.unexpected()),
+            (downloadUrl) {
+              newPost = PostDomain(
+                id: state.post.id,
+                imageUrl: PostImageUrl(downloadUrl.getOrCrash()),
+                body: state.post.body,
+                location: state.post.location,
+              );
+            },
+          );
+          if (newPost != null &&
+              newPost.failureOption.isNone() &&
+              newPost.imageUrl.isValid()) {
+            failureOrSuccess = await _postRepository.create(newPost);
+          }
         }
 
         yield state.copyWith.call(
