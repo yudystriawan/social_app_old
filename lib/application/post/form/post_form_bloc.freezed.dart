@@ -21,6 +21,13 @@ class _$PostFormEventTearOff {
   }
 
 // ignore: unused_element
+  _FileImageChanged fileImageChanged(Option<File> imageFile) {
+    return _FileImageChanged(
+      imageFile,
+    );
+  }
+
+// ignore: unused_element
   _ImageChanged imageChanged(String imagePath) {
     return _ImageChanged(
       imagePath,
@@ -56,6 +63,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<PostDomain> initialPost),
+    @required Result fileImageChanged(Option<File> imageFile),
     @required Result imageChanged(String imagePath),
     @required Result bodyChanged(String bodyStr),
     @required Result locationChanged(String locationStr),
@@ -64,6 +72,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<PostDomain> initialPost),
+    Result fileImageChanged(Option<File> imageFile),
     Result imageChanged(String imagePath),
     Result bodyChanged(String bodyStr),
     Result locationChanged(String locationStr),
@@ -73,6 +82,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
+    @required Result fileImageChanged(_FileImageChanged value),
     @required Result imageChanged(_ImageChanged value),
     @required Result bodyChanged(_BodyChanged value),
     @required Result locationChanged(_LocationChanged value),
@@ -81,6 +91,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
+    Result fileImageChanged(_FileImageChanged value),
     Result imageChanged(_ImageChanged value),
     Result bodyChanged(_BodyChanged value),
     Result locationChanged(_LocationChanged value),
@@ -169,12 +180,14 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<PostDomain> initialPost),
+    @required Result fileImageChanged(Option<File> imageFile),
     @required Result imageChanged(String imagePath),
     @required Result bodyChanged(String bodyStr),
     @required Result locationChanged(String locationStr),
     @required Result submit(),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -186,6 +199,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<PostDomain> initialPost),
+    Result fileImageChanged(Option<File> imageFile),
     Result imageChanged(String imagePath),
     Result bodyChanged(String bodyStr),
     Result locationChanged(String locationStr),
@@ -203,12 +217,14 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
+    @required Result fileImageChanged(_FileImageChanged value),
     @required Result imageChanged(_ImageChanged value),
     @required Result bodyChanged(_BodyChanged value),
     @required Result locationChanged(_LocationChanged value),
     @required Result submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -220,6 +236,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
+    Result fileImageChanged(_FileImageChanged value),
     Result imageChanged(_ImageChanged value),
     Result bodyChanged(_BodyChanged value),
     Result locationChanged(_LocationChanged value),
@@ -239,6 +256,146 @@ abstract class _Initialized implements PostFormEvent {
 
   Option<PostDomain> get initialPost;
   _$InitializedCopyWith<_Initialized> get copyWith;
+}
+
+/// @nodoc
+abstract class _$FileImageChangedCopyWith<$Res> {
+  factory _$FileImageChangedCopyWith(
+          _FileImageChanged value, $Res Function(_FileImageChanged) then) =
+      __$FileImageChangedCopyWithImpl<$Res>;
+  $Res call({Option<File> imageFile});
+}
+
+/// @nodoc
+class __$FileImageChangedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$FileImageChangedCopyWith<$Res> {
+  __$FileImageChangedCopyWithImpl(
+      _FileImageChanged _value, $Res Function(_FileImageChanged) _then)
+      : super(_value, (v) => _then(v as _FileImageChanged));
+
+  @override
+  _FileImageChanged get _value => super._value as _FileImageChanged;
+
+  @override
+  $Res call({
+    Object imageFile = freezed,
+  }) {
+    return _then(_FileImageChanged(
+      imageFile == freezed ? _value.imageFile : imageFile as Option<File>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_FileImageChanged implements _FileImageChanged {
+  const _$_FileImageChanged(this.imageFile) : assert(imageFile != null);
+
+  @override
+  final Option<File> imageFile;
+
+  @override
+  String toString() {
+    return 'PostFormEvent.fileImageChanged(imageFile: $imageFile)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _FileImageChanged &&
+            (identical(other.imageFile, imageFile) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageFile, imageFile)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(imageFile);
+
+  @override
+  _$FileImageChangedCopyWith<_FileImageChanged> get copyWith =>
+      __$FileImageChangedCopyWithImpl<_FileImageChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<PostDomain> initialPost),
+    @required Result fileImageChanged(Option<File> imageFile),
+    @required Result imageChanged(String imagePath),
+    @required Result bodyChanged(String bodyStr),
+    @required Result locationChanged(String locationStr),
+    @required Result submit(),
+  }) {
+    assert(initialized != null);
+    assert(fileImageChanged != null);
+    assert(imageChanged != null);
+    assert(bodyChanged != null);
+    assert(locationChanged != null);
+    assert(submit != null);
+    return fileImageChanged(imageFile);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<PostDomain> initialPost),
+    Result fileImageChanged(Option<File> imageFile),
+    Result imageChanged(String imagePath),
+    Result bodyChanged(String bodyStr),
+    Result locationChanged(String locationStr),
+    Result submit(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fileImageChanged != null) {
+      return fileImageChanged(imageFile);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result fileImageChanged(_FileImageChanged value),
+    @required Result imageChanged(_ImageChanged value),
+    @required Result bodyChanged(_BodyChanged value),
+    @required Result locationChanged(_LocationChanged value),
+    @required Result submit(_Submit value),
+  }) {
+    assert(initialized != null);
+    assert(fileImageChanged != null);
+    assert(imageChanged != null);
+    assert(bodyChanged != null);
+    assert(locationChanged != null);
+    assert(submit != null);
+    return fileImageChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result fileImageChanged(_FileImageChanged value),
+    Result imageChanged(_ImageChanged value),
+    Result bodyChanged(_BodyChanged value),
+    Result locationChanged(_LocationChanged value),
+    Result submit(_Submit value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fileImageChanged != null) {
+      return fileImageChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FileImageChanged implements PostFormEvent {
+  const factory _FileImageChanged(Option<File> imageFile) = _$_FileImageChanged;
+
+  Option<File> get imageFile;
+  _$FileImageChangedCopyWith<_FileImageChanged> get copyWith;
 }
 
 /// @nodoc
@@ -303,12 +460,14 @@ class _$_ImageChanged implements _ImageChanged {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<PostDomain> initialPost),
+    @required Result fileImageChanged(Option<File> imageFile),
     @required Result imageChanged(String imagePath),
     @required Result bodyChanged(String bodyStr),
     @required Result locationChanged(String locationStr),
     @required Result submit(),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -320,6 +479,7 @@ class _$_ImageChanged implements _ImageChanged {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<PostDomain> initialPost),
+    Result fileImageChanged(Option<File> imageFile),
     Result imageChanged(String imagePath),
     Result bodyChanged(String bodyStr),
     Result locationChanged(String locationStr),
@@ -337,12 +497,14 @@ class _$_ImageChanged implements _ImageChanged {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
+    @required Result fileImageChanged(_FileImageChanged value),
     @required Result imageChanged(_ImageChanged value),
     @required Result bodyChanged(_BodyChanged value),
     @required Result locationChanged(_LocationChanged value),
     @required Result submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -354,6 +516,7 @@ class _$_ImageChanged implements _ImageChanged {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
+    Result fileImageChanged(_FileImageChanged value),
     Result imageChanged(_ImageChanged value),
     Result bodyChanged(_BodyChanged value),
     Result locationChanged(_LocationChanged value),
@@ -435,12 +598,14 @@ class _$_BodyChanged implements _BodyChanged {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<PostDomain> initialPost),
+    @required Result fileImageChanged(Option<File> imageFile),
     @required Result imageChanged(String imagePath),
     @required Result bodyChanged(String bodyStr),
     @required Result locationChanged(String locationStr),
     @required Result submit(),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -452,6 +617,7 @@ class _$_BodyChanged implements _BodyChanged {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<PostDomain> initialPost),
+    Result fileImageChanged(Option<File> imageFile),
     Result imageChanged(String imagePath),
     Result bodyChanged(String bodyStr),
     Result locationChanged(String locationStr),
@@ -469,12 +635,14 @@ class _$_BodyChanged implements _BodyChanged {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
+    @required Result fileImageChanged(_FileImageChanged value),
     @required Result imageChanged(_ImageChanged value),
     @required Result bodyChanged(_BodyChanged value),
     @required Result locationChanged(_LocationChanged value),
     @required Result submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -486,6 +654,7 @@ class _$_BodyChanged implements _BodyChanged {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
+    Result fileImageChanged(_FileImageChanged value),
     Result imageChanged(_ImageChanged value),
     Result bodyChanged(_BodyChanged value),
     Result locationChanged(_LocationChanged value),
@@ -569,12 +738,14 @@ class _$_LocationChanged implements _LocationChanged {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<PostDomain> initialPost),
+    @required Result fileImageChanged(Option<File> imageFile),
     @required Result imageChanged(String imagePath),
     @required Result bodyChanged(String bodyStr),
     @required Result locationChanged(String locationStr),
     @required Result submit(),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -586,6 +757,7 @@ class _$_LocationChanged implements _LocationChanged {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<PostDomain> initialPost),
+    Result fileImageChanged(Option<File> imageFile),
     Result imageChanged(String imagePath),
     Result bodyChanged(String bodyStr),
     Result locationChanged(String locationStr),
@@ -603,12 +775,14 @@ class _$_LocationChanged implements _LocationChanged {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
+    @required Result fileImageChanged(_FileImageChanged value),
     @required Result imageChanged(_ImageChanged value),
     @required Result bodyChanged(_BodyChanged value),
     @required Result locationChanged(_LocationChanged value),
     @required Result submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -620,6 +794,7 @@ class _$_LocationChanged implements _LocationChanged {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
+    Result fileImageChanged(_FileImageChanged value),
     Result imageChanged(_ImageChanged value),
     Result bodyChanged(_BodyChanged value),
     Result locationChanged(_LocationChanged value),
@@ -678,12 +853,14 @@ class _$_Submit implements _Submit {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<PostDomain> initialPost),
+    @required Result fileImageChanged(Option<File> imageFile),
     @required Result imageChanged(String imagePath),
     @required Result bodyChanged(String bodyStr),
     @required Result locationChanged(String locationStr),
     @required Result submit(),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -695,6 +872,7 @@ class _$_Submit implements _Submit {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<PostDomain> initialPost),
+    Result fileImageChanged(Option<File> imageFile),
     Result imageChanged(String imagePath),
     Result bodyChanged(String bodyStr),
     Result locationChanged(String locationStr),
@@ -712,12 +890,14 @@ class _$_Submit implements _Submit {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
+    @required Result fileImageChanged(_FileImageChanged value),
     @required Result imageChanged(_ImageChanged value),
     @required Result bodyChanged(_BodyChanged value),
     @required Result locationChanged(_LocationChanged value),
     @required Result submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
     assert(locationChanged != null);
@@ -729,6 +909,7 @@ class _$_Submit implements _Submit {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
+    Result fileImageChanged(_FileImageChanged value),
     Result imageChanged(_ImageChanged value),
     Result bodyChanged(_BodyChanged value),
     Result locationChanged(_LocationChanged value),
@@ -754,12 +935,14 @@ class _$PostFormStateTearOff {
 // ignore: unused_element
   _PostFormState call(
       {@required PostDomain post,
+      @required File imageFile,
       @required bool isSubmitting,
       @required bool showErrorMessages,
       @required bool isEditing,
       @required Option<Either<PostFailure, Unit>> failureOrSuccessOption}) {
     return _PostFormState(
       post: post,
+      imageFile: imageFile,
       isSubmitting: isSubmitting,
       showErrorMessages: showErrorMessages,
       isEditing: isEditing,
@@ -775,6 +958,7 @@ const $PostFormState = _$PostFormStateTearOff();
 /// @nodoc
 mixin _$PostFormState {
   PostDomain get post;
+  File get imageFile;
   bool get isSubmitting;
   bool get showErrorMessages;
   bool get isEditing;
@@ -790,6 +974,7 @@ abstract class $PostFormStateCopyWith<$Res> {
       _$PostFormStateCopyWithImpl<$Res>;
   $Res call(
       {PostDomain post,
+      File imageFile,
       bool isSubmitting,
       bool showErrorMessages,
       bool isEditing,
@@ -810,6 +995,7 @@ class _$PostFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object post = freezed,
+    Object imageFile = freezed,
     Object isSubmitting = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
@@ -817,6 +1003,7 @@ class _$PostFormStateCopyWithImpl<$Res>
   }) {
     return _then(_value.copyWith(
       post: post == freezed ? _value.post : post as PostDomain,
+      imageFile: imageFile == freezed ? _value.imageFile : imageFile as File,
       isSubmitting:
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       showErrorMessages: showErrorMessages == freezed
@@ -849,6 +1036,7 @@ abstract class _$PostFormStateCopyWith<$Res>
   @override
   $Res call(
       {PostDomain post,
+      File imageFile,
       bool isSubmitting,
       bool showErrorMessages,
       bool isEditing,
@@ -872,6 +1060,7 @@ class __$PostFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object post = freezed,
+    Object imageFile = freezed,
     Object isSubmitting = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
@@ -879,6 +1068,7 @@ class __$PostFormStateCopyWithImpl<$Res>
   }) {
     return _then(_PostFormState(
       post: post == freezed ? _value.post : post as PostDomain,
+      imageFile: imageFile == freezed ? _value.imageFile : imageFile as File,
       isSubmitting:
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       showErrorMessages: showErrorMessages == freezed
@@ -896,11 +1086,13 @@ class __$PostFormStateCopyWithImpl<$Res>
 class _$_PostFormState implements _PostFormState {
   const _$_PostFormState(
       {@required this.post,
+      @required this.imageFile,
       @required this.isSubmitting,
       @required this.showErrorMessages,
       @required this.isEditing,
       @required this.failureOrSuccessOption})
       : assert(post != null),
+        assert(imageFile != null),
         assert(isSubmitting != null),
         assert(showErrorMessages != null),
         assert(isEditing != null),
@@ -908,6 +1100,8 @@ class _$_PostFormState implements _PostFormState {
 
   @override
   final PostDomain post;
+  @override
+  final File imageFile;
   @override
   final bool isSubmitting;
   @override
@@ -919,7 +1113,7 @@ class _$_PostFormState implements _PostFormState {
 
   @override
   String toString() {
-    return 'PostFormState(post: $post, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, isEditing: $isEditing, failureOrSuccessOption: $failureOrSuccessOption)';
+    return 'PostFormState(post: $post, imageFile: $imageFile, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, isEditing: $isEditing, failureOrSuccessOption: $failureOrSuccessOption)';
   }
 
   @override
@@ -928,6 +1122,9 @@ class _$_PostFormState implements _PostFormState {
         (other is _PostFormState &&
             (identical(other.post, post) ||
                 const DeepCollectionEquality().equals(other.post, post)) &&
+            (identical(other.imageFile, imageFile) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageFile, imageFile)) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
@@ -946,6 +1143,7 @@ class _$_PostFormState implements _PostFormState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(post) ^
+      const DeepCollectionEquality().hash(imageFile) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isEditing) ^
@@ -959,6 +1157,7 @@ class _$_PostFormState implements _PostFormState {
 abstract class _PostFormState implements PostFormState {
   const factory _PostFormState(
           {@required PostDomain post,
+          @required File imageFile,
           @required bool isSubmitting,
           @required bool showErrorMessages,
           @required bool isEditing,
@@ -967,6 +1166,8 @@ abstract class _PostFormState implements PostFormState {
 
   @override
   PostDomain get post;
+  @override
+  File get imageFile;
   @override
   bool get isSubmitting;
   @override

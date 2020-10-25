@@ -5,12 +5,15 @@
 // **************************************************************************
 
 // ignore_for_file: public_member_api_docs
+import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/post/post.dart';
 import '../../domain/user/user.dart';
 import '../pages/home/home_page.dart';
+import '../pages/posts/form/post_form_page.dart';
 import '../pages/profile/edit/edit_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
 import '../pages/splash/splash_page.dart';
@@ -20,11 +23,13 @@ class Routes {
   static const String signInPage = '/sign-in-page';
   static const String homePage = '/home-page';
   static const String editProfilePage = '/edit-profile-page';
+  static const String postFormPage = '/post-form-page';
   static const all = <String>{
     splashPage,
     signInPage,
     homePage,
     editProfilePage,
+    postFormPage,
   };
 }
 
@@ -36,6 +41,7 @@ class Router extends RouterBase {
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.homePage, page: HomePage),
     RouteDef(Routes.editProfilePage, page: EditProfilePage),
+    RouteDef(Routes.postFormPage, page: PostFormPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -68,6 +74,17 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    PostFormPage: (data) {
+      final args = data.getArgs<PostFormPageArguments>(nullOk: false);
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => PostFormPage(
+          key: args.key,
+          post: args.post,
+          imageFile: args.imageFile,
+        ).wrappedRoute(context),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -80,4 +97,12 @@ class EditProfilePageArguments {
   final Key key;
   final UserDomain editedUser;
   EditProfilePageArguments({this.key, @required this.editedUser});
+}
+
+/// PostFormPage arguments holder class
+class PostFormPageArguments {
+  final Key key;
+  final PostDomain post;
+  final File imageFile;
+  PostFormPageArguments({this.key, @required this.post, this.imageFile});
 }

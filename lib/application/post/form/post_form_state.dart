@@ -4,6 +4,7 @@ part of 'post_form_bloc.dart';
 abstract class PostFormState with _$PostFormState {
   const factory PostFormState({
     @required PostDomain post,
+    @required File imageFile,
     @required bool isSubmitting,
     @required bool showErrorMessages,
     @required bool isEditing,
@@ -12,6 +13,7 @@ abstract class PostFormState with _$PostFormState {
 
   factory PostFormState.initial() => PostFormState(
         post: PostDomain.empty(),
+        imageFile: File(''),
         isSubmitting: false,
         showErrorMessages: false,
         isEditing: false,

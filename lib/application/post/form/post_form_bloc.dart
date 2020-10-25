@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -33,6 +34,14 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
           (post) => state.copyWith.call(
             post: post,
             isEditing: true,
+          ),
+        );
+      },
+      fileImageChanged: (e) async* {
+        yield e.imageFile.fold(
+          () => state,
+          (fileImage) => state.copyWith.call(
+            imageFile: fileImage,
           ),
         );
       },
