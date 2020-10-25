@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
+import 'package:my_social_app/application/user/search/user_search_bloc.dart';
+import 'package:my_social_app/injection.dart';
 import 'package:my_social_app/presentation/pages/feed/feed_page.dart';
 import 'package:my_social_app/presentation/pages/profile/profile_page.dart';
 import 'package:my_social_app/presentation/pages/search/search_page.dart';
@@ -64,12 +66,15 @@ class _HomePageState extends State<HomePage> {
                 _pageIndex = value;
               });
             },
-            children: const [
-              TimelinePage(),
-              FeedPage(),
-              UploadPage(),
-              SearchPage(),
-              ProfilePage(),
+            children: [
+              const TimelinePage(),
+              const FeedPage(),
+              const UploadPage(),
+              BlocProvider(
+                create: (context) => getIt<UserSearchBloc>(),
+                child: const SearchPage(),
+              ),
+              const ProfilePage(),
             ],
           ),
         ),

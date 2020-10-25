@@ -27,6 +27,11 @@ class _$UserFailureTearOff {
   UnableToUpdate unableToUpdate() {
     return const UnableToUpdate();
   }
+
+// ignore: unused_element
+  _UserNotFound userNotFound() {
+    return const _UserNotFound();
+  }
 }
 
 /// @nodoc
@@ -40,12 +45,14 @@ mixin _$UserFailure {
     @required Result unexpected(),
     @required Result insufficientPermissions(),
     @required Result unableToUpdate(),
+    @required Result userNotFound(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result unexpected(),
     Result insufficientPermissions(),
     Result unableToUpdate(),
+    Result userNotFound(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -53,12 +60,14 @@ mixin _$UserFailure {
     @required Result unexpected(Unexpected value),
     @required Result insufficientPermissions(InsufficientPermissions value),
     @required Result unableToUpdate(UnableToUpdate value),
+    @required Result userNotFound(_UserNotFound value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result unexpected(Unexpected value),
     Result insufficientPermissions(InsufficientPermissions value),
     Result unableToUpdate(UnableToUpdate value),
+    Result userNotFound(_UserNotFound value),
     @required Result orElse(),
   });
 }
@@ -119,10 +128,12 @@ class _$Unexpected implements Unexpected {
     @required Result unexpected(),
     @required Result insufficientPermissions(),
     @required Result unableToUpdate(),
+    @required Result userNotFound(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(userNotFound != null);
     return unexpected();
   }
 
@@ -132,6 +143,7 @@ class _$Unexpected implements Unexpected {
     Result unexpected(),
     Result insufficientPermissions(),
     Result unableToUpdate(),
+    Result userNotFound(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -147,10 +159,12 @@ class _$Unexpected implements Unexpected {
     @required Result unexpected(Unexpected value),
     @required Result insufficientPermissions(InsufficientPermissions value),
     @required Result unableToUpdate(UnableToUpdate value),
+    @required Result userNotFound(_UserNotFound value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(userNotFound != null);
     return unexpected(this);
   }
 
@@ -160,6 +174,7 @@ class _$Unexpected implements Unexpected {
     Result unexpected(Unexpected value),
     Result insufficientPermissions(InsufficientPermissions value),
     Result unableToUpdate(UnableToUpdate value),
+    Result userNotFound(_UserNotFound value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -216,10 +231,12 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     @required Result unexpected(),
     @required Result insufficientPermissions(),
     @required Result unableToUpdate(),
+    @required Result userNotFound(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(userNotFound != null);
     return insufficientPermissions();
   }
 
@@ -229,6 +246,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     Result unexpected(),
     Result insufficientPermissions(),
     Result unableToUpdate(),
+    Result userNotFound(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -244,10 +262,12 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     @required Result unexpected(Unexpected value),
     @required Result insufficientPermissions(InsufficientPermissions value),
     @required Result unableToUpdate(UnableToUpdate value),
+    @required Result userNotFound(_UserNotFound value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(userNotFound != null);
     return insufficientPermissions(this);
   }
 
@@ -257,6 +277,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     Result unexpected(Unexpected value),
     Result insufficientPermissions(InsufficientPermissions value),
     Result unableToUpdate(UnableToUpdate value),
+    Result userNotFound(_UserNotFound value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -312,10 +333,12 @@ class _$UnableToUpdate implements UnableToUpdate {
     @required Result unexpected(),
     @required Result insufficientPermissions(),
     @required Result unableToUpdate(),
+    @required Result userNotFound(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(userNotFound != null);
     return unableToUpdate();
   }
 
@@ -325,6 +348,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     Result unexpected(),
     Result insufficientPermissions(),
     Result unableToUpdate(),
+    Result userNotFound(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -340,10 +364,12 @@ class _$UnableToUpdate implements UnableToUpdate {
     @required Result unexpected(Unexpected value),
     @required Result insufficientPermissions(InsufficientPermissions value),
     @required Result unableToUpdate(UnableToUpdate value),
+    @required Result userNotFound(_UserNotFound value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(userNotFound != null);
     return unableToUpdate(this);
   }
 
@@ -353,6 +379,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     Result unexpected(Unexpected value),
     Result insufficientPermissions(InsufficientPermissions value),
     Result unableToUpdate(UnableToUpdate value),
+    Result userNotFound(_UserNotFound value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -365,4 +392,106 @@ class _$UnableToUpdate implements UnableToUpdate {
 
 abstract class UnableToUpdate implements UserFailure {
   const factory UnableToUpdate() = _$UnableToUpdate;
+}
+
+/// @nodoc
+abstract class _$UserNotFoundCopyWith<$Res> {
+  factory _$UserNotFoundCopyWith(
+          _UserNotFound value, $Res Function(_UserNotFound) then) =
+      __$UserNotFoundCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UserNotFoundCopyWithImpl<$Res> extends _$UserFailureCopyWithImpl<$Res>
+    implements _$UserNotFoundCopyWith<$Res> {
+  __$UserNotFoundCopyWithImpl(
+      _UserNotFound _value, $Res Function(_UserNotFound) _then)
+      : super(_value, (v) => _then(v as _UserNotFound));
+
+  @override
+  _UserNotFound get _value => super._value as _UserNotFound;
+}
+
+/// @nodoc
+class _$_UserNotFound implements _UserNotFound {
+  const _$_UserNotFound();
+
+  @override
+  String toString() {
+    return 'UserFailure.userNotFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _UserNotFound);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result insufficientPermissions(),
+    @required Result unableToUpdate(),
+    @required Result userNotFound(),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermissions != null);
+    assert(unableToUpdate != null);
+    assert(userNotFound != null);
+    return userNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result insufficientPermissions(),
+    Result unableToUpdate(),
+    Result userNotFound(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (userNotFound != null) {
+      return userNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(Unexpected value),
+    @required Result insufficientPermissions(InsufficientPermissions value),
+    @required Result unableToUpdate(UnableToUpdate value),
+    @required Result userNotFound(_UserNotFound value),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermissions != null);
+    assert(unableToUpdate != null);
+    assert(userNotFound != null);
+    return userNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(Unexpected value),
+    Result insufficientPermissions(InsufficientPermissions value),
+    Result unableToUpdate(UnableToUpdate value),
+    Result userNotFound(_UserNotFound value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (userNotFound != null) {
+      return userNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNotFound implements UserFailure {
+  const factory _UserNotFound() = _$_UserNotFound;
 }

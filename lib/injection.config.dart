@@ -18,6 +18,7 @@ import 'domain/user/i_user_repository.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'application/user/form/user_form_bloc.dart';
 import 'infrastructure/user/user_repository.dart';
+import 'application/user/search/user_search_bloc.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -40,6 +41,7 @@ GetIt $initGetIt(
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthRepository>()));
   gh.factory<UserFormBloc>(() => UserFormBloc(get<IUserRepository>()));
+  gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthRepository>()));
   return get;
 }

@@ -7,4 +7,5 @@ abstract class UserFailure with _$UserFailure {
   const factory UserFailure.unexpected() = Unexpected;
   const factory UserFailure.insufficientPermissions() = InsufficientPermissions;
   const factory UserFailure.unableToUpdate() = UnableToUpdate;
+  const factory UserFailure.userNotFound() = _UserNotFound;
 }

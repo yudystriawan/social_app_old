@@ -34,7 +34,8 @@ class EditProfilePage extends StatelessWidget implements AutoRouteWrapper {
           () {},
           (either) => either.fold(
             (failure) => FlushbarHelper.createError(
-              message: failure.map(
+              message: failure.maybeMap(
+                orElse: () => 'Something went wrong.',
                 unexpected: (_) =>
                     'Unexpected error occured, please contact support.',
                 insufficientPermissions: (_) =>
