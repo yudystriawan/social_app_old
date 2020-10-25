@@ -17,3 +17,7 @@ extension FirebaseFirestoreX on FirebaseFirestore {
         .get();
   }
 }
+
+extension DocumentReferenceX on DocumentReference {
+  CollectionReference get postCollection => collection('posts');
+}

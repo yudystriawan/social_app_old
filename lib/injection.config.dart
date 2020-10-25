@@ -22,6 +22,7 @@ import 'domain/post/i_post_repository.dart';
 import 'domain/user/i_user_repository.dart';
 import 'infrastructure/core/image_picker_injectable_module.dart';
 import 'application/post/form/post_form_bloc.dart';
+import 'infrastructure/post/post_repository.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'application/user/form/user_form_bloc.dart';
 import 'infrastructure/user/user_repository.dart';
@@ -46,6 +47,7 @@ GetIt $initGetIt(
         get<GoogleSignIn>(),
         get<FirebaseFirestore>(),
       ));
+  gh.factory<IPostRepository>(() => PostRepository(get<FirebaseFirestore>()));
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
   gh.factory<PostFormBloc>(() => PostFormBloc(get<IPostRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthRepository>()));
