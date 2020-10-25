@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_social_app/presentation/common/app_bar.dart';
+import 'package:my_social_app/presentation/pages/search/widgets/initial_widget.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({Key key}) : super(key: key);
@@ -7,8 +7,22 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getAppBar(context: context, title: 'Search'),
-      body: const Text('Search'),
+      appBar: AppBar(
+        title: TextFormField(
+          autocorrect: false,
+          decoration: InputDecoration(
+            hintText: 'Search user..',
+            fillColor: Colors.white,
+            filled: true,
+            prefixIcon: const Icon(Icons.account_box),
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.clear),
+              onPressed: () {},
+            ),
+          ),
+        ),
+      ),
+      body: const InitialWidget(),
     );
   }
 }
