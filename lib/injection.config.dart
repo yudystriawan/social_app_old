@@ -9,12 +9,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'application/auth/auth_bloc.dart';
 import 'infrastructure/auth/auth_repository.dart';
+import 'application/file/loader/file_loader_bloc.dart';
+import 'infrastructure/file/file_repository.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
 import 'domain/auth/i_auth_repository.dart';
+import 'domain/file/i_file_repository.dart';
 import 'domain/user/i_user_repository.dart';
+import 'infrastructure/core/image_picker_injectable_module.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'application/user/form/user_form_bloc.dart';
 import 'infrastructure/user/user_repository.dart';
@@ -30,6 +35,7 @@ GetIt $initGetIt(
 }) {
   final gh = GetItHelper(get, environment, environmentFilter);
   final firebaseInjectableModule = _$FirebaseInjectableModule();
+  final imagePickerInjectableModule = _$ImagePickerInjectableModule();
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
@@ -43,7 +49,14 @@ GetIt $initGetIt(
   gh.factory<UserFormBloc>(() => UserFormBloc(get<IUserRepository>()));
   gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthRepository>()));
+  gh.factory<IFileRepository>(() => FileRepositoy(get<ImagePicker>()));
+  gh.factory<FileLoaderBloc>(() => FileLoaderBloc(get<IFileRepository>()));
+
+  // Eager singletons must be registered in the right order
+  gh.singleton<ImagePicker>(imagePickerInjectableModule.imagePicker);
   return get;
 }
 
 class _$FirebaseInjectableModule extends FirebaseInjectableModule {}
+
+class _$ImagePickerInjectableModule extends ImagePickerInjectableModule {}

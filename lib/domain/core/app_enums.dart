@@ -1,0 +1,4 @@
+enum SourceImage {
+  camera,
+  gallery,
+}
