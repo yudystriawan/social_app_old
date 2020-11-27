@@ -30,22 +30,22 @@ mixin _$FileLoaderEvent {
   SourceImage get sourceImage;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result getFileImage(SourceImage sourceImage),
+  TResult when<TResult extends Object>({
+    @required TResult getFileImage(SourceImage sourceImage),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result getFileImage(SourceImage sourceImage),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult getFileImage(SourceImage sourceImage),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result getFileImage(_Started value),
+  TResult map<TResult extends Object>({
+    @required TResult getFileImage(_Started value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result getFileImage(_Started value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult getFileImage(_Started value),
+    @required TResult orElse(),
   });
 
   $FileLoaderEventCopyWith<FileLoaderEvent> get copyWith;
@@ -139,8 +139,8 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result getFileImage(SourceImage sourceImage),
+  TResult when<TResult extends Object>({
+    @required TResult getFileImage(SourceImage sourceImage),
   }) {
     assert(getFileImage != null);
     return getFileImage(sourceImage);
@@ -148,9 +148,9 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result getFileImage(SourceImage sourceImage),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult getFileImage(SourceImage sourceImage),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (getFileImage != null) {
@@ -161,8 +161,8 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result getFileImage(_Started value),
+  TResult map<TResult extends Object>({
+    @required TResult getFileImage(_Started value),
   }) {
     assert(getFileImage != null);
     return getFileImage(this);
@@ -170,9 +170,9 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result getFileImage(_Started value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult getFileImage(_Started value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (getFileImage != null) {
@@ -227,34 +227,34 @@ const $FileLoaderState = _$FileLoaderStateTearOff();
 /// @nodoc
 mixin _$FileLoaderState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadFailure(FileFailure failure),
-    @required Result loadSuccess(File file),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadFailure(FileFailure failure),
+    @required TResult loadSuccess(File file),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadFailure(FileFailure failure),
-    Result loadSuccess(File file),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadFailure(FileFailure failure),
+    TResult loadSuccess(File file),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadFailure(_LoadFailure value),
-    @required Result loadSuccess(_LoadSuccess value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadFailure(_LoadFailure value),
+    @required TResult loadSuccess(_LoadSuccess value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadFailure(_LoadFailure value),
-    Result loadSuccess(_LoadSuccess value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadFailure(_LoadFailure value),
+    TResult loadSuccess(_LoadSuccess value),
+    @required TResult orElse(),
   });
 }
 
@@ -310,11 +310,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadFailure(FileFailure failure),
-    @required Result loadSuccess(File file),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadFailure(FileFailure failure),
+    @required TResult loadSuccess(File file),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -325,12 +325,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadFailure(FileFailure failure),
-    Result loadSuccess(File file),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadFailure(FileFailure failure),
+    TResult loadSuccess(File file),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -341,11 +341,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadFailure(_LoadFailure value),
-    @required Result loadSuccess(_LoadSuccess value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadFailure(_LoadFailure value),
+    @required TResult loadSuccess(_LoadSuccess value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -356,12 +356,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadFailure(_LoadFailure value),
-    Result loadSuccess(_LoadSuccess value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadFailure(_LoadFailure value),
+    TResult loadSuccess(_LoadSuccess value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -413,11 +413,11 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadFailure(FileFailure failure),
-    @required Result loadSuccess(File file),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadFailure(FileFailure failure),
+    @required TResult loadSuccess(File file),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -428,12 +428,12 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadFailure(FileFailure failure),
-    Result loadSuccess(File file),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadFailure(FileFailure failure),
+    TResult loadSuccess(File file),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadInProgress != null) {
@@ -444,11 +444,11 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadFailure(_LoadFailure value),
-    @required Result loadSuccess(_LoadSuccess value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadFailure(_LoadFailure value),
+    @required TResult loadSuccess(_LoadSuccess value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -459,12 +459,12 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadFailure(_LoadFailure value),
-    Result loadSuccess(_LoadSuccess value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadFailure(_LoadFailure value),
+    TResult loadSuccess(_LoadSuccess value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadInProgress != null) {
@@ -549,11 +549,11 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadFailure(FileFailure failure),
-    @required Result loadSuccess(File file),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadFailure(FileFailure failure),
+    @required TResult loadSuccess(File file),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -564,12 +564,12 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadFailure(FileFailure failure),
-    Result loadSuccess(File file),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadFailure(FileFailure failure),
+    TResult loadSuccess(File file),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadFailure != null) {
@@ -580,11 +580,11 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadFailure(_LoadFailure value),
-    @required Result loadSuccess(_LoadSuccess value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadFailure(_LoadFailure value),
+    @required TResult loadSuccess(_LoadSuccess value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -595,12 +595,12 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadFailure(_LoadFailure value),
-    Result loadSuccess(_LoadSuccess value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadFailure(_LoadFailure value),
+    TResult loadSuccess(_LoadSuccess value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadFailure != null) {
@@ -676,11 +676,11 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result loadInProgress(),
-    @required Result loadFailure(FileFailure failure),
-    @required Result loadSuccess(File file),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loadInProgress(),
+    @required TResult loadFailure(FileFailure failure),
+    @required TResult loadSuccess(File file),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -691,12 +691,12 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result loadInProgress(),
-    Result loadFailure(FileFailure failure),
-    Result loadSuccess(File file),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loadInProgress(),
+    TResult loadFailure(FileFailure failure),
+    TResult loadSuccess(File file),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadSuccess != null) {
@@ -707,11 +707,11 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadFailure(_LoadFailure value),
-    @required Result loadSuccess(_LoadSuccess value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loadInProgress(_LoadInProgress value),
+    @required TResult loadFailure(_LoadFailure value),
+    @required TResult loadSuccess(_LoadSuccess value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -722,12 +722,12 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result loadInProgress(_LoadInProgress value),
-    Result loadFailure(_LoadFailure value),
-    Result loadSuccess(_LoadSuccess value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loadInProgress(_LoadInProgress value),
+    TResult loadFailure(_LoadFailure value),
+    TResult loadSuccess(_LoadSuccess value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadSuccess != null) {

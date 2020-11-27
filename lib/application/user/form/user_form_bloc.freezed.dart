@@ -61,42 +61,42 @@ const $UserFormEvent = _$UserFormEventTearOff();
 /// @nodoc
 mixin _$UserFormEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<UserDomain> initialUser),
-    @required Result nameChanged(String nameStr),
-    @required Result usernameChanged(String usernameStr),
-    @required Result emailChanged(String emailStr),
-    @required Result bioChanged(String bioStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<UserDomain> initialUser),
+    @required TResult nameChanged(String nameStr),
+    @required TResult usernameChanged(String usernameStr),
+    @required TResult emailChanged(String emailStr),
+    @required TResult bioChanged(String bioStr),
+    @required TResult submit(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<UserDomain> initialUser),
-    Result nameChanged(String nameStr),
-    Result usernameChanged(String usernameStr),
-    Result emailChanged(String emailStr),
-    Result bioChanged(String bioStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<UserDomain> initialUser),
+    TResult nameChanged(String nameStr),
+    TResult usernameChanged(String usernameStr),
+    TResult emailChanged(String emailStr),
+    TResult bioChanged(String bioStr),
+    TResult submit(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result nameChanged(_NameChanged value),
-    @required Result usernameChanged(_UsernameChanged value),
-    @required Result emailChanged(_emailChanged value),
-    @required Result bioChanged(_BioChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult emailChanged(_emailChanged value),
+    @required TResult bioChanged(_BioChanged value),
+    @required TResult submit(_Submit value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result nameChanged(_NameChanged value),
-    Result usernameChanged(_UsernameChanged value),
-    Result emailChanged(_emailChanged value),
-    Result bioChanged(_BioChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult emailChanged(_emailChanged value),
+    TResult bioChanged(_BioChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   });
 }
 
@@ -178,13 +178,13 @@ class _$_Initialized implements _Initialized {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<UserDomain> initialUser),
-    @required Result nameChanged(String nameStr),
-    @required Result usernameChanged(String usernameStr),
-    @required Result emailChanged(String emailStr),
-    @required Result bioChanged(String bioStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<UserDomain> initialUser),
+    @required TResult nameChanged(String nameStr),
+    @required TResult usernameChanged(String usernameStr),
+    @required TResult emailChanged(String emailStr),
+    @required TResult bioChanged(String bioStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -197,14 +197,14 @@ class _$_Initialized implements _Initialized {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<UserDomain> initialUser),
-    Result nameChanged(String nameStr),
-    Result usernameChanged(String usernameStr),
-    Result emailChanged(String emailStr),
-    Result bioChanged(String bioStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<UserDomain> initialUser),
+    TResult nameChanged(String nameStr),
+    TResult usernameChanged(String usernameStr),
+    TResult emailChanged(String emailStr),
+    TResult bioChanged(String bioStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initialized != null) {
@@ -215,13 +215,13 @@ class _$_Initialized implements _Initialized {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result nameChanged(_NameChanged value),
-    @required Result usernameChanged(_UsernameChanged value),
-    @required Result emailChanged(_emailChanged value),
-    @required Result bioChanged(_BioChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult emailChanged(_emailChanged value),
+    @required TResult bioChanged(_BioChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -234,14 +234,14 @@ class _$_Initialized implements _Initialized {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result nameChanged(_NameChanged value),
-    Result usernameChanged(_UsernameChanged value),
-    Result emailChanged(_emailChanged value),
-    Result bioChanged(_BioChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult emailChanged(_emailChanged value),
+    TResult bioChanged(_BioChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initialized != null) {
@@ -316,13 +316,13 @@ class _$_NameChanged implements _NameChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<UserDomain> initialUser),
-    @required Result nameChanged(String nameStr),
-    @required Result usernameChanged(String usernameStr),
-    @required Result emailChanged(String emailStr),
-    @required Result bioChanged(String bioStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<UserDomain> initialUser),
+    @required TResult nameChanged(String nameStr),
+    @required TResult usernameChanged(String usernameStr),
+    @required TResult emailChanged(String emailStr),
+    @required TResult bioChanged(String bioStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -335,14 +335,14 @@ class _$_NameChanged implements _NameChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<UserDomain> initialUser),
-    Result nameChanged(String nameStr),
-    Result usernameChanged(String usernameStr),
-    Result emailChanged(String emailStr),
-    Result bioChanged(String bioStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<UserDomain> initialUser),
+    TResult nameChanged(String nameStr),
+    TResult usernameChanged(String usernameStr),
+    TResult emailChanged(String emailStr),
+    TResult bioChanged(String bioStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (nameChanged != null) {
@@ -353,13 +353,13 @@ class _$_NameChanged implements _NameChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result nameChanged(_NameChanged value),
-    @required Result usernameChanged(_UsernameChanged value),
-    @required Result emailChanged(_emailChanged value),
-    @required Result bioChanged(_BioChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult emailChanged(_emailChanged value),
+    @required TResult bioChanged(_BioChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -372,14 +372,14 @@ class _$_NameChanged implements _NameChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result nameChanged(_NameChanged value),
-    Result usernameChanged(_UsernameChanged value),
-    Result emailChanged(_emailChanged value),
-    Result bioChanged(_BioChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult emailChanged(_emailChanged value),
+    TResult bioChanged(_BioChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (nameChanged != null) {
@@ -456,13 +456,13 @@ class _$_UsernameChanged implements _UsernameChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<UserDomain> initialUser),
-    @required Result nameChanged(String nameStr),
-    @required Result usernameChanged(String usernameStr),
-    @required Result emailChanged(String emailStr),
-    @required Result bioChanged(String bioStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<UserDomain> initialUser),
+    @required TResult nameChanged(String nameStr),
+    @required TResult usernameChanged(String usernameStr),
+    @required TResult emailChanged(String emailStr),
+    @required TResult bioChanged(String bioStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -475,14 +475,14 @@ class _$_UsernameChanged implements _UsernameChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<UserDomain> initialUser),
-    Result nameChanged(String nameStr),
-    Result usernameChanged(String usernameStr),
-    Result emailChanged(String emailStr),
-    Result bioChanged(String bioStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<UserDomain> initialUser),
+    TResult nameChanged(String nameStr),
+    TResult usernameChanged(String usernameStr),
+    TResult emailChanged(String emailStr),
+    TResult bioChanged(String bioStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (usernameChanged != null) {
@@ -493,13 +493,13 @@ class _$_UsernameChanged implements _UsernameChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result nameChanged(_NameChanged value),
-    @required Result usernameChanged(_UsernameChanged value),
-    @required Result emailChanged(_emailChanged value),
-    @required Result bioChanged(_BioChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult emailChanged(_emailChanged value),
+    @required TResult bioChanged(_BioChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -512,14 +512,14 @@ class _$_UsernameChanged implements _UsernameChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result nameChanged(_NameChanged value),
-    Result usernameChanged(_UsernameChanged value),
-    Result emailChanged(_emailChanged value),
-    Result bioChanged(_BioChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult emailChanged(_emailChanged value),
+    TResult bioChanged(_BioChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (usernameChanged != null) {
@@ -596,13 +596,13 @@ class _$_emailChanged implements _emailChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<UserDomain> initialUser),
-    @required Result nameChanged(String nameStr),
-    @required Result usernameChanged(String usernameStr),
-    @required Result emailChanged(String emailStr),
-    @required Result bioChanged(String bioStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<UserDomain> initialUser),
+    @required TResult nameChanged(String nameStr),
+    @required TResult usernameChanged(String usernameStr),
+    @required TResult emailChanged(String emailStr),
+    @required TResult bioChanged(String bioStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -615,14 +615,14 @@ class _$_emailChanged implements _emailChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<UserDomain> initialUser),
-    Result nameChanged(String nameStr),
-    Result usernameChanged(String usernameStr),
-    Result emailChanged(String emailStr),
-    Result bioChanged(String bioStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<UserDomain> initialUser),
+    TResult nameChanged(String nameStr),
+    TResult usernameChanged(String usernameStr),
+    TResult emailChanged(String emailStr),
+    TResult bioChanged(String bioStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailChanged != null) {
@@ -633,13 +633,13 @@ class _$_emailChanged implements _emailChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result nameChanged(_NameChanged value),
-    @required Result usernameChanged(_UsernameChanged value),
-    @required Result emailChanged(_emailChanged value),
-    @required Result bioChanged(_BioChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult emailChanged(_emailChanged value),
+    @required TResult bioChanged(_BioChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -652,14 +652,14 @@ class _$_emailChanged implements _emailChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result nameChanged(_NameChanged value),
-    Result usernameChanged(_UsernameChanged value),
-    Result emailChanged(_emailChanged value),
-    Result bioChanged(_BioChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult emailChanged(_emailChanged value),
+    TResult bioChanged(_BioChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailChanged != null) {
@@ -734,13 +734,13 @@ class _$_BioChanged implements _BioChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<UserDomain> initialUser),
-    @required Result nameChanged(String nameStr),
-    @required Result usernameChanged(String usernameStr),
-    @required Result emailChanged(String emailStr),
-    @required Result bioChanged(String bioStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<UserDomain> initialUser),
+    @required TResult nameChanged(String nameStr),
+    @required TResult usernameChanged(String usernameStr),
+    @required TResult emailChanged(String emailStr),
+    @required TResult bioChanged(String bioStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -753,14 +753,14 @@ class _$_BioChanged implements _BioChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<UserDomain> initialUser),
-    Result nameChanged(String nameStr),
-    Result usernameChanged(String usernameStr),
-    Result emailChanged(String emailStr),
-    Result bioChanged(String bioStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<UserDomain> initialUser),
+    TResult nameChanged(String nameStr),
+    TResult usernameChanged(String usernameStr),
+    TResult emailChanged(String emailStr),
+    TResult bioChanged(String bioStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (bioChanged != null) {
@@ -771,13 +771,13 @@ class _$_BioChanged implements _BioChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result nameChanged(_NameChanged value),
-    @required Result usernameChanged(_UsernameChanged value),
-    @required Result emailChanged(_emailChanged value),
-    @required Result bioChanged(_BioChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult emailChanged(_emailChanged value),
+    @required TResult bioChanged(_BioChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -790,14 +790,14 @@ class _$_BioChanged implements _BioChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result nameChanged(_NameChanged value),
-    Result usernameChanged(_UsernameChanged value),
-    Result emailChanged(_emailChanged value),
-    Result bioChanged(_BioChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult emailChanged(_emailChanged value),
+    TResult bioChanged(_BioChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (bioChanged != null) {
@@ -849,13 +849,13 @@ class _$_Submit implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<UserDomain> initialUser),
-    @required Result nameChanged(String nameStr),
-    @required Result usernameChanged(String usernameStr),
-    @required Result emailChanged(String emailStr),
-    @required Result bioChanged(String bioStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<UserDomain> initialUser),
+    @required TResult nameChanged(String nameStr),
+    @required TResult usernameChanged(String usernameStr),
+    @required TResult emailChanged(String emailStr),
+    @required TResult bioChanged(String bioStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -868,14 +868,14 @@ class _$_Submit implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<UserDomain> initialUser),
-    Result nameChanged(String nameStr),
-    Result usernameChanged(String usernameStr),
-    Result emailChanged(String emailStr),
-    Result bioChanged(String bioStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<UserDomain> initialUser),
+    TResult nameChanged(String nameStr),
+    TResult usernameChanged(String usernameStr),
+    TResult emailChanged(String emailStr),
+    TResult bioChanged(String bioStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (submit != null) {
@@ -886,13 +886,13 @@ class _$_Submit implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result nameChanged(_NameChanged value),
-    @required Result usernameChanged(_UsernameChanged value),
-    @required Result emailChanged(_emailChanged value),
-    @required Result bioChanged(_BioChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult nameChanged(_NameChanged value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult emailChanged(_emailChanged value),
+    @required TResult bioChanged(_BioChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
@@ -905,14 +905,14 @@ class _$_Submit implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result nameChanged(_NameChanged value),
-    Result usernameChanged(_UsernameChanged value),
-    Result emailChanged(_emailChanged value),
-    Result bioChanged(_BioChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult nameChanged(_NameChanged value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult emailChanged(_emailChanged value),
+    TResult bioChanged(_BioChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (submit != null) {

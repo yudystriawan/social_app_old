@@ -81,7 +81,7 @@ class PostFormScaffold extends StatelessWidget {
             icon: const Icon(Icons.save),
             onPressed: () {
               FocusScope.of(context).unfocus();
-              context.bloc<PostFormBloc>().add(const PostFormEvent.submit());
+              context.read<PostFormBloc>().add(const PostFormEvent.submit());
             },
           ),
         ],

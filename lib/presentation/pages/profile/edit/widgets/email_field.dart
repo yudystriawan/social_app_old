@@ -29,10 +29,10 @@ class EmailField extends HookWidget {
             ),
             keyboardType: TextInputType.emailAddress,
             onChanged: (value) => context
-                .bloc<UserFormBloc>()
+                .read<UserFormBloc>()
                 .add(UserFormEvent.bioChanged(value)),
             validator: (value) =>
-                context.bloc<UserFormBloc>().state.user.email.value.fold(
+                context.read<UserFormBloc>().state.user.email.value.fold(
                       (f) => f.maybeMap(
                         orElse: () => null,
                         empty: (_) => 'Cannot be empty',

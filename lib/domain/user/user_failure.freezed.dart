@@ -41,34 +41,34 @@ const $UserFailure = _$UserFailureTearOff();
 /// @nodoc
 mixin _$UserFailure {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unexpected(),
-    @required Result insufficientPermissions(),
-    @required Result unableToUpdate(),
-    @required Result userNotFound(),
+  TResult when<TResult extends Object>({
+    @required TResult unexpected(),
+    @required TResult insufficientPermissions(),
+    @required TResult unableToUpdate(),
+    @required TResult userNotFound(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unexpected(),
-    Result insufficientPermissions(),
-    Result unableToUpdate(),
-    Result userNotFound(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unexpected(),
+    TResult insufficientPermissions(),
+    TResult unableToUpdate(),
+    TResult userNotFound(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unexpected(Unexpected value),
-    @required Result insufficientPermissions(InsufficientPermissions value),
-    @required Result unableToUpdate(UnableToUpdate value),
-    @required Result userNotFound(_UserNotFound value),
+  TResult map<TResult extends Object>({
+    @required TResult unexpected(Unexpected value),
+    @required TResult insufficientPermissions(InsufficientPermissions value),
+    @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult userNotFound(_UserNotFound value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unexpected(Unexpected value),
-    Result insufficientPermissions(InsufficientPermissions value),
-    Result unableToUpdate(UnableToUpdate value),
-    Result userNotFound(_UserNotFound value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unexpected(Unexpected value),
+    TResult insufficientPermissions(InsufficientPermissions value),
+    TResult unableToUpdate(UnableToUpdate value),
+    TResult userNotFound(_UserNotFound value),
+    @required TResult orElse(),
   });
 }
 
@@ -124,11 +124,11 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unexpected(),
-    @required Result insufficientPermissions(),
-    @required Result unableToUpdate(),
-    @required Result userNotFound(),
+  TResult when<TResult extends Object>({
+    @required TResult unexpected(),
+    @required TResult insufficientPermissions(),
+    @required TResult unableToUpdate(),
+    @required TResult userNotFound(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
@@ -139,12 +139,12 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unexpected(),
-    Result insufficientPermissions(),
-    Result unableToUpdate(),
-    Result userNotFound(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unexpected(),
+    TResult insufficientPermissions(),
+    TResult unableToUpdate(),
+    TResult userNotFound(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
@@ -155,11 +155,11 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unexpected(Unexpected value),
-    @required Result insufficientPermissions(InsufficientPermissions value),
-    @required Result unableToUpdate(UnableToUpdate value),
-    @required Result userNotFound(_UserNotFound value),
+  TResult map<TResult extends Object>({
+    @required TResult unexpected(Unexpected value),
+    @required TResult insufficientPermissions(InsufficientPermissions value),
+    @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult userNotFound(_UserNotFound value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
@@ -170,12 +170,12 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unexpected(Unexpected value),
-    Result insufficientPermissions(InsufficientPermissions value),
-    Result unableToUpdate(UnableToUpdate value),
-    Result userNotFound(_UserNotFound value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unexpected(Unexpected value),
+    TResult insufficientPermissions(InsufficientPermissions value),
+    TResult unableToUpdate(UnableToUpdate value),
+    TResult userNotFound(_UserNotFound value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
@@ -227,11 +227,11 @@ class _$InsufficientPermissions implements InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unexpected(),
-    @required Result insufficientPermissions(),
-    @required Result unableToUpdate(),
-    @required Result userNotFound(),
+  TResult when<TResult extends Object>({
+    @required TResult unexpected(),
+    @required TResult insufficientPermissions(),
+    @required TResult unableToUpdate(),
+    @required TResult userNotFound(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
@@ -242,12 +242,12 @@ class _$InsufficientPermissions implements InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unexpected(),
-    Result insufficientPermissions(),
-    Result unableToUpdate(),
-    Result userNotFound(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unexpected(),
+    TResult insufficientPermissions(),
+    TResult unableToUpdate(),
+    TResult userNotFound(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (insufficientPermissions != null) {
@@ -258,11 +258,11 @@ class _$InsufficientPermissions implements InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unexpected(Unexpected value),
-    @required Result insufficientPermissions(InsufficientPermissions value),
-    @required Result unableToUpdate(UnableToUpdate value),
-    @required Result userNotFound(_UserNotFound value),
+  TResult map<TResult extends Object>({
+    @required TResult unexpected(Unexpected value),
+    @required TResult insufficientPermissions(InsufficientPermissions value),
+    @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult userNotFound(_UserNotFound value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
@@ -273,12 +273,12 @@ class _$InsufficientPermissions implements InsufficientPermissions {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unexpected(Unexpected value),
-    Result insufficientPermissions(InsufficientPermissions value),
-    Result unableToUpdate(UnableToUpdate value),
-    Result userNotFound(_UserNotFound value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unexpected(Unexpected value),
+    TResult insufficientPermissions(InsufficientPermissions value),
+    TResult unableToUpdate(UnableToUpdate value),
+    TResult userNotFound(_UserNotFound value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (insufficientPermissions != null) {
@@ -329,11 +329,11 @@ class _$UnableToUpdate implements UnableToUpdate {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unexpected(),
-    @required Result insufficientPermissions(),
-    @required Result unableToUpdate(),
-    @required Result userNotFound(),
+  TResult when<TResult extends Object>({
+    @required TResult unexpected(),
+    @required TResult insufficientPermissions(),
+    @required TResult unableToUpdate(),
+    @required TResult userNotFound(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
@@ -344,12 +344,12 @@ class _$UnableToUpdate implements UnableToUpdate {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unexpected(),
-    Result insufficientPermissions(),
-    Result unableToUpdate(),
-    Result userNotFound(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unexpected(),
+    TResult insufficientPermissions(),
+    TResult unableToUpdate(),
+    TResult userNotFound(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unableToUpdate != null) {
@@ -360,11 +360,11 @@ class _$UnableToUpdate implements UnableToUpdate {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unexpected(Unexpected value),
-    @required Result insufficientPermissions(InsufficientPermissions value),
-    @required Result unableToUpdate(UnableToUpdate value),
-    @required Result userNotFound(_UserNotFound value),
+  TResult map<TResult extends Object>({
+    @required TResult unexpected(Unexpected value),
+    @required TResult insufficientPermissions(InsufficientPermissions value),
+    @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult userNotFound(_UserNotFound value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
@@ -375,12 +375,12 @@ class _$UnableToUpdate implements UnableToUpdate {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unexpected(Unexpected value),
-    Result insufficientPermissions(InsufficientPermissions value),
-    Result unableToUpdate(UnableToUpdate value),
-    Result userNotFound(_UserNotFound value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unexpected(Unexpected value),
+    TResult insufficientPermissions(InsufficientPermissions value),
+    TResult unableToUpdate(UnableToUpdate value),
+    TResult userNotFound(_UserNotFound value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unableToUpdate != null) {
@@ -431,11 +431,11 @@ class _$_UserNotFound implements _UserNotFound {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unexpected(),
-    @required Result insufficientPermissions(),
-    @required Result unableToUpdate(),
-    @required Result userNotFound(),
+  TResult when<TResult extends Object>({
+    @required TResult unexpected(),
+    @required TResult insufficientPermissions(),
+    @required TResult unableToUpdate(),
+    @required TResult userNotFound(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
@@ -446,12 +446,12 @@ class _$_UserNotFound implements _UserNotFound {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unexpected(),
-    Result insufficientPermissions(),
-    Result unableToUpdate(),
-    Result userNotFound(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unexpected(),
+    TResult insufficientPermissions(),
+    TResult unableToUpdate(),
+    TResult userNotFound(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (userNotFound != null) {
@@ -462,11 +462,11 @@ class _$_UserNotFound implements _UserNotFound {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unexpected(Unexpected value),
-    @required Result insufficientPermissions(InsufficientPermissions value),
-    @required Result unableToUpdate(UnableToUpdate value),
-    @required Result userNotFound(_UserNotFound value),
+  TResult map<TResult extends Object>({
+    @required TResult unexpected(Unexpected value),
+    @required TResult insufficientPermissions(InsufficientPermissions value),
+    @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult userNotFound(_UserNotFound value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
@@ -477,12 +477,12 @@ class _$_UserNotFound implements _UserNotFound {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unexpected(Unexpected value),
-    Result insufficientPermissions(InsufficientPermissions value),
-    Result unableToUpdate(UnableToUpdate value),
-    Result userNotFound(_UserNotFound value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unexpected(Unexpected value),
+    TResult insufficientPermissions(InsufficientPermissions value),
+    TResult unableToUpdate(UnableToUpdate value),
+    TResult userNotFound(_UserNotFound value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (userNotFound != null) {

@@ -17,10 +17,10 @@ class EmailField extends StatelessWidget {
           ),
           autocorrect: false,
           onChanged: (value) => context
-              .bloc<SignInFormBloc>()
+              .read<SignInFormBloc>()
               .add(SignInFormEvent.emailChanged(value)),
           validator: (_) =>
-              context.bloc<SignInFormBloc>().state.emailAddress.value.fold(
+              context.read<SignInFormBloc>().state.emailAddress.value.fold(
                     (f) => f.maybeMap(
                       invalidEmail: (_) => 'Invalid Email',
                       orElse: () => null,

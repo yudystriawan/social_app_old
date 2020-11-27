@@ -28,10 +28,10 @@ class NameField extends HookWidget {
               labelText: 'Name',
             ),
             onChanged: (value) => context
-                .bloc<UserFormBloc>()
+                .read<UserFormBloc>()
                 .add(UserFormEvent.nameChanged(value)),
             validator: (value) =>
-                context.bloc<UserFormBloc>().state.user.name.value.fold(
+                context.read<UserFormBloc>().state.user.name.value.fold(
                       (f) => f.maybeMap(
                         orElse: () => null,
                         empty: (_) => 'Cannot be empty',

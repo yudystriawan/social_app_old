@@ -28,10 +28,10 @@ class UsernameField extends HookWidget {
               labelText: 'Username',
             ),
             onChanged: (value) => context
-                .bloc<UserFormBloc>()
+                .read<UserFormBloc>()
                 .add(UserFormEvent.usernameChanged(value)),
             validator: (value) =>
-                context.bloc<UserFormBloc>().state.user.username.value.fold(
+                context.read<UserFormBloc>().state.user.username.value.fold(
                       (f) => f.maybeMap(
                         orElse: () => null,
                         empty: (_) => 'Cannot be empty',

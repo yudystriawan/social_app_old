@@ -28,7 +28,7 @@ class SearchPage extends HookWidget {
             ),
           ),
           onFieldSubmitted: (value) =>
-              context.bloc<UserSearchBloc>().add(UserSearchEvent.search(value)),
+              context.read<UserSearchBloc>().add(UserSearchEvent.search(value)),
         ),
       ),
       body: BlocBuilder<UserSearchBloc, UserSearchState>(

@@ -59,8 +59,8 @@ class FileRepositoy implements IFileRepository {
       final compressedFile = await Utils.compressFileImage(imageFile);
       final postRef =
           _storage.postImageReference(postId).putFile(compressedFile);
-      final storageTaskSnap = await postRef.onComplete;
-      final downloadUrl = await storageTaskSnap.ref.getDownloadURL() as String;
+      final storageTaskSnap = await postRef;
+      final downloadUrl = await storageTaskSnap.ref.getDownloadURL();
       log('DOWNLOAD_URL $downloadUrl');
       return right(StringSingleLine(downloadUrl));
     } on PlatformException catch (e) {

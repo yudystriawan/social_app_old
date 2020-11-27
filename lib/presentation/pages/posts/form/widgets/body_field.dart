@@ -32,10 +32,10 @@ class PostBodyField extends HookWidget {
             maxLines: null,
             minLines: 5,
             onChanged: (value) => context
-                .bloc<PostFormBloc>()
+                .read<PostFormBloc>()
                 .add(PostFormEvent.bodyChanged(value)),
             validator: (value) =>
-                context.bloc<PostFormBloc>().state.post.body.value.fold(
+                context.read<PostFormBloc>().state.post.body.value.fold(
                       (f) => f.maybeMap(
                         orElse: () => null,
                         empty: (_) => 'Cannot be empty',

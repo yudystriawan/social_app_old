@@ -28,10 +28,10 @@ class PostLocationField extends HookWidget {
               labelText: 'Location',
             ),
             onChanged: (value) => context
-                .bloc<PostFormBloc>()
+                .read<PostFormBloc>()
                 .add(PostFormEvent.locationChanged(value)),
             validator: (value) =>
-                context.bloc<PostFormBloc>().state.post.location.value.fold(
+                context.read<PostFormBloc>().state.post.location.value.fold(
                       (f) => f.maybeMap(
                         orElse: () => null,
                         empty: (_) => 'Cannot be empty',

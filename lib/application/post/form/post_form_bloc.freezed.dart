@@ -61,42 +61,42 @@ const $PostFormEvent = _$PostFormEventTearOff();
 /// @nodoc
 mixin _$PostFormEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<PostDomain> initialPost),
-    @required Result fileImageChanged(Option<File> imageFile),
-    @required Result imageChanged(String imagePath),
-    @required Result bodyChanged(String bodyStr),
-    @required Result locationChanged(String locationStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult fileImageChanged(Option<File> imageFile),
+    @required TResult imageChanged(String imagePath),
+    @required TResult bodyChanged(String bodyStr),
+    @required TResult locationChanged(String locationStr),
+    @required TResult submit(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<PostDomain> initialPost),
-    Result fileImageChanged(Option<File> imageFile),
-    Result imageChanged(String imagePath),
-    Result bodyChanged(String bodyStr),
-    Result locationChanged(String locationStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<PostDomain> initialPost),
+    TResult fileImageChanged(Option<File> imageFile),
+    TResult imageChanged(String imagePath),
+    TResult bodyChanged(String bodyStr),
+    TResult locationChanged(String locationStr),
+    TResult submit(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result fileImageChanged(_FileImageChanged value),
-    @required Result imageChanged(_ImageChanged value),
-    @required Result bodyChanged(_BodyChanged value),
-    @required Result locationChanged(_LocationChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult fileImageChanged(_FileImageChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult bodyChanged(_BodyChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult submit(_Submit value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result fileImageChanged(_FileImageChanged value),
-    Result imageChanged(_ImageChanged value),
-    Result bodyChanged(_BodyChanged value),
-    Result locationChanged(_LocationChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult fileImageChanged(_FileImageChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult bodyChanged(_BodyChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   });
 }
 
@@ -178,13 +178,13 @@ class _$_Initialized implements _Initialized {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<PostDomain> initialPost),
-    @required Result fileImageChanged(Option<File> imageFile),
-    @required Result imageChanged(String imagePath),
-    @required Result bodyChanged(String bodyStr),
-    @required Result locationChanged(String locationStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult fileImageChanged(Option<File> imageFile),
+    @required TResult imageChanged(String imagePath),
+    @required TResult bodyChanged(String bodyStr),
+    @required TResult locationChanged(String locationStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -197,14 +197,14 @@ class _$_Initialized implements _Initialized {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<PostDomain> initialPost),
-    Result fileImageChanged(Option<File> imageFile),
-    Result imageChanged(String imagePath),
-    Result bodyChanged(String bodyStr),
-    Result locationChanged(String locationStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<PostDomain> initialPost),
+    TResult fileImageChanged(Option<File> imageFile),
+    TResult imageChanged(String imagePath),
+    TResult bodyChanged(String bodyStr),
+    TResult locationChanged(String locationStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initialized != null) {
@@ -215,13 +215,13 @@ class _$_Initialized implements _Initialized {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result fileImageChanged(_FileImageChanged value),
-    @required Result imageChanged(_ImageChanged value),
-    @required Result bodyChanged(_BodyChanged value),
-    @required Result locationChanged(_LocationChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult fileImageChanged(_FileImageChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult bodyChanged(_BodyChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -234,14 +234,14 @@ class _$_Initialized implements _Initialized {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result fileImageChanged(_FileImageChanged value),
-    Result imageChanged(_ImageChanged value),
-    Result bodyChanged(_BodyChanged value),
-    Result locationChanged(_LocationChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult fileImageChanged(_FileImageChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult bodyChanged(_BodyChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initialized != null) {
@@ -318,13 +318,13 @@ class _$_FileImageChanged implements _FileImageChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<PostDomain> initialPost),
-    @required Result fileImageChanged(Option<File> imageFile),
-    @required Result imageChanged(String imagePath),
-    @required Result bodyChanged(String bodyStr),
-    @required Result locationChanged(String locationStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult fileImageChanged(Option<File> imageFile),
+    @required TResult imageChanged(String imagePath),
+    @required TResult bodyChanged(String bodyStr),
+    @required TResult locationChanged(String locationStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -337,14 +337,14 @@ class _$_FileImageChanged implements _FileImageChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<PostDomain> initialPost),
-    Result fileImageChanged(Option<File> imageFile),
-    Result imageChanged(String imagePath),
-    Result bodyChanged(String bodyStr),
-    Result locationChanged(String locationStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<PostDomain> initialPost),
+    TResult fileImageChanged(Option<File> imageFile),
+    TResult imageChanged(String imagePath),
+    TResult bodyChanged(String bodyStr),
+    TResult locationChanged(String locationStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (fileImageChanged != null) {
@@ -355,13 +355,13 @@ class _$_FileImageChanged implements _FileImageChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result fileImageChanged(_FileImageChanged value),
-    @required Result imageChanged(_ImageChanged value),
-    @required Result bodyChanged(_BodyChanged value),
-    @required Result locationChanged(_LocationChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult fileImageChanged(_FileImageChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult bodyChanged(_BodyChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -374,14 +374,14 @@ class _$_FileImageChanged implements _FileImageChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result fileImageChanged(_FileImageChanged value),
-    Result imageChanged(_ImageChanged value),
-    Result bodyChanged(_BodyChanged value),
-    Result locationChanged(_LocationChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult fileImageChanged(_FileImageChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult bodyChanged(_BodyChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (fileImageChanged != null) {
@@ -458,13 +458,13 @@ class _$_ImageChanged implements _ImageChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<PostDomain> initialPost),
-    @required Result fileImageChanged(Option<File> imageFile),
-    @required Result imageChanged(String imagePath),
-    @required Result bodyChanged(String bodyStr),
-    @required Result locationChanged(String locationStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult fileImageChanged(Option<File> imageFile),
+    @required TResult imageChanged(String imagePath),
+    @required TResult bodyChanged(String bodyStr),
+    @required TResult locationChanged(String locationStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -477,14 +477,14 @@ class _$_ImageChanged implements _ImageChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<PostDomain> initialPost),
-    Result fileImageChanged(Option<File> imageFile),
-    Result imageChanged(String imagePath),
-    Result bodyChanged(String bodyStr),
-    Result locationChanged(String locationStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<PostDomain> initialPost),
+    TResult fileImageChanged(Option<File> imageFile),
+    TResult imageChanged(String imagePath),
+    TResult bodyChanged(String bodyStr),
+    TResult locationChanged(String locationStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (imageChanged != null) {
@@ -495,13 +495,13 @@ class _$_ImageChanged implements _ImageChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result fileImageChanged(_FileImageChanged value),
-    @required Result imageChanged(_ImageChanged value),
-    @required Result bodyChanged(_BodyChanged value),
-    @required Result locationChanged(_LocationChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult fileImageChanged(_FileImageChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult bodyChanged(_BodyChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -514,14 +514,14 @@ class _$_ImageChanged implements _ImageChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result fileImageChanged(_FileImageChanged value),
-    Result imageChanged(_ImageChanged value),
-    Result bodyChanged(_BodyChanged value),
-    Result locationChanged(_LocationChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult fileImageChanged(_FileImageChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult bodyChanged(_BodyChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (imageChanged != null) {
@@ -596,13 +596,13 @@ class _$_BodyChanged implements _BodyChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<PostDomain> initialPost),
-    @required Result fileImageChanged(Option<File> imageFile),
-    @required Result imageChanged(String imagePath),
-    @required Result bodyChanged(String bodyStr),
-    @required Result locationChanged(String locationStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult fileImageChanged(Option<File> imageFile),
+    @required TResult imageChanged(String imagePath),
+    @required TResult bodyChanged(String bodyStr),
+    @required TResult locationChanged(String locationStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -615,14 +615,14 @@ class _$_BodyChanged implements _BodyChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<PostDomain> initialPost),
-    Result fileImageChanged(Option<File> imageFile),
-    Result imageChanged(String imagePath),
-    Result bodyChanged(String bodyStr),
-    Result locationChanged(String locationStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<PostDomain> initialPost),
+    TResult fileImageChanged(Option<File> imageFile),
+    TResult imageChanged(String imagePath),
+    TResult bodyChanged(String bodyStr),
+    TResult locationChanged(String locationStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (bodyChanged != null) {
@@ -633,13 +633,13 @@ class _$_BodyChanged implements _BodyChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result fileImageChanged(_FileImageChanged value),
-    @required Result imageChanged(_ImageChanged value),
-    @required Result bodyChanged(_BodyChanged value),
-    @required Result locationChanged(_LocationChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult fileImageChanged(_FileImageChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult bodyChanged(_BodyChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -652,14 +652,14 @@ class _$_BodyChanged implements _BodyChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result fileImageChanged(_FileImageChanged value),
-    Result imageChanged(_ImageChanged value),
-    Result bodyChanged(_BodyChanged value),
-    Result locationChanged(_LocationChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult fileImageChanged(_FileImageChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult bodyChanged(_BodyChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (bodyChanged != null) {
@@ -736,13 +736,13 @@ class _$_LocationChanged implements _LocationChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<PostDomain> initialPost),
-    @required Result fileImageChanged(Option<File> imageFile),
-    @required Result imageChanged(String imagePath),
-    @required Result bodyChanged(String bodyStr),
-    @required Result locationChanged(String locationStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult fileImageChanged(Option<File> imageFile),
+    @required TResult imageChanged(String imagePath),
+    @required TResult bodyChanged(String bodyStr),
+    @required TResult locationChanged(String locationStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -755,14 +755,14 @@ class _$_LocationChanged implements _LocationChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<PostDomain> initialPost),
-    Result fileImageChanged(Option<File> imageFile),
-    Result imageChanged(String imagePath),
-    Result bodyChanged(String bodyStr),
-    Result locationChanged(String locationStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<PostDomain> initialPost),
+    TResult fileImageChanged(Option<File> imageFile),
+    TResult imageChanged(String imagePath),
+    TResult bodyChanged(String bodyStr),
+    TResult locationChanged(String locationStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (locationChanged != null) {
@@ -773,13 +773,13 @@ class _$_LocationChanged implements _LocationChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result fileImageChanged(_FileImageChanged value),
-    @required Result imageChanged(_ImageChanged value),
-    @required Result bodyChanged(_BodyChanged value),
-    @required Result locationChanged(_LocationChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult fileImageChanged(_FileImageChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult bodyChanged(_BodyChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -792,14 +792,14 @@ class _$_LocationChanged implements _LocationChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result fileImageChanged(_FileImageChanged value),
-    Result imageChanged(_ImageChanged value),
-    Result bodyChanged(_BodyChanged value),
-    Result locationChanged(_LocationChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult fileImageChanged(_FileImageChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult bodyChanged(_BodyChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (locationChanged != null) {
@@ -851,13 +851,13 @@ class _$_Submit implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initialized(Option<PostDomain> initialPost),
-    @required Result fileImageChanged(Option<File> imageFile),
-    @required Result imageChanged(String imagePath),
-    @required Result bodyChanged(String bodyStr),
-    @required Result locationChanged(String locationStr),
-    @required Result submit(),
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult fileImageChanged(Option<File> imageFile),
+    @required TResult imageChanged(String imagePath),
+    @required TResult bodyChanged(String bodyStr),
+    @required TResult locationChanged(String locationStr),
+    @required TResult submit(),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -870,14 +870,14 @@ class _$_Submit implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initialized(Option<PostDomain> initialPost),
-    Result fileImageChanged(Option<File> imageFile),
-    Result imageChanged(String imagePath),
-    Result bodyChanged(String bodyStr),
-    Result locationChanged(String locationStr),
-    Result submit(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<PostDomain> initialPost),
+    TResult fileImageChanged(Option<File> imageFile),
+    TResult imageChanged(String imagePath),
+    TResult bodyChanged(String bodyStr),
+    TResult locationChanged(String locationStr),
+    TResult submit(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (submit != null) {
@@ -888,13 +888,13 @@ class _$_Submit implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initialized(_Initialized value),
-    @required Result fileImageChanged(_FileImageChanged value),
-    @required Result imageChanged(_ImageChanged value),
-    @required Result bodyChanged(_BodyChanged value),
-    @required Result locationChanged(_LocationChanged value),
-    @required Result submit(_Submit value),
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult fileImageChanged(_FileImageChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult bodyChanged(_BodyChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
     assert(fileImageChanged != null);
@@ -907,14 +907,14 @@ class _$_Submit implements _Submit {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initialized(_Initialized value),
-    Result fileImageChanged(_FileImageChanged value),
-    Result imageChanged(_ImageChanged value),
-    Result bodyChanged(_BodyChanged value),
-    Result locationChanged(_LocationChanged value),
-    Result submit(_Submit value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult fileImageChanged(_FileImageChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult bodyChanged(_BodyChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (submit != null) {

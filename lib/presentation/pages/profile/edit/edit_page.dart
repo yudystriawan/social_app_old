@@ -47,7 +47,7 @@ class EditProfilePage extends StatelessWidget implements AutoRouteWrapper {
               ExtendedNavigator.of(context).pushAndRemoveUntil(Routes.homePage,
                   (route) => route.settings.name == Routes.homePage);
               context
-                  .bloc<AuthBloc>()
+                  .read<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());
             },
           ),
@@ -99,7 +99,7 @@ class EditProfileScaffold extends StatelessWidget {
                     onPressed: () {
                       FocusScope.of(context).unfocus();
                       context
-                          .bloc<UserFormBloc>()
+                          .read<UserFormBloc>()
                           .add(const UserFormEvent.submit());
                     },
                     child: const Text('Submit'),

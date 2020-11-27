@@ -51,7 +51,7 @@ class UploadPage extends StatelessWidget {
                         MyDialog.selectImageSource(context).then((value) {
                       if (value != null) {
                         context
-                            .bloc<FileLoaderBloc>()
+                            .read<FileLoaderBloc>()
                             .add(FileLoaderEvent.getFileImage(value));
                       }
                     }),

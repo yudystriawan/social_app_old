@@ -36,7 +36,7 @@ class SignInForm extends StatelessWidget {
             (_) {
               ExtendedNavigator.of(context).replace(Routes.homePage);
               context
-                  .bloc<AuthBloc>()
+                  .read<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());
             },
           ),
@@ -75,7 +75,7 @@ class SignInForm extends StatelessWidget {
                 child: SignInButton(
                   Buttons.Google,
                   onPressed: () => context
-                      .bloc<SignInFormBloc>()
+                      .read<SignInFormBloc>()
                       .add(const SignInFormEvent.signInWithGooglePressed()),
                 ),
               ),

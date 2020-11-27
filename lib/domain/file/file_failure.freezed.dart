@@ -41,34 +41,34 @@ const $FileFailure = _$FileFailureTearOff();
 /// @nodoc
 mixin _$FileFailure {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cameraAccessDenied(),
-    @required Result storageAccessDenied(),
-    @required Result cancelled(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult cameraAccessDenied(),
+    @required TResult storageAccessDenied(),
+    @required TResult cancelled(),
+    @required TResult unexpected(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cameraAccessDenied(),
-    Result storageAccessDenied(),
-    Result cancelled(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cameraAccessDenied(),
+    TResult storageAccessDenied(),
+    TResult cancelled(),
+    TResult unexpected(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cameraAccessDenied(_CameraAccessDenied value),
-    @required Result storageAccessDenied(_StorageAccessDenied value),
-    @required Result cancelled(_Cancelled value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult cameraAccessDenied(_CameraAccessDenied value),
+    @required TResult storageAccessDenied(_StorageAccessDenied value),
+    @required TResult cancelled(_Cancelled value),
+    @required TResult unexpected(_Unexpected value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cameraAccessDenied(_CameraAccessDenied value),
-    Result storageAccessDenied(_StorageAccessDenied value),
-    Result cancelled(_Cancelled value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cameraAccessDenied(_CameraAccessDenied value),
+    TResult storageAccessDenied(_StorageAccessDenied value),
+    TResult cancelled(_Cancelled value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   });
 }
 
@@ -126,11 +126,11 @@ class _$_CameraAccessDenied implements _CameraAccessDenied {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cameraAccessDenied(),
-    @required Result storageAccessDenied(),
-    @required Result cancelled(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult cameraAccessDenied(),
+    @required TResult storageAccessDenied(),
+    @required TResult cancelled(),
+    @required TResult unexpected(),
   }) {
     assert(cameraAccessDenied != null);
     assert(storageAccessDenied != null);
@@ -141,12 +141,12 @@ class _$_CameraAccessDenied implements _CameraAccessDenied {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cameraAccessDenied(),
-    Result storageAccessDenied(),
-    Result cancelled(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cameraAccessDenied(),
+    TResult storageAccessDenied(),
+    TResult cancelled(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (cameraAccessDenied != null) {
@@ -157,11 +157,11 @@ class _$_CameraAccessDenied implements _CameraAccessDenied {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cameraAccessDenied(_CameraAccessDenied value),
-    @required Result storageAccessDenied(_StorageAccessDenied value),
-    @required Result cancelled(_Cancelled value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult cameraAccessDenied(_CameraAccessDenied value),
+    @required TResult storageAccessDenied(_StorageAccessDenied value),
+    @required TResult cancelled(_Cancelled value),
+    @required TResult unexpected(_Unexpected value),
   }) {
     assert(cameraAccessDenied != null);
     assert(storageAccessDenied != null);
@@ -172,12 +172,12 @@ class _$_CameraAccessDenied implements _CameraAccessDenied {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cameraAccessDenied(_CameraAccessDenied value),
-    Result storageAccessDenied(_StorageAccessDenied value),
-    Result cancelled(_Cancelled value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cameraAccessDenied(_CameraAccessDenied value),
+    TResult storageAccessDenied(_StorageAccessDenied value),
+    TResult cancelled(_Cancelled value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (cameraAccessDenied != null) {
@@ -229,11 +229,11 @@ class _$_StorageAccessDenied implements _StorageAccessDenied {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cameraAccessDenied(),
-    @required Result storageAccessDenied(),
-    @required Result cancelled(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult cameraAccessDenied(),
+    @required TResult storageAccessDenied(),
+    @required TResult cancelled(),
+    @required TResult unexpected(),
   }) {
     assert(cameraAccessDenied != null);
     assert(storageAccessDenied != null);
@@ -244,12 +244,12 @@ class _$_StorageAccessDenied implements _StorageAccessDenied {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cameraAccessDenied(),
-    Result storageAccessDenied(),
-    Result cancelled(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cameraAccessDenied(),
+    TResult storageAccessDenied(),
+    TResult cancelled(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (storageAccessDenied != null) {
@@ -260,11 +260,11 @@ class _$_StorageAccessDenied implements _StorageAccessDenied {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cameraAccessDenied(_CameraAccessDenied value),
-    @required Result storageAccessDenied(_StorageAccessDenied value),
-    @required Result cancelled(_Cancelled value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult cameraAccessDenied(_CameraAccessDenied value),
+    @required TResult storageAccessDenied(_StorageAccessDenied value),
+    @required TResult cancelled(_Cancelled value),
+    @required TResult unexpected(_Unexpected value),
   }) {
     assert(cameraAccessDenied != null);
     assert(storageAccessDenied != null);
@@ -275,12 +275,12 @@ class _$_StorageAccessDenied implements _StorageAccessDenied {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cameraAccessDenied(_CameraAccessDenied value),
-    Result storageAccessDenied(_StorageAccessDenied value),
-    Result cancelled(_Cancelled value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cameraAccessDenied(_CameraAccessDenied value),
+    TResult storageAccessDenied(_StorageAccessDenied value),
+    TResult cancelled(_Cancelled value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (storageAccessDenied != null) {
@@ -330,11 +330,11 @@ class _$_Cancelled implements _Cancelled {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cameraAccessDenied(),
-    @required Result storageAccessDenied(),
-    @required Result cancelled(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult cameraAccessDenied(),
+    @required TResult storageAccessDenied(),
+    @required TResult cancelled(),
+    @required TResult unexpected(),
   }) {
     assert(cameraAccessDenied != null);
     assert(storageAccessDenied != null);
@@ -345,12 +345,12 @@ class _$_Cancelled implements _Cancelled {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cameraAccessDenied(),
-    Result storageAccessDenied(),
-    Result cancelled(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cameraAccessDenied(),
+    TResult storageAccessDenied(),
+    TResult cancelled(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (cancelled != null) {
@@ -361,11 +361,11 @@ class _$_Cancelled implements _Cancelled {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cameraAccessDenied(_CameraAccessDenied value),
-    @required Result storageAccessDenied(_StorageAccessDenied value),
-    @required Result cancelled(_Cancelled value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult cameraAccessDenied(_CameraAccessDenied value),
+    @required TResult storageAccessDenied(_StorageAccessDenied value),
+    @required TResult cancelled(_Cancelled value),
+    @required TResult unexpected(_Unexpected value),
   }) {
     assert(cameraAccessDenied != null);
     assert(storageAccessDenied != null);
@@ -376,12 +376,12 @@ class _$_Cancelled implements _Cancelled {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cameraAccessDenied(_CameraAccessDenied value),
-    Result storageAccessDenied(_StorageAccessDenied value),
-    Result cancelled(_Cancelled value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cameraAccessDenied(_CameraAccessDenied value),
+    TResult storageAccessDenied(_StorageAccessDenied value),
+    TResult cancelled(_Cancelled value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (cancelled != null) {
@@ -432,11 +432,11 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cameraAccessDenied(),
-    @required Result storageAccessDenied(),
-    @required Result cancelled(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult cameraAccessDenied(),
+    @required TResult storageAccessDenied(),
+    @required TResult cancelled(),
+    @required TResult unexpected(),
   }) {
     assert(cameraAccessDenied != null);
     assert(storageAccessDenied != null);
@@ -447,12 +447,12 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cameraAccessDenied(),
-    Result storageAccessDenied(),
-    Result cancelled(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cameraAccessDenied(),
+    TResult storageAccessDenied(),
+    TResult cancelled(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
@@ -463,11 +463,11 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cameraAccessDenied(_CameraAccessDenied value),
-    @required Result storageAccessDenied(_StorageAccessDenied value),
-    @required Result cancelled(_Cancelled value),
-    @required Result unexpected(_Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult cameraAccessDenied(_CameraAccessDenied value),
+    @required TResult storageAccessDenied(_StorageAccessDenied value),
+    @required TResult cancelled(_Cancelled value),
+    @required TResult unexpected(_Unexpected value),
   }) {
     assert(cameraAccessDenied != null);
     assert(storageAccessDenied != null);
@@ -478,12 +478,12 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cameraAccessDenied(_CameraAccessDenied value),
-    Result storageAccessDenied(_StorageAccessDenied value),
-    Result cancelled(_Cancelled value),
-    Result unexpected(_Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cameraAccessDenied(_CameraAccessDenied value),
+    TResult storageAccessDenied(_StorageAccessDenied value),
+    TResult cancelled(_Cancelled value),
+    TResult unexpected(_Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {

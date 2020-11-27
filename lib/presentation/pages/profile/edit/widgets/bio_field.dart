@@ -32,10 +32,10 @@ class BioField extends HookWidget {
             maxLines: null,
             minLines: 5,
             onChanged: (value) => context
-                .bloc<UserFormBloc>()
+                .read<UserFormBloc>()
                 .add(UserFormEvent.bioChanged(value)),
             validator: (value) =>
-                context.bloc<UserFormBloc>().state.user.bio.value.fold(
+                context.read<UserFormBloc>().state.user.bio.value.fold(
                       (f) => f.maybeMap(
                         orElse: () => null,
                         empty: (_) => 'Cannot be empty',
