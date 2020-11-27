@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/user/form/user_form_bloc.dart';
 import 'package:my_social_app/domain/user/user.dart';
@@ -20,9 +21,11 @@ class EditProfilePage extends StatelessWidget implements AutoRouteWrapper {
   const EditProfilePage({
     Key key,
     @required this.editedUser,
+    this.isFirstEdit = false,
   }) : super(key: key);
 
   final UserDomain editedUser;
+  final bool isFirstEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +47,13 @@ class EditProfilePage extends StatelessWidget implements AutoRouteWrapper {
               ),
             ).show(context),
             (_) {
-              ExtendedNavigator.of(context).pushAndRemoveUntil(Routes.homePage,
-                  (route) => route.settings.name == Routes.homePage);
+              if (isFirstEdit) {
+                ExtendedNavigator.of(context).pushAndRemoveUntil(
+                    Routes.homePage,
+                    (route) => route.settings.name == Routes.homePage);
+              } else {
+                ExtendedNavigator.of(context).pop();
+              }
               context
                   .read<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());
