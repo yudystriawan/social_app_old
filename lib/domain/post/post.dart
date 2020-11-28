@@ -16,7 +16,7 @@ abstract class PostDomain with _$PostDomain {
     @required PostImageUrl imageUrl,
     @required PostBody body,
     @required PostLocation location,
-    int countLikes,
+    Map<StringSingleLine, bool> likes,
   }) = _PostDomain;
 
   factory PostDomain.empty() => PostDomain(

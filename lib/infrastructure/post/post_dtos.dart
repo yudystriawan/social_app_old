@@ -32,6 +32,7 @@ abstract class PostDto with _$PostDto {
       imageUrl: PostImageUrl(imageUrl),
       body: PostBody(body),
       location: PostLocation(location),
+      likes: likes.map((key, value) => MapEntry(StringSingleLine(key), value)),
     );
   }
 

@@ -20,14 +20,14 @@ class _$PostDomainTearOff {
       @required PostImageUrl imageUrl,
       @required PostBody body,
       @required PostLocation location,
-      int countLikes}) {
+      Map<StringSingleLine, bool> likes}) {
     return _PostDomain(
       id: id,
       userId: userId,
       imageUrl: imageUrl,
       body: body,
       location: location,
-      countLikes: countLikes,
+      likes: likes,
     );
   }
 }
@@ -43,7 +43,7 @@ mixin _$PostDomain {
   PostImageUrl get imageUrl;
   PostBody get body;
   PostLocation get location;
-  int get countLikes;
+  Map<StringSingleLine, bool> get likes;
 
   $PostDomainCopyWith<PostDomain> get copyWith;
 }
@@ -59,7 +59,7 @@ abstract class $PostDomainCopyWith<$Res> {
       PostImageUrl imageUrl,
       PostBody body,
       PostLocation location,
-      int countLikes});
+      Map<StringSingleLine, bool> likes});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$PostDomainCopyWithImpl<$Res> implements $PostDomainCopyWith<$Res> {
     Object imageUrl = freezed,
     Object body = freezed,
     Object location = freezed,
-    Object countLikes = freezed,
+    Object likes = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -87,7 +87,9 @@ class _$PostDomainCopyWithImpl<$Res> implements $PostDomainCopyWith<$Res> {
       body: body == freezed ? _value.body : body as PostBody,
       location:
           location == freezed ? _value.location : location as PostLocation,
-      countLikes: countLikes == freezed ? _value.countLikes : countLikes as int,
+      likes: likes == freezed
+          ? _value.likes
+          : likes as Map<StringSingleLine, bool>,
     ));
   }
 }
@@ -104,7 +106,7 @@ abstract class _$PostDomainCopyWith<$Res> implements $PostDomainCopyWith<$Res> {
       PostImageUrl imageUrl,
       PostBody body,
       PostLocation location,
-      int countLikes});
+      Map<StringSingleLine, bool> likes});
 }
 
 /// @nodoc
@@ -124,7 +126,7 @@ class __$PostDomainCopyWithImpl<$Res> extends _$PostDomainCopyWithImpl<$Res>
     Object imageUrl = freezed,
     Object body = freezed,
     Object location = freezed,
-    Object countLikes = freezed,
+    Object likes = freezed,
   }) {
     return _then(_PostDomain(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -134,7 +136,9 @@ class __$PostDomainCopyWithImpl<$Res> extends _$PostDomainCopyWithImpl<$Res>
       body: body == freezed ? _value.body : body as PostBody,
       location:
           location == freezed ? _value.location : location as PostLocation,
-      countLikes: countLikes == freezed ? _value.countLikes : countLikes as int,
+      likes: likes == freezed
+          ? _value.likes
+          : likes as Map<StringSingleLine, bool>,
     ));
   }
 }
@@ -147,7 +151,7 @@ class _$_PostDomain extends _PostDomain {
       @required this.imageUrl,
       @required this.body,
       @required this.location,
-      this.countLikes})
+      this.likes})
       : assert(id != null),
         assert(userId != null),
         assert(imageUrl != null),
@@ -166,11 +170,11 @@ class _$_PostDomain extends _PostDomain {
   @override
   final PostLocation location;
   @override
-  final int countLikes;
+  final Map<StringSingleLine, bool> likes;
 
   @override
   String toString() {
-    return 'PostDomain(id: $id, userId: $userId, imageUrl: $imageUrl, body: $body, location: $location, countLikes: $countLikes)';
+    return 'PostDomain(id: $id, userId: $userId, imageUrl: $imageUrl, body: $body, location: $location, likes: $likes)';
   }
 
   @override
@@ -189,9 +193,8 @@ class _$_PostDomain extends _PostDomain {
             (identical(other.location, location) ||
                 const DeepCollectionEquality()
                     .equals(other.location, location)) &&
-            (identical(other.countLikes, countLikes) ||
-                const DeepCollectionEquality()
-                    .equals(other.countLikes, countLikes)));
+            (identical(other.likes, likes) ||
+                const DeepCollectionEquality().equals(other.likes, likes)));
   }
 
   @override
@@ -202,7 +205,7 @@ class _$_PostDomain extends _PostDomain {
       const DeepCollectionEquality().hash(imageUrl) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(location) ^
-      const DeepCollectionEquality().hash(countLikes);
+      const DeepCollectionEquality().hash(likes);
 
   @override
   _$PostDomainCopyWith<_PostDomain> get copyWith =>
@@ -217,7 +220,7 @@ abstract class _PostDomain extends PostDomain {
       @required PostImageUrl imageUrl,
       @required PostBody body,
       @required PostLocation location,
-      int countLikes}) = _$_PostDomain;
+      Map<StringSingleLine, bool> likes}) = _$_PostDomain;
 
   @override
   UniqueId get id;
@@ -230,7 +233,7 @@ abstract class _PostDomain extends PostDomain {
   @override
   PostLocation get location;
   @override
-  int get countLikes;
+  Map<StringSingleLine, bool> get likes;
   @override
   _$PostDomainCopyWith<_PostDomain> get copyWith;
 }

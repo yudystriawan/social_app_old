@@ -22,6 +22,7 @@ import 'domain/file/i_file_repository.dart';
 import 'domain/post/i_post_repository.dart';
 import 'domain/user/i_user_repository.dart';
 import 'infrastructure/core/image_picker_injectable_module.dart';
+import 'application/post/actor/post_actor_bloc.dart';
 import 'application/post/by_user_wathcer/post_by_user_watcher_bloc.dart';
 import 'application/post/form/post_form_bloc.dart';
 import 'infrastructure/post/post_repository.dart';
@@ -54,6 +55,7 @@ GetIt $initGetIt(
   gh.lazySingleton<IPostRepository>(
       () => PostRepository(get<FirebaseFirestore>()));
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
+  gh.factory<PostActorBloc>(() => PostActorBloc(get<IPostRepository>()));
   gh.factory<PostByUserWatcherBloc>(
       () => PostByUserWatcherBloc(get<IPostRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthRepository>()));

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_social_app/domain/core/value_objects.dart';
@@ -84,5 +85,40 @@ class PostRepository implements IPostRepository {
         return left(const PostFailure.unexpected());
       }
     });
+  }
+
+  @override
+  Future<Either<PostFailure, bool>> toggleLike({
+    StringSingleLine postId,
+    StringSingleLine ownerId,
+  }) async {
+    try {
+      final currentUser = FirebaseAuth.instance.currentUser;
+
+      final postRef = await _firestore.postDocument(ownerId.getOrCrash());
+      final postDoc =
+          await postRef.userPostCollection.doc(postId.getOrCrash()).get();
+      final postDto = PostDto.fromFirestore(postDoc);
+
+      bool isLiked;
+
+      if (postDto.likes == null) {
+        isLiked = false;
+      } else {
+        isLiked = postDto.likes[currentUser?.uid] == true;
+      }
+
+      await postRef.userPostCollection
+          .doc(postId.getOrCrash())
+          .update({'likes.${currentUser?.uid}': !isLiked});
+
+      return right(!isLiked);
+    } on PlatformException catch (e) {
+      log('error', name: 'toggleLike()', error: e);
+      return left(const PostFailure.unexpected());
+    } catch (e) {
+      log('error', name: 'toggleLike()', error: e);
+      return left(const PostFailure.unexpected());
+    }
   }
 }
