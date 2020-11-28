@@ -2,6 +2,7 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:my_social_app/domain/post/post.dart';
+import 'package:my_social_app/presentation/common/widgets/my_cached_network_image.dart';
 
 class PostImage extends StatelessWidget {
   const PostImage({
@@ -20,7 +21,9 @@ class PostImage extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Image.network(post.imageUrl.getOrCrash()),
+          MyCachedNetworkImage(
+            imageUrl: post.imageUrl.getOrCrash(),
+          ),
         ],
       ),
     );
