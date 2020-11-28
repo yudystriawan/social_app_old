@@ -30,7 +30,7 @@ class BioField extends HookWidget {
             ),
             maxLength: Bio.maxLength,
             maxLines: null,
-            minLines: 5,
+            minLines: 1,
             onChanged: (value) => context
                 .read<UserFormBloc>()
                 .add(UserFormEvent.bioChanged(value)),

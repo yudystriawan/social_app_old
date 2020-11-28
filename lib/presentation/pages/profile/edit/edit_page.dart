@@ -3,12 +3,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/user/form/user_form_bloc.dart';
 import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/injection.dart';
-import 'package:my_social_app/presentation/common/app_bar.dart';
 import 'package:my_social_app/presentation/common/loading_overlay.dart';
 import 'package:my_social_app/presentation/pages/profile/edit/widgets/bio_field.dart';
 import 'package:my_social_app/presentation/pages/profile/edit/widgets/email_field.dart';
@@ -87,7 +85,18 @@ class EditProfileScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getAppBar(context: context, title: 'Edit Profile'),
+      appBar: AppBar(
+        title: const Text('Profile'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.save),
+            onPressed: () {
+              FocusScope.of(context).unfocus();
+              context.read<UserFormBloc>().add(const UserFormEvent.submit());
+            },
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: BlocBuilder<UserFormBloc, UserFormState>(
           buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
@@ -97,21 +106,12 @@ class EditProfileScaffold extends StatelessWidget {
                   ? AutovalidateMode.always
                   : AutovalidateMode.disabled,
               child: Column(
-                children: [
-                  const PhotoField(),
-                  const UsernameField(),
-                  const NameField(),
-                  const EmailField(),
-                  const BioField(),
-                  RaisedButton(
-                    onPressed: () {
-                      FocusScope.of(context).unfocus();
-                      context
-                          .read<UserFormBloc>()
-                          .add(const UserFormEvent.submit());
-                    },
-                    child: const Text('Submit'),
-                  ),
+                children: const [
+                  PhotoField(),
+                  UsernameField(),
+                  NameField(),
+                  EmailField(),
+                  BioField(),
                 ],
               ),
             );

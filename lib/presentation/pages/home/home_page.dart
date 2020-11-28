@@ -78,7 +78,14 @@ class _HomePageState extends State<HomePage> {
                 create: (context) => getIt<UserSearchBloc>(),
                 child: const SearchPage(),
               ),
-              const ProfilePage(),
+              BlocBuilder<AuthBloc, AuthState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    orElse: () => Container(),
+                    authenticated: (state) => ProfilePage(user: state.user),
+                  );
+                },
+              ),
             ],
           ),
         ),

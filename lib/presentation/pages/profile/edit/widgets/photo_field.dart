@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -9,7 +10,7 @@ class PhotoField extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final photoUrl = useState('');
-    return BlocConsumer<UserFormBloc, UserFormState>(
+    return BlocListener<UserFormBloc, UserFormState>(
       listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
         photoUrl.value = state.user.photoUrl.value.fold(
@@ -17,13 +18,38 @@ class PhotoField extends HookWidget {
           (r) => r,
         );
       },
-      buildWhen: (p, c) => p.user.photoUrl != c.user.photoUrl,
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text('photo ${photoUrl.value}'),
-        );
-      },
+      child: photoUrl.value == ''
+          ? Container()
+          : Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: CircleAvatar(
+                radius: 50.0,
+                backgroundImage: CachedNetworkImageProvider(
+                  photoUrl.value,
+                ),
+              ),
+            ),
     );
+    // return BlocConsumer<UserFormBloc, UserFormState>(
+    //   listenWhen: (p, c) => p.isEditing != c.isEditing,
+    //   listener: (context, state) {
+    //     photoUrl.value = state.user.photoUrl.value.fold(
+    //       (_) => '',
+    //       (r) => r,
+    //     );
+    //   },
+    //   builder: (context, state) {
+    //     debugPrint('BUILD2');
+    //     return Padding(
+    //       padding: const EdgeInsets.all(12.0),
+    //       child: CircleAvatar(
+    //         radius: 50.0,
+    //         backgroundImage: CachedNetworkImageProvider(
+    //           photoUrl.value,
+    //         ),
+    //       ),
+    //     );
+    //   },
+    // );
   }
 }
