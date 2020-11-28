@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
-import 'package:my_social_app/application/post/by_user_wathcer/post_by_user_watcher_bloc.dart';
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/presentation/pages/profile/widgets/profile_header_widget.dart';
 import 'package:my_social_app/presentation/pages/profile/widgets/profile_posts_widget.dart';
+import 'package:my_social_app/presentation/pages/profile/widgets/toggle_post_orientation_widget.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({
     Key key,
     @required this.user,
@@ -16,6 +16,26 @@ class ProfilePage extends StatelessWidget {
 
   final UserDomain user;
   final List<PostDomain> posts;
+
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +52,45 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            ProfileHeader(
-              user: user,
-              posts: posts,
-            ),
-            const Divider(height: 12),
-            Expanded(
-              child: ProfilePosts(posts: posts),
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverToBoxAdapter(
+              child: ProfileHeader(
+                user: widget.user,
+                posts: widget.posts,
+              ),
             ),
           ],
+          body: Column(
+            children: [
+              TabBar(
+                controller: _tabController,
+                tabs: [
+                  Tab(
+                    icon: Icon(
+                      Icons.grid_on,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.list,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  )
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    ProfileListViewPosts(posts: widget.posts),
+                    ProfileGridViewPost(posts: widget.posts),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
