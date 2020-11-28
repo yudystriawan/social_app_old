@@ -34,7 +34,7 @@ class PostHeader extends StatelessWidget {
               ),
               subtitle: Text(post.location.getOrCrash()),
               trailing: IconButton(
-                icon: const Icon(Icons.delete),
+                icon: const Icon(Icons.more_vert),
                 onPressed: () => FlushbarHelper.createInformation(
                   message: 'Delete post.',
                 ).show(context),
