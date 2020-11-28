@@ -51,7 +51,8 @@ GetIt $initGetIt(
         get<GoogleSignIn>(),
         get<FirebaseFirestore>(),
       ));
-  gh.factory<IPostRepository>(() => PostRepository(get<FirebaseFirestore>()));
+  gh.lazySingleton<IPostRepository>(
+      () => PostRepository(get<FirebaseFirestore>()));
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
   gh.factory<PostByUserWatcherBloc>(
       () => PostByUserWatcherBloc(get<IPostRepository>()));

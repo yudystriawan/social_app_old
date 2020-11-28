@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/file/loader/file_loader_bloc.dart';
-import 'package:my_social_app/application/post/by_user_wathcer/post_by_user_watcher_bloc.dart';
 import 'package:my_social_app/application/user/search/user_search_bloc.dart';
 import 'package:my_social_app/injection.dart';
 import 'package:my_social_app/presentation/pages/feed/feed_page.dart';
@@ -87,32 +86,7 @@ class _HomePageState extends State<HomePage> {
                         create: (context) => getIt<UserSearchBloc>(),
                         child: const SearchPage(),
                       ),
-                      BlocProvider(
-                        create: (context) => getIt<PostByUserWatcherBloc>()
-                          ..add(PostByUserWatcherEvent.watchAllStarted(
-                            user.id.getOrCrash(),
-                          )),
-                        child: BlocBuilder<PostByUserWatcherBloc,
-                            PostByUserWatcherState>(
-                          builder: (context, state) {
-                            return state.map(
-                              initial: (_) => Container(),
-                              loadInProgress: (_) =>
-                                  const CircularProgressIndicator(),
-                              loadSuccess: (state) => ProfilePage(
-                                user: user,
-                                posts: state.posts,
-                              ),
-                              loadFailure: (state) => Text(
-                                state.failure.maybeMap(
-                                  orElse: () => 'Something went wrong.',
-                                  unexpected: (_) => 'Unexpected.',
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
+                      ProfilePage(user: user),
                     ],
                   );
                 },

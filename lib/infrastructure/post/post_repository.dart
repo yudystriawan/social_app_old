@@ -56,6 +56,7 @@ class PostRepository implements IPostRepository {
         return right(counter);
       }
     } on PlatformException catch (e) {
+      log('error', name: 'getLikeCount()', error: e);
       return left(const PostFailure.unexpected());
     }
   }
@@ -79,7 +80,7 @@ class PostRepository implements IPostRepository {
       if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
         return left(const PostFailure.insufficientPermissions());
       } else {
-        log('error', name: 'PostRepository.dart', error: e);
+        log('error', name: 'getMyPost()', error: e);
         return left(const PostFailure.unexpected());
       }
     });

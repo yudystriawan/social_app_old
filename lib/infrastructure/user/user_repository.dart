@@ -69,6 +69,7 @@ class UserRepository implements IUserRepository {
       final userDomain = UserDto.fromFirestore(userDoc).toDomain();
       return right(userDomain);
     } on PlatformException catch (e) {
+      log('error', name: 'getUserById()', error: e);
       return left(const UserFailure.unexpected());
     }
   }

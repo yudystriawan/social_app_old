@@ -27,6 +27,11 @@ class _$PostFailureTearOff {
   UnableToUpdate unableToUpdate() {
     return const UnableToUpdate();
   }
+
+// ignore: unused_element
+  Empty empty() {
+    return const Empty();
+  }
 }
 
 /// @nodoc
@@ -40,12 +45,14 @@ mixin _$PostFailure {
     @required TResult unexpected(),
     @required TResult insufficientPermissions(),
     @required TResult unableToUpdate(),
+    @required TResult empty(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult unexpected(),
     TResult insufficientPermissions(),
     TResult unableToUpdate(),
+    TResult empty(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -53,12 +60,14 @@ mixin _$PostFailure {
     @required TResult unexpected(Unexpected value),
     @required TResult insufficientPermissions(InsufficientPermissions value),
     @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult empty(Empty value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult unexpected(Unexpected value),
     TResult insufficientPermissions(InsufficientPermissions value),
     TResult unableToUpdate(UnableToUpdate value),
+    TResult empty(Empty value),
     @required TResult orElse(),
   });
 }
@@ -119,10 +128,12 @@ class _$Unexpected implements Unexpected {
     @required TResult unexpected(),
     @required TResult insufficientPermissions(),
     @required TResult unableToUpdate(),
+    @required TResult empty(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(empty != null);
     return unexpected();
   }
 
@@ -132,6 +143,7 @@ class _$Unexpected implements Unexpected {
     TResult unexpected(),
     TResult insufficientPermissions(),
     TResult unableToUpdate(),
+    TResult empty(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -147,10 +159,12 @@ class _$Unexpected implements Unexpected {
     @required TResult unexpected(Unexpected value),
     @required TResult insufficientPermissions(InsufficientPermissions value),
     @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult empty(Empty value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(empty != null);
     return unexpected(this);
   }
 
@@ -160,6 +174,7 @@ class _$Unexpected implements Unexpected {
     TResult unexpected(Unexpected value),
     TResult insufficientPermissions(InsufficientPermissions value),
     TResult unableToUpdate(UnableToUpdate value),
+    TResult empty(Empty value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -216,10 +231,12 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     @required TResult unexpected(),
     @required TResult insufficientPermissions(),
     @required TResult unableToUpdate(),
+    @required TResult empty(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(empty != null);
     return insufficientPermissions();
   }
 
@@ -229,6 +246,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     TResult unexpected(),
     TResult insufficientPermissions(),
     TResult unableToUpdate(),
+    TResult empty(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -244,10 +262,12 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     @required TResult unexpected(Unexpected value),
     @required TResult insufficientPermissions(InsufficientPermissions value),
     @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult empty(Empty value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(empty != null);
     return insufficientPermissions(this);
   }
 
@@ -257,6 +277,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     TResult unexpected(Unexpected value),
     TResult insufficientPermissions(InsufficientPermissions value),
     TResult unableToUpdate(UnableToUpdate value),
+    TResult empty(Empty value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -312,10 +333,12 @@ class _$UnableToUpdate implements UnableToUpdate {
     @required TResult unexpected(),
     @required TResult insufficientPermissions(),
     @required TResult unableToUpdate(),
+    @required TResult empty(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(empty != null);
     return unableToUpdate();
   }
 
@@ -325,6 +348,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     TResult unexpected(),
     TResult insufficientPermissions(),
     TResult unableToUpdate(),
+    TResult empty(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -340,10 +364,12 @@ class _$UnableToUpdate implements UnableToUpdate {
     @required TResult unexpected(Unexpected value),
     @required TResult insufficientPermissions(InsufficientPermissions value),
     @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult empty(Empty value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermissions != null);
     assert(unableToUpdate != null);
+    assert(empty != null);
     return unableToUpdate(this);
   }
 
@@ -353,6 +379,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     TResult unexpected(Unexpected value),
     TResult insufficientPermissions(InsufficientPermissions value),
     TResult unableToUpdate(UnableToUpdate value),
+    TResult empty(Empty value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -365,4 +392,104 @@ class _$UnableToUpdate implements UnableToUpdate {
 
 abstract class UnableToUpdate implements PostFailure {
   const factory UnableToUpdate() = _$UnableToUpdate;
+}
+
+/// @nodoc
+abstract class $EmptyCopyWith<$Res> {
+  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
+      _$EmptyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EmptyCopyWithImpl<$Res> extends _$PostFailureCopyWithImpl<$Res>
+    implements $EmptyCopyWith<$Res> {
+  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then)
+      : super(_value, (v) => _then(v as Empty));
+
+  @override
+  Empty get _value => super._value as Empty;
+}
+
+/// @nodoc
+class _$Empty implements Empty {
+  const _$Empty();
+
+  @override
+  String toString() {
+    return 'PostFailure.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Empty);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult unexpected(),
+    @required TResult insufficientPermissions(),
+    @required TResult unableToUpdate(),
+    @required TResult empty(),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermissions != null);
+    assert(unableToUpdate != null);
+    assert(empty != null);
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult unexpected(),
+    TResult insufficientPermissions(),
+    TResult unableToUpdate(),
+    TResult empty(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult unexpected(Unexpected value),
+    @required TResult insufficientPermissions(InsufficientPermissions value),
+    @required TResult unableToUpdate(UnableToUpdate value),
+    @required TResult empty(Empty value),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermissions != null);
+    assert(unableToUpdate != null);
+    assert(empty != null);
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult unexpected(Unexpected value),
+    TResult insufficientPermissions(InsufficientPermissions value),
+    TResult unableToUpdate(UnableToUpdate value),
+    TResult empty(Empty value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Empty implements PostFailure {
+  const factory Empty() = _$Empty;
 }
