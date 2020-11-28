@@ -11,8 +11,9 @@ import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/domain/post/post_failure.dart';
 import 'package:my_social_app/infrastructure/core/firestore_helpers.dart';
 import 'package:my_social_app/infrastructure/post/post_dtos.dart';
+import 'package:rxdart/rxdart.dart';
 
-@Injectable(as: IPostRepository)
+@LazySingleton(as: IPostRepository)
 class PostRepository implements IPostRepository {
   final FirebaseFirestore _firestore;
 
@@ -74,9 +75,13 @@ class PostRepository implements IPostRepository {
                 .toList(),
           ),
         )
-        .handleError((e) {
-      log('ERROR $e');
-      return left(const PostFailure.unexpected());
+        .onErrorReturnWith((e) {
+      if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
+        return left(const PostFailure.insufficientPermissions());
+      } else {
+        log('error', name: 'PostRepository.dart', error: e);
+        return left(const PostFailure.unexpected());
+      }
     });
   }
 }
