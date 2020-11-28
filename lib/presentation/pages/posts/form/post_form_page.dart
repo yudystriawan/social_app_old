@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:my_social_app/application/post/form/post_form_bloc.dart';
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/injection.dart';
@@ -18,11 +19,13 @@ class PostFormPage extends StatelessWidget implements AutoRouteWrapper {
   const PostFormPage({
     Key key,
     @required this.post,
+    @required this.userId,
     this.imageFile,
   }) : super(key: key);
 
   final PostDomain post;
   final File imageFile;
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +64,8 @@ class PostFormPage extends StatelessWidget implements AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) => BlocProvider(
         create: (context) => getIt<PostFormBloc>()
           ..add(PostFormEvent.initialized(optionOf(post)))
-          ..add(PostFormEvent.fileImageChanged(optionOf(imageFile))),
+          ..add(PostFormEvent.fileImageChanged(optionOf(imageFile)))
+          ..add(PostFormEvent.userIdChanged(userId)),
         child: this,
       );
 }

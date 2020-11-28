@@ -21,6 +21,13 @@ class _$PostFormEventTearOff {
   }
 
 // ignore: unused_element
+  _UserIdChanged userIdChanged(String userIdStr) {
+    return _UserIdChanged(
+      userIdStr,
+    );
+  }
+
+// ignore: unused_element
   _FileImageChanged fileImageChanged(Option<File> imageFile) {
     return _FileImageChanged(
       imageFile,
@@ -63,6 +70,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult userIdChanged(String userIdStr),
     @required TResult fileImageChanged(Option<File> imageFile),
     @required TResult imageChanged(String imagePath),
     @required TResult bodyChanged(String bodyStr),
@@ -72,6 +80,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(Option<PostDomain> initialPost),
+    TResult userIdChanged(String userIdStr),
     TResult fileImageChanged(Option<File> imageFile),
     TResult imageChanged(String imagePath),
     TResult bodyChanged(String bodyStr),
@@ -82,6 +91,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialized(_Initialized value),
+    @required TResult userIdChanged(_UserIdChanged value),
     @required TResult fileImageChanged(_FileImageChanged value),
     @required TResult imageChanged(_ImageChanged value),
     @required TResult bodyChanged(_BodyChanged value),
@@ -91,6 +101,7 @@ mixin _$PostFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialized(_Initialized value),
+    TResult userIdChanged(_UserIdChanged value),
     TResult fileImageChanged(_FileImageChanged value),
     TResult imageChanged(_ImageChanged value),
     TResult bodyChanged(_BodyChanged value),
@@ -180,6 +191,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult userIdChanged(String userIdStr),
     @required TResult fileImageChanged(Option<File> imageFile),
     @required TResult imageChanged(String imagePath),
     @required TResult bodyChanged(String bodyStr),
@@ -187,6 +199,7 @@ class _$_Initialized implements _Initialized {
     @required TResult submit(),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -199,6 +212,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(Option<PostDomain> initialPost),
+    TResult userIdChanged(String userIdStr),
     TResult fileImageChanged(Option<File> imageFile),
     TResult imageChanged(String imagePath),
     TResult bodyChanged(String bodyStr),
@@ -217,6 +231,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialized(_Initialized value),
+    @required TResult userIdChanged(_UserIdChanged value),
     @required TResult fileImageChanged(_FileImageChanged value),
     @required TResult imageChanged(_ImageChanged value),
     @required TResult bodyChanged(_BodyChanged value),
@@ -224,6 +239,7 @@ class _$_Initialized implements _Initialized {
     @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -236,6 +252,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialized(_Initialized value),
+    TResult userIdChanged(_UserIdChanged value),
     TResult fileImageChanged(_FileImageChanged value),
     TResult imageChanged(_ImageChanged value),
     TResult bodyChanged(_BodyChanged value),
@@ -256,6 +273,152 @@ abstract class _Initialized implements PostFormEvent {
 
   Option<PostDomain> get initialPost;
   _$InitializedCopyWith<_Initialized> get copyWith;
+}
+
+/// @nodoc
+abstract class _$UserIdChangedCopyWith<$Res> {
+  factory _$UserIdChangedCopyWith(
+          _UserIdChanged value, $Res Function(_UserIdChanged) then) =
+      __$UserIdChangedCopyWithImpl<$Res>;
+  $Res call({String userIdStr});
+}
+
+/// @nodoc
+class __$UserIdChangedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$UserIdChangedCopyWith<$Res> {
+  __$UserIdChangedCopyWithImpl(
+      _UserIdChanged _value, $Res Function(_UserIdChanged) _then)
+      : super(_value, (v) => _then(v as _UserIdChanged));
+
+  @override
+  _UserIdChanged get _value => super._value as _UserIdChanged;
+
+  @override
+  $Res call({
+    Object userIdStr = freezed,
+  }) {
+    return _then(_UserIdChanged(
+      userIdStr == freezed ? _value.userIdStr : userIdStr as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_UserIdChanged implements _UserIdChanged {
+  const _$_UserIdChanged(this.userIdStr) : assert(userIdStr != null);
+
+  @override
+  final String userIdStr;
+
+  @override
+  String toString() {
+    return 'PostFormEvent.userIdChanged(userIdStr: $userIdStr)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _UserIdChanged &&
+            (identical(other.userIdStr, userIdStr) ||
+                const DeepCollectionEquality()
+                    .equals(other.userIdStr, userIdStr)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userIdStr);
+
+  @override
+  _$UserIdChangedCopyWith<_UserIdChanged> get copyWith =>
+      __$UserIdChangedCopyWithImpl<_UserIdChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult userIdChanged(String userIdStr),
+    @required TResult fileImageChanged(Option<File> imageFile),
+    @required TResult imageChanged(String imagePath),
+    @required TResult bodyChanged(String bodyStr),
+    @required TResult locationChanged(String locationStr),
+    @required TResult submit(),
+  }) {
+    assert(initialized != null);
+    assert(userIdChanged != null);
+    assert(fileImageChanged != null);
+    assert(imageChanged != null);
+    assert(bodyChanged != null);
+    assert(locationChanged != null);
+    assert(submit != null);
+    return userIdChanged(userIdStr);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialized(Option<PostDomain> initialPost),
+    TResult userIdChanged(String userIdStr),
+    TResult fileImageChanged(Option<File> imageFile),
+    TResult imageChanged(String imagePath),
+    TResult bodyChanged(String bodyStr),
+    TResult locationChanged(String locationStr),
+    TResult submit(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (userIdChanged != null) {
+      return userIdChanged(userIdStr);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialized(_Initialized value),
+    @required TResult userIdChanged(_UserIdChanged value),
+    @required TResult fileImageChanged(_FileImageChanged value),
+    @required TResult imageChanged(_ImageChanged value),
+    @required TResult bodyChanged(_BodyChanged value),
+    @required TResult locationChanged(_LocationChanged value),
+    @required TResult submit(_Submit value),
+  }) {
+    assert(initialized != null);
+    assert(userIdChanged != null);
+    assert(fileImageChanged != null);
+    assert(imageChanged != null);
+    assert(bodyChanged != null);
+    assert(locationChanged != null);
+    assert(submit != null);
+    return userIdChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialized(_Initialized value),
+    TResult userIdChanged(_UserIdChanged value),
+    TResult fileImageChanged(_FileImageChanged value),
+    TResult imageChanged(_ImageChanged value),
+    TResult bodyChanged(_BodyChanged value),
+    TResult locationChanged(_LocationChanged value),
+    TResult submit(_Submit value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (userIdChanged != null) {
+      return userIdChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserIdChanged implements PostFormEvent {
+  const factory _UserIdChanged(String userIdStr) = _$_UserIdChanged;
+
+  String get userIdStr;
+  _$UserIdChangedCopyWith<_UserIdChanged> get copyWith;
 }
 
 /// @nodoc
@@ -320,6 +483,7 @@ class _$_FileImageChanged implements _FileImageChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult userIdChanged(String userIdStr),
     @required TResult fileImageChanged(Option<File> imageFile),
     @required TResult imageChanged(String imagePath),
     @required TResult bodyChanged(String bodyStr),
@@ -327,6 +491,7 @@ class _$_FileImageChanged implements _FileImageChanged {
     @required TResult submit(),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -339,6 +504,7 @@ class _$_FileImageChanged implements _FileImageChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(Option<PostDomain> initialPost),
+    TResult userIdChanged(String userIdStr),
     TResult fileImageChanged(Option<File> imageFile),
     TResult imageChanged(String imagePath),
     TResult bodyChanged(String bodyStr),
@@ -357,6 +523,7 @@ class _$_FileImageChanged implements _FileImageChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialized(_Initialized value),
+    @required TResult userIdChanged(_UserIdChanged value),
     @required TResult fileImageChanged(_FileImageChanged value),
     @required TResult imageChanged(_ImageChanged value),
     @required TResult bodyChanged(_BodyChanged value),
@@ -364,6 +531,7 @@ class _$_FileImageChanged implements _FileImageChanged {
     @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -376,6 +544,7 @@ class _$_FileImageChanged implements _FileImageChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialized(_Initialized value),
+    TResult userIdChanged(_UserIdChanged value),
     TResult fileImageChanged(_FileImageChanged value),
     TResult imageChanged(_ImageChanged value),
     TResult bodyChanged(_BodyChanged value),
@@ -460,6 +629,7 @@ class _$_ImageChanged implements _ImageChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult userIdChanged(String userIdStr),
     @required TResult fileImageChanged(Option<File> imageFile),
     @required TResult imageChanged(String imagePath),
     @required TResult bodyChanged(String bodyStr),
@@ -467,6 +637,7 @@ class _$_ImageChanged implements _ImageChanged {
     @required TResult submit(),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -479,6 +650,7 @@ class _$_ImageChanged implements _ImageChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(Option<PostDomain> initialPost),
+    TResult userIdChanged(String userIdStr),
     TResult fileImageChanged(Option<File> imageFile),
     TResult imageChanged(String imagePath),
     TResult bodyChanged(String bodyStr),
@@ -497,6 +669,7 @@ class _$_ImageChanged implements _ImageChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialized(_Initialized value),
+    @required TResult userIdChanged(_UserIdChanged value),
     @required TResult fileImageChanged(_FileImageChanged value),
     @required TResult imageChanged(_ImageChanged value),
     @required TResult bodyChanged(_BodyChanged value),
@@ -504,6 +677,7 @@ class _$_ImageChanged implements _ImageChanged {
     @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -516,6 +690,7 @@ class _$_ImageChanged implements _ImageChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialized(_Initialized value),
+    TResult userIdChanged(_UserIdChanged value),
     TResult fileImageChanged(_FileImageChanged value),
     TResult imageChanged(_ImageChanged value),
     TResult bodyChanged(_BodyChanged value),
@@ -598,6 +773,7 @@ class _$_BodyChanged implements _BodyChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult userIdChanged(String userIdStr),
     @required TResult fileImageChanged(Option<File> imageFile),
     @required TResult imageChanged(String imagePath),
     @required TResult bodyChanged(String bodyStr),
@@ -605,6 +781,7 @@ class _$_BodyChanged implements _BodyChanged {
     @required TResult submit(),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -617,6 +794,7 @@ class _$_BodyChanged implements _BodyChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(Option<PostDomain> initialPost),
+    TResult userIdChanged(String userIdStr),
     TResult fileImageChanged(Option<File> imageFile),
     TResult imageChanged(String imagePath),
     TResult bodyChanged(String bodyStr),
@@ -635,6 +813,7 @@ class _$_BodyChanged implements _BodyChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialized(_Initialized value),
+    @required TResult userIdChanged(_UserIdChanged value),
     @required TResult fileImageChanged(_FileImageChanged value),
     @required TResult imageChanged(_ImageChanged value),
     @required TResult bodyChanged(_BodyChanged value),
@@ -642,6 +821,7 @@ class _$_BodyChanged implements _BodyChanged {
     @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -654,6 +834,7 @@ class _$_BodyChanged implements _BodyChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialized(_Initialized value),
+    TResult userIdChanged(_UserIdChanged value),
     TResult fileImageChanged(_FileImageChanged value),
     TResult imageChanged(_ImageChanged value),
     TResult bodyChanged(_BodyChanged value),
@@ -738,6 +919,7 @@ class _$_LocationChanged implements _LocationChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult userIdChanged(String userIdStr),
     @required TResult fileImageChanged(Option<File> imageFile),
     @required TResult imageChanged(String imagePath),
     @required TResult bodyChanged(String bodyStr),
@@ -745,6 +927,7 @@ class _$_LocationChanged implements _LocationChanged {
     @required TResult submit(),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -757,6 +940,7 @@ class _$_LocationChanged implements _LocationChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(Option<PostDomain> initialPost),
+    TResult userIdChanged(String userIdStr),
     TResult fileImageChanged(Option<File> imageFile),
     TResult imageChanged(String imagePath),
     TResult bodyChanged(String bodyStr),
@@ -775,6 +959,7 @@ class _$_LocationChanged implements _LocationChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialized(_Initialized value),
+    @required TResult userIdChanged(_UserIdChanged value),
     @required TResult fileImageChanged(_FileImageChanged value),
     @required TResult imageChanged(_ImageChanged value),
     @required TResult bodyChanged(_BodyChanged value),
@@ -782,6 +967,7 @@ class _$_LocationChanged implements _LocationChanged {
     @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -794,6 +980,7 @@ class _$_LocationChanged implements _LocationChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialized(_Initialized value),
+    TResult userIdChanged(_UserIdChanged value),
     TResult fileImageChanged(_FileImageChanged value),
     TResult imageChanged(_ImageChanged value),
     TResult bodyChanged(_BodyChanged value),
@@ -853,6 +1040,7 @@ class _$_Submit implements _Submit {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initialized(Option<PostDomain> initialPost),
+    @required TResult userIdChanged(String userIdStr),
     @required TResult fileImageChanged(Option<File> imageFile),
     @required TResult imageChanged(String imagePath),
     @required TResult bodyChanged(String bodyStr),
@@ -860,6 +1048,7 @@ class _$_Submit implements _Submit {
     @required TResult submit(),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -872,6 +1061,7 @@ class _$_Submit implements _Submit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initialized(Option<PostDomain> initialPost),
+    TResult userIdChanged(String userIdStr),
     TResult fileImageChanged(Option<File> imageFile),
     TResult imageChanged(String imagePath),
     TResult bodyChanged(String bodyStr),
@@ -890,6 +1080,7 @@ class _$_Submit implements _Submit {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initialized(_Initialized value),
+    @required TResult userIdChanged(_UserIdChanged value),
     @required TResult fileImageChanged(_FileImageChanged value),
     @required TResult imageChanged(_ImageChanged value),
     @required TResult bodyChanged(_BodyChanged value),
@@ -897,6 +1088,7 @@ class _$_Submit implements _Submit {
     @required TResult submit(_Submit value),
   }) {
     assert(initialized != null);
+    assert(userIdChanged != null);
     assert(fileImageChanged != null);
     assert(imageChanged != null);
     assert(bodyChanged != null);
@@ -909,6 +1101,7 @@ class _$_Submit implements _Submit {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initialized(_Initialized value),
+    TResult userIdChanged(_UserIdChanged value),
     TResult fileImageChanged(_FileImageChanged value),
     TResult imageChanged(_ImageChanged value),
     TResult bodyChanged(_BodyChanged value),

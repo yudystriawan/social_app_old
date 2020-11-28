@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:my_social_app/domain/file/i_file_repository.dart';
 import 'package:my_social_app/domain/post/i_post_repository.dart';
 import 'package:my_social_app/domain/post/post.dart';
@@ -37,6 +38,14 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
             post: post,
             isEditing: true,
           ),
+        );
+      },
+      userIdChanged: (e) async* {
+        yield state.copyWith.call(
+          post: state.post.copyWith.call(
+            userId: StringSingleLine(e.userIdStr),
+          ),
+          failureOrSuccessOption: none(),
         );
       },
       fileImageChanged: (e) async* {
@@ -91,6 +100,7 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
             (downloadUrl) {
               newPost = PostDomain(
                 id: state.post.id,
+                userId: state.post.userId,
                 imageUrl: PostImageUrl(downloadUrl.getOrCrash()),
                 body: state.post.body,
                 location: state.post.location,

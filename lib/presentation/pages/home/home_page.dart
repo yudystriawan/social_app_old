@@ -59,34 +59,36 @@ class _HomePageState extends State<HomePage> {
       ],
       child: Scaffold(
         body: SafeArea(
-          child: PageView(
-            controller: _controller,
-            physics: const NeverScrollableScrollPhysics(),
-            onPageChanged: (value) {
-              setState(() {
-                _pageIndex = value;
-              });
+          child: BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                orElse: () => Container(),
+                authenticated: (state) => PageView(
+                  controller: _controller,
+                  physics: const NeverScrollableScrollPhysics(),
+                  onPageChanged: (value) {
+                    setState(() {
+                      _pageIndex = value;
+                    });
+                  },
+                  children: [
+                    const TimelinePage(),
+                    const FeedPage(),
+                    BlocProvider(
+                      create: (context) => getIt<FileLoaderBloc>(),
+                      child: UploadPage(
+                        userId: state.user.id.getOrCrash(),
+                      ),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<UserSearchBloc>(),
+                      child: const SearchPage(),
+                    ),
+                    ProfilePage(user: state.user),
+                  ],
+                ),
+              );
             },
-            children: [
-              const TimelinePage(),
-              const FeedPage(),
-              BlocProvider(
-                create: (context) => getIt<FileLoaderBloc>(),
-                child: const UploadPage(),
-              ),
-              BlocProvider(
-                create: (context) => getIt<UserSearchBloc>(),
-                child: const SearchPage(),
-              ),
-              BlocBuilder<AuthBloc, AuthState>(
-                builder: (context, state) {
-                  return state.maybeMap(
-                    orElse: () => Container(),
-                    authenticated: (state) => ProfilePage(user: state.user),
-                  );
-                },
-              ),
-            ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(

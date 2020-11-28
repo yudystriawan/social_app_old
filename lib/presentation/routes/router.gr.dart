@@ -70,6 +70,7 @@ class Router extends RouterBase {
         builder: (context) => EditProfilePage(
           key: args.key,
           editedUser: args.editedUser,
+          isFirstEdit: args.isFirstEdit,
         ).wrappedRoute(context),
         settings: data,
       );
@@ -80,6 +81,7 @@ class Router extends RouterBase {
         builder: (context) => PostFormPage(
           key: args.key,
           post: args.post,
+          userId: args.userId,
           imageFile: args.imageFile,
         ).wrappedRoute(context),
         settings: data,
@@ -96,13 +98,17 @@ class Router extends RouterBase {
 class EditProfilePageArguments {
   final Key key;
   final UserDomain editedUser;
-  EditProfilePageArguments({this.key, @required this.editedUser});
+  final bool isFirstEdit;
+  EditProfilePageArguments(
+      {this.key, @required this.editedUser, this.isFirstEdit = false});
 }
 
 /// PostFormPage arguments holder class
 class PostFormPageArguments {
   final Key key;
   final PostDomain post;
+  final String userId;
   final File imageFile;
-  PostFormPageArguments({this.key, @required this.post, this.imageFile});
+  PostFormPageArguments(
+      {this.key, @required this.post, @required this.userId, this.imageFile});
 }

@@ -12,13 +12,16 @@ abstract class PostDomain with _$PostDomain {
 
   const factory PostDomain({
     @required UniqueId id,
+    @required StringSingleLine userId,
     @required PostImageUrl imageUrl,
     @required PostBody body,
     @required PostLocation location,
+    int countLikes,
   }) = _PostDomain;
 
   factory PostDomain.empty() => PostDomain(
         id: UniqueId(),
+        userId: StringSingleLine(''),
         imageUrl: PostImageUrl(''),
         body: PostBody(''),
         location: PostLocation(''),
@@ -27,6 +30,7 @@ abstract class PostDomain with _$PostDomain {
   Option<ValueFailure<dynamic>> get failureOption {
     return body.failureOrUnit
         .andThen(location.failureOrUnit)
+        .andThen(userId.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }
 }

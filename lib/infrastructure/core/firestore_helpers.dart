@@ -4,10 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 extension FirebaseFirestoreX on FirebaseFirestore {
   Future<DocumentReference> userDocument() async {
     final user = FirebaseAuth.instance.currentUser;
-
-    // final user = userOption.getOrElse(() => throw NotAuthenticatedError());
-
     return FirebaseFirestore.instance.collection('users').doc(user?.uid);
+  }
+
+  Future<DocumentReference> postDocument(String userId) async {
+    return FirebaseFirestore.instance.collection('posts').doc(userId);
   }
 
   Future<QuerySnapshot> findUserDocument(String query) async {
@@ -20,4 +21,5 @@ extension FirebaseFirestoreX on FirebaseFirestore {
 
 extension DocumentReferenceX on DocumentReference {
   CollectionReference get postCollection => collection('posts');
+  CollectionReference get userPostCollection => collection('myPosts');
 }

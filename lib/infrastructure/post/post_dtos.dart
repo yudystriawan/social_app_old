@@ -10,19 +10,25 @@ part 'post_dtos.g.dart';
 abstract class PostDto with _$PostDto {
   const factory PostDto({
     @JsonKey(ignore: true) String id,
+    @JsonKey(name: 'user_id') @required String userId,
     @JsonKey(name: 'image_url') @required String imageUrl,
     @required String body,
     @required String location,
-    @required @ServerTimestampConverter() FieldValue serverTimeStamp,
+    Map<String, bool> likes,
+    @JsonKey(name: 'server_timestamp')
+    @required
+    @ServerTimestampConverter()
+        FieldValue serverTimestamp,
   }) = _PostDto;
 
   factory PostDto.fromDomain(PostDomain post) {
     return PostDto(
       id: post.id.getOrCrash(),
+      userId: post.userId.getOrCrash(),
       imageUrl: post.imageUrl.getOrCrash(),
       body: post.body.getOrCrash(),
       location: post.location.getOrCrash(),
-      serverTimeStamp: FieldValue.serverTimestamp(),
+      serverTimestamp: FieldValue.serverTimestamp(),
     );
   }
 

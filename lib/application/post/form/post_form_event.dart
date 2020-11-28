@@ -4,6 +4,7 @@ part of 'post_form_bloc.dart';
 abstract class PostFormEvent with _$PostFormEvent {
   const factory PostFormEvent.initialized(Option<PostDomain> initialPost) =
       _Initialized;
+  const factory PostFormEvent.userIdChanged(String userIdStr) = _UserIdChanged;
   const factory PostFormEvent.fileImageChanged(Option<File> imageFile) =
       _FileImageChanged;
   const factory PostFormEvent.imageChanged(String imagePath) = _ImageChanged;

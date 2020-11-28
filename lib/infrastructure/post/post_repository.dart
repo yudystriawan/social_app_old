@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
+import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:my_social_app/domain/post/i_post_repository.dart';
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/domain/post/post_failure.dart';
@@ -19,13 +21,40 @@ class PostRepository implements IPostRepository {
   @override
   Future<Either<PostFailure, Unit>> create(PostDomain post) async {
     try {
-      final userDoc = await _firestore.userDocument();
       final postDto = PostDto.fromDomain(post);
+      final currentUser = FirebaseAuth.instance.currentUser;
+      final postDoc = await _firestore.postDocument(currentUser?.uid);
 
-      await userDoc.postCollection.doc(postDto.id).set(postDto.toJson());
+      await postDoc.userPostCollection.doc(postDto.id).set(postDto.toJson());
       return right(unit);
     } on PlatformException catch (e) {
       log('createError ${e.message}');
+      return left(const PostFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<PostFailure, int>> getLikeCount(StringSingleLine postId) async {
+    try {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      final postDoc = await _firestore.postDocument(currentUser?.uid);
+      final post =
+          await postDoc.userPostCollection.doc(postId.getOrCrash()).get();
+
+      final postDto = PostDto.fromFirestore(post);
+
+      if (postDto.likes == null) {
+        return right(0);
+      } else {
+        int counter = 0;
+        postDto.likes.forEach((key, value) {
+          if (value) {
+            counter++;
+          }
+        });
+        return right(counter);
+      }
+    } on PlatformException catch (e) {
       return left(const PostFailure.unexpected());
     }
   }

@@ -18,17 +18,31 @@ class _$PostDtoTearOff {
 
 // ignore: unused_element
   _PostDto call(
-      {@JsonKey(ignore: true) String id,
-      @required @JsonKey(name: 'image_url') String imageUrl,
-      @required String body,
-      @required String location,
-      @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
+      {@JsonKey(ignore: true)
+          String id,
+      @required
+      @JsonKey(name: 'user_id')
+          String userId,
+      @required
+      @JsonKey(name: 'image_url')
+          String imageUrl,
+      @required
+          String body,
+      @required
+          String location,
+      Map<String, bool> likes,
+      @required
+      @JsonKey(name: 'server_timestamp')
+      @ServerTimestampConverter()
+          FieldValue serverTimestamp}) {
     return _PostDto(
       id: id,
+      userId: userId,
       imageUrl: imageUrl,
       body: body,
       location: location,
-      serverTimeStamp: serverTimeStamp,
+      likes: likes,
+      serverTimestamp: serverTimestamp,
     );
   }
 
@@ -46,12 +60,16 @@ const $PostDto = _$PostDtoTearOff();
 mixin _$PostDto {
   @JsonKey(ignore: true)
   String get id;
+  @JsonKey(name: 'user_id')
+  String get userId;
   @JsonKey(name: 'image_url')
   String get imageUrl;
   String get body;
   String get location;
+  Map<String, bool> get likes;
+  @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()
-  FieldValue get serverTimeStamp;
+  FieldValue get serverTimestamp;
 
   Map<String, dynamic> toJson();
   $PostDtoCopyWith<PostDto> get copyWith;
@@ -62,11 +80,18 @@ abstract class $PostDtoCopyWith<$Res> {
   factory $PostDtoCopyWith(PostDto value, $Res Function(PostDto) then) =
       _$PostDtoCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String id,
-      @JsonKey(name: 'image_url') String imageUrl,
+      {@JsonKey(ignore: true)
+          String id,
+      @JsonKey(name: 'user_id')
+          String userId,
+      @JsonKey(name: 'image_url')
+          String imageUrl,
       String body,
       String location,
-      @ServerTimestampConverter() FieldValue serverTimeStamp});
+      Map<String, bool> likes,
+      @JsonKey(name: 'server_timestamp')
+      @ServerTimestampConverter()
+          FieldValue serverTimestamp});
 }
 
 /// @nodoc
@@ -80,19 +105,23 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
+    Object userId = freezed,
     Object imageUrl = freezed,
     Object body = freezed,
     Object location = freezed,
-    Object serverTimeStamp = freezed,
+    Object likes = freezed,
+    Object serverTimestamp = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
+      userId: userId == freezed ? _value.userId : userId as String,
       imageUrl: imageUrl == freezed ? _value.imageUrl : imageUrl as String,
       body: body == freezed ? _value.body : body as String,
       location: location == freezed ? _value.location : location as String,
-      serverTimeStamp: serverTimeStamp == freezed
-          ? _value.serverTimeStamp
-          : serverTimeStamp as FieldValue,
+      likes: likes == freezed ? _value.likes : likes as Map<String, bool>,
+      serverTimestamp: serverTimestamp == freezed
+          ? _value.serverTimestamp
+          : serverTimestamp as FieldValue,
     ));
   }
 }
@@ -103,11 +132,18 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
       __$PostDtoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String id,
-      @JsonKey(name: 'image_url') String imageUrl,
+      {@JsonKey(ignore: true)
+          String id,
+      @JsonKey(name: 'user_id')
+          String userId,
+      @JsonKey(name: 'image_url')
+          String imageUrl,
       String body,
       String location,
-      @ServerTimestampConverter() FieldValue serverTimeStamp});
+      Map<String, bool> likes,
+      @JsonKey(name: 'server_timestamp')
+      @ServerTimestampConverter()
+          FieldValue serverTimestamp});
 }
 
 /// @nodoc
@@ -122,19 +158,23 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
+    Object userId = freezed,
     Object imageUrl = freezed,
     Object body = freezed,
     Object location = freezed,
-    Object serverTimeStamp = freezed,
+    Object likes = freezed,
+    Object serverTimestamp = freezed,
   }) {
     return _then(_PostDto(
       id: id == freezed ? _value.id : id as String,
+      userId: userId == freezed ? _value.userId : userId as String,
       imageUrl: imageUrl == freezed ? _value.imageUrl : imageUrl as String,
       body: body == freezed ? _value.body : body as String,
       location: location == freezed ? _value.location : location as String,
-      serverTimeStamp: serverTimeStamp == freezed
-          ? _value.serverTimeStamp
-          : serverTimeStamp as FieldValue,
+      likes: likes == freezed ? _value.likes : likes as Map<String, bool>,
+      serverTimestamp: serverTimestamp == freezed
+          ? _value.serverTimestamp
+          : serverTimestamp as FieldValue,
     ));
   }
 }
@@ -144,15 +184,28 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
 /// @nodoc
 class _$_PostDto implements _PostDto {
   const _$_PostDto(
-      {@JsonKey(ignore: true) this.id,
-      @required @JsonKey(name: 'image_url') this.imageUrl,
-      @required this.body,
-      @required this.location,
-      @required @ServerTimestampConverter() this.serverTimeStamp})
-      : assert(imageUrl != null),
+      {@JsonKey(ignore: true)
+          this.id,
+      @required
+      @JsonKey(name: 'user_id')
+          this.userId,
+      @required
+      @JsonKey(name: 'image_url')
+          this.imageUrl,
+      @required
+          this.body,
+      @required
+          this.location,
+      this.likes,
+      @required
+      @JsonKey(name: 'server_timestamp')
+      @ServerTimestampConverter()
+          this.serverTimestamp})
+      : assert(userId != null),
+        assert(imageUrl != null),
         assert(body != null),
         assert(location != null),
-        assert(serverTimeStamp != null);
+        assert(serverTimestamp != null);
 
   factory _$_PostDto.fromJson(Map<String, dynamic> json) =>
       _$_$_PostDtoFromJson(json);
@@ -161,6 +214,9 @@ class _$_PostDto implements _PostDto {
   @JsonKey(ignore: true)
   final String id;
   @override
+  @JsonKey(name: 'user_id')
+  final String userId;
+  @override
   @JsonKey(name: 'image_url')
   final String imageUrl;
   @override
@@ -168,12 +224,15 @@ class _$_PostDto implements _PostDto {
   @override
   final String location;
   @override
+  final Map<String, bool> likes;
+  @override
+  @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()
-  final FieldValue serverTimeStamp;
+  final FieldValue serverTimestamp;
 
   @override
   String toString() {
-    return 'PostDto(id: $id, imageUrl: $imageUrl, body: $body, location: $location, serverTimeStamp: $serverTimeStamp)';
+    return 'PostDto(id: $id, userId: $userId, imageUrl: $imageUrl, body: $body, location: $location, likes: $likes, serverTimestamp: $serverTimestamp)';
   }
 
   @override
@@ -182,6 +241,8 @@ class _$_PostDto implements _PostDto {
         (other is _PostDto &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.userId, userId) ||
+                const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.imageUrl, imageUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.imageUrl, imageUrl)) &&
@@ -190,19 +251,23 @@ class _$_PostDto implements _PostDto {
             (identical(other.location, location) ||
                 const DeepCollectionEquality()
                     .equals(other.location, location)) &&
-            (identical(other.serverTimeStamp, serverTimeStamp) ||
+            (identical(other.likes, likes) ||
+                const DeepCollectionEquality().equals(other.likes, likes)) &&
+            (identical(other.serverTimestamp, serverTimestamp) ||
                 const DeepCollectionEquality()
-                    .equals(other.serverTimeStamp, serverTimeStamp)));
+                    .equals(other.serverTimestamp, serverTimestamp)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(userId) ^
       const DeepCollectionEquality().hash(imageUrl) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(location) ^
-      const DeepCollectionEquality().hash(serverTimeStamp);
+      const DeepCollectionEquality().hash(likes) ^
+      const DeepCollectionEquality().hash(serverTimestamp);
 
   @override
   _$PostDtoCopyWith<_PostDto> get copyWith =>
@@ -216,18 +281,32 @@ class _$_PostDto implements _PostDto {
 
 abstract class _PostDto implements PostDto {
   const factory _PostDto(
-          {@JsonKey(ignore: true) String id,
-          @required @JsonKey(name: 'image_url') String imageUrl,
-          @required String body,
-          @required String location,
-          @required @ServerTimestampConverter() FieldValue serverTimeStamp}) =
-      _$_PostDto;
+      {@JsonKey(ignore: true)
+          String id,
+      @required
+      @JsonKey(name: 'user_id')
+          String userId,
+      @required
+      @JsonKey(name: 'image_url')
+          String imageUrl,
+      @required
+          String body,
+      @required
+          String location,
+      Map<String, bool> likes,
+      @required
+      @JsonKey(name: 'server_timestamp')
+      @ServerTimestampConverter()
+          FieldValue serverTimestamp}) = _$_PostDto;
 
   factory _PostDto.fromJson(Map<String, dynamic> json) = _$_PostDto.fromJson;
 
   @override
   @JsonKey(ignore: true)
   String get id;
+  @override
+  @JsonKey(name: 'user_id')
+  String get userId;
   @override
   @JsonKey(name: 'image_url')
   String get imageUrl;
@@ -236,8 +315,11 @@ abstract class _PostDto implements PostDto {
   @override
   String get location;
   @override
+  Map<String, bool> get likes;
+  @override
+  @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()
-  FieldValue get serverTimeStamp;
+  FieldValue get serverTimestamp;
   @override
   _$PostDtoCopyWith<_PostDto> get copyWith;
 }
