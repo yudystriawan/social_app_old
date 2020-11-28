@@ -45,4 +45,10 @@ class PostByUserWatcherBloc
       },
     );
   }
+
+  @override
+  Future<void> close() async {
+    await _postStreamSubscription?.cancel();
+    return super.close();
+  }
 }

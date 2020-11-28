@@ -64,36 +64,58 @@ class _HomePageState extends State<HomePage> {
             builder: (context, state) {
               return state.maybeMap(
                 orElse: () => Container(),
-                authenticated: (state) => PageView(
-                  controller: _controller,
-                  physics: const NeverScrollableScrollPhysics(),
-                  onPageChanged: (value) {
-                    setState(() {
-                      _pageIndex = value;
-                    });
-                  },
-                  children: [
-                    const TimelinePage(),
-                    const FeedPage(),
-                    BlocProvider(
-                      create: (context) => getIt<FileLoaderBloc>(),
-                      child: UploadPage(
-                        userId: state.user.id.getOrCrash(),
+                authenticated: (state) {
+                  final user = state.user;
+                  return PageView(
+                    controller: _controller,
+                    physics: const NeverScrollableScrollPhysics(),
+                    onPageChanged: (value) {
+                      setState(() {
+                        _pageIndex = value;
+                      });
+                    },
+                    children: [
+                      const TimelinePage(),
+                      const FeedPage(),
+                      BlocProvider(
+                        create: (context) => getIt<FileLoaderBloc>(),
+                        child: UploadPage(
+                          userId: user.id.getOrCrash(),
+                        ),
                       ),
-                    ),
-                    BlocProvider(
-                      create: (context) => getIt<UserSearchBloc>(),
-                      child: const SearchPage(),
-                    ),
-                    BlocProvider(
-                      create: (context) => getIt<PostByUserWatcherBloc>()
-                        ..add(PostByUserWatcherEvent.watchAllStarted(
-                          state.user.id.getOrCrash(),
-                        )),
-                      child: ProfilePage(user: state.user),
-                    ),
-                  ],
-                ),
+                      BlocProvider(
+                        create: (context) => getIt<UserSearchBloc>(),
+                        child: const SearchPage(),
+                      ),
+                      BlocProvider(
+                        create: (context) => getIt<PostByUserWatcherBloc>()
+                          ..add(PostByUserWatcherEvent.watchAllStarted(
+                            user.id.getOrCrash(),
+                          )),
+                        child: BlocBuilder<PostByUserWatcherBloc,
+                            PostByUserWatcherState>(
+                          builder: (context, state) {
+                            return state.map(
+                              initial: (_) => Container(),
+                              loadInProgress: (_) =>
+                                  const CircularProgressIndicator(),
+                              loadSuccess: (state) => ProfilePage(
+                                user: user,
+                                posts: state.posts,
+                              ),
+                              loadFailure: (state) => Text(
+                                state.failure.maybeMap(
+                                  orElse: () => 'Something went wrong.',
+                                  unexpected: (_) => 'Unexpected.',
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                },
               );
             },
           ),

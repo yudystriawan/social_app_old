@@ -27,6 +27,7 @@ class PostFooter extends StatelessWidget {
                 color: Colors.pink,
               ),
             ),
+            const SizedBox(width: 12),
             GestureDetector(
               onTap: () => FlushbarHelper.createInformation(
                 message: 'Action comment',
@@ -39,9 +40,10 @@ class PostFooter extends StatelessWidget {
             )
           ],
         ),
+        const SizedBox(height: 12),
         Row(
           children: [
-            Text('${post.countLikes} likes'),
+            Text('${post.countLikes ?? 0} likes'),
           ],
         ),
       ],
