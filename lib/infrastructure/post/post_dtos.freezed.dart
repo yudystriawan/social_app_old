@@ -182,7 +182,7 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_PostDto implements _PostDto {
+class _$_PostDto extends _PostDto {
   const _$_PostDto(
       {@JsonKey(ignore: true)
           this.id,
@@ -205,7 +205,8 @@ class _$_PostDto implements _PostDto {
         assert(imageUrl != null),
         assert(body != null),
         assert(location != null),
-        assert(serverTimestamp != null);
+        assert(serverTimestamp != null),
+        super._();
 
   factory _$_PostDto.fromJson(Map<String, dynamic> json) =>
       _$_$_PostDtoFromJson(json);
@@ -279,7 +280,8 @@ class _$_PostDto implements _PostDto {
   }
 }
 
-abstract class _PostDto implements PostDto {
+abstract class _PostDto extends PostDto {
+  const _PostDto._() : super._();
   const factory _PostDto(
       {@JsonKey(ignore: true)
           String id,

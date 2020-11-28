@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:my_social_app/domain/post/post.dart';
+import 'package:my_social_app/domain/post/value_objects.dart';
 import 'package:my_social_app/infrastructure/core/timestamp.dart';
 
 part 'post_dtos.freezed.dart';
@@ -8,6 +10,8 @@ part 'post_dtos.g.dart';
 
 @freezed
 abstract class PostDto with _$PostDto {
+  const PostDto._();
+
   const factory PostDto({
     @JsonKey(ignore: true) String id,
     @JsonKey(name: 'user_id') @required String userId,
@@ -20,6 +24,16 @@ abstract class PostDto with _$PostDto {
     @ServerTimestampConverter()
         FieldValue serverTimestamp,
   }) = _PostDto;
+
+  PostDomain toDomain() {
+    return PostDomain(
+      id: UniqueId.fromUniqueString(id),
+      userId: StringSingleLine(userId),
+      imageUrl: PostImageUrl(imageUrl),
+      body: PostBody(body),
+      location: PostLocation(location),
+    );
+  }
 
   factory PostDto.fromDomain(PostDomain post) {
     return PostDto(

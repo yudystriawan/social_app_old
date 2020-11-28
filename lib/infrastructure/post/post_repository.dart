@@ -58,4 +58,25 @@ class PostRepository implements IPostRepository {
       return left(const PostFailure.unexpected());
     }
   }
+
+  @override
+  Stream<Either<PostFailure, List<PostDomain>>> getMyPosts(
+    StringSingleLine userId,
+  ) async* {
+    final postRef = await _firestore.postDocument(userId.getOrCrash());
+    yield* postRef.userPostCollection
+        .orderBy('server_timestamp', descending: true)
+        .snapshots()
+        .map(
+          (snapshot) => right<PostFailure, List<PostDomain>>(
+            snapshot.docs
+                .map((doc) => PostDto.fromFirestore(doc).toDomain())
+                .toList(),
+          ),
+        )
+        .handleError((e) {
+      log('ERROR $e');
+      return left(const PostFailure.unexpected());
+    });
+  }
 }

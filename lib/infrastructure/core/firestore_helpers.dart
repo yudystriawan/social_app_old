@@ -17,9 +17,21 @@ extension FirebaseFirestoreX on FirebaseFirestore {
         .where('name', isGreaterThanOrEqualTo: query)
         .get();
   }
+
+  Future<QuerySnapshot> getMyPosts(String userId) async {
+    final postRef = await FirebaseFirestore.instance.postDocument(userId);
+    return postRef.userPostCollection
+        .orderBy('server_timestamp', descending: true)
+        .get();
+  }
+
+  Future<DocumentReference> findUserDocumentById(String userId) async {
+    return FirebaseFirestore.instance.collection('users').doc(userId);
+  }
 }
 
 extension DocumentReferenceX on DocumentReference {
+  CollectionReference get userCollection => collection('users');
   CollectionReference get postCollection => collection('posts');
   CollectionReference get userPostCollection => collection('myPosts');
 }

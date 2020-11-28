@@ -22,10 +22,12 @@ import 'domain/file/i_file_repository.dart';
 import 'domain/post/i_post_repository.dart';
 import 'domain/user/i_user_repository.dart';
 import 'infrastructure/core/image_picker_injectable_module.dart';
+import 'application/post/by_user_wathcer/post_by_user_watcher_bloc.dart';
 import 'application/post/form/post_form_bloc.dart';
 import 'infrastructure/post/post_repository.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'application/user/form/user_form_bloc.dart';
+import 'application/user/get_by_id/user_get_by_id_bloc.dart';
 import 'infrastructure/user/user_repository.dart';
 import 'application/user/search/user_search_bloc.dart';
 
@@ -51,8 +53,11 @@ GetIt $initGetIt(
       ));
   gh.factory<IPostRepository>(() => PostRepository(get<FirebaseFirestore>()));
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
+  gh.factory<PostByUserWatcherBloc>(
+      () => PostByUserWatcherBloc(get<IPostRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthRepository>()));
   gh.factory<UserFormBloc>(() => UserFormBloc(get<IUserRepository>()));
+  gh.factory<UserGetByIdBloc>(() => UserGetByIdBloc(get<IUserRepository>()));
   gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthRepository>()));
   gh.factory<IFileRepository>(

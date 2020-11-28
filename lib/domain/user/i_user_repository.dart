@@ -6,4 +6,7 @@ import 'package:my_social_app/domain/user/user_failure.dart';
 abstract class IUserRepository {
   Future<Either<UserFailure, Unit>> update(UserDomain user);
   Future<Either<UserFailure, List<UserDomain>>> find(StringSingleLine query);
+  Future<Either<UserFailure, UserDomain>> getUserById(
+    StringSingleLine userId,
+  );
 }

@@ -56,4 +56,20 @@ class UserRepository implements IUserRepository {
       return left(const UserFailure.unexpected());
     }
   }
+
+  @override
+  Future<Either<UserFailure, UserDomain>> getUserById(
+    StringSingleLine userId,
+  ) async {
+    try {
+      final userRef =
+          await _firestore.findUserDocumentById(userId.getOrCrash());
+      final userDoc = await userRef.get();
+
+      final userDomain = UserDto.fromFirestore(userDoc).toDomain();
+      return right(userDomain);
+    } on PlatformException catch (e) {
+      return left(const UserFailure.unexpected());
+    }
+  }
 }
