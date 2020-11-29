@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/post/actor/post_actor_bloc.dart';
 
 import 'package:my_social_app/domain/post/post.dart';
+import 'package:my_social_app/presentation/routes/router.gr.dart';
 
 class PostFooter extends StatelessWidget {
   const PostFooter({
@@ -45,9 +47,10 @@ class PostFooter extends StatelessWidget {
                         size: 28.0,
                         color: Colors.blue,
                       ),
-                      onPressed: () => FlushbarHelper.createInformation(
-                        message: 'Action comment',
-                      ).show(context),
+                      onPressed: () => ExtendedNavigator.of(context).push(
+                        Routes.commentPage,
+                        arguments: CommentPageArguments(post: post),
+                      ),
                     ),
                   ],
                 ),
