@@ -20,7 +20,7 @@ class _$CommentDomainTearOff {
       @required StringSingleLine username,
       @required PhotoUrl photoUrl,
       @required StringSingleLine userId,
-      StringSingleLine timestamp}) {
+      Timestamp timestamp}) {
     return _CommentDomain(
       id: id,
       body: body,
@@ -43,7 +43,7 @@ mixin _$CommentDomain {
   StringSingleLine get username;
   PhotoUrl get photoUrl;
   StringSingleLine get userId;
-  StringSingleLine get timestamp;
+  Timestamp get timestamp;
 
   $CommentDomainCopyWith<CommentDomain> get copyWith;
 }
@@ -59,7 +59,7 @@ abstract class $CommentDomainCopyWith<$Res> {
       StringSingleLine username,
       PhotoUrl photoUrl,
       StringSingleLine userId,
-      StringSingleLine timestamp});
+      Timestamp timestamp});
 }
 
 /// @nodoc
@@ -87,9 +87,8 @@ class _$CommentDomainCopyWithImpl<$Res>
           username == freezed ? _value.username : username as StringSingleLine,
       photoUrl: photoUrl == freezed ? _value.photoUrl : photoUrl as PhotoUrl,
       userId: userId == freezed ? _value.userId : userId as StringSingleLine,
-      timestamp: timestamp == freezed
-          ? _value.timestamp
-          : timestamp as StringSingleLine,
+      timestamp:
+          timestamp == freezed ? _value.timestamp : timestamp as Timestamp,
     ));
   }
 }
@@ -107,7 +106,7 @@ abstract class _$CommentDomainCopyWith<$Res>
       StringSingleLine username,
       PhotoUrl photoUrl,
       StringSingleLine userId,
-      StringSingleLine timestamp});
+      Timestamp timestamp});
 }
 
 /// @nodoc
@@ -137,9 +136,8 @@ class __$CommentDomainCopyWithImpl<$Res>
           username == freezed ? _value.username : username as StringSingleLine,
       photoUrl: photoUrl == freezed ? _value.photoUrl : photoUrl as PhotoUrl,
       userId: userId == freezed ? _value.userId : userId as StringSingleLine,
-      timestamp: timestamp == freezed
-          ? _value.timestamp
-          : timestamp as StringSingleLine,
+      timestamp:
+          timestamp == freezed ? _value.timestamp : timestamp as Timestamp,
     ));
   }
 }
@@ -171,7 +169,7 @@ class _$_CommentDomain extends _CommentDomain {
   @override
   final StringSingleLine userId;
   @override
-  final StringSingleLine timestamp;
+  final Timestamp timestamp;
 
   @override
   String toString() {
@@ -222,7 +220,7 @@ abstract class _CommentDomain extends CommentDomain {
       @required StringSingleLine username,
       @required PhotoUrl photoUrl,
       @required StringSingleLine userId,
-      StringSingleLine timestamp}) = _$_CommentDomain;
+      Timestamp timestamp}) = _$_CommentDomain;
 
   @override
   UniqueId get id;
@@ -235,7 +233,7 @@ abstract class _CommentDomain extends CommentDomain {
   @override
   StringSingleLine get userId;
   @override
-  StringSingleLine get timestamp;
+  Timestamp get timestamp;
   @override
   _$CommentDomainCopyWith<_CommentDomain> get copyWith;
 }

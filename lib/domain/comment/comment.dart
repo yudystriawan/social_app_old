@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:my_social_app/domain/comment/value_objects.dart';
@@ -17,7 +18,7 @@ abstract class CommentDomain with _$CommentDomain {
     @required StringSingleLine username,
     @required PhotoUrl photoUrl,
     @required StringSingleLine userId,
-    StringSingleLine timestamp,
+    Timestamp timestamp,
   }) = _CommentDomain;
 
   factory CommentDomain.empty() => CommentDomain(
