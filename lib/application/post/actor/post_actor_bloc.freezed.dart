@@ -229,9 +229,9 @@ class _$PostActorStateTearOff {
   }
 
 // ignore: unused_element
-  _LikeSuccess likeSuccess(bool isLike) {
+  _LikeSuccess likeSuccess({bool isLike}) {
     return _LikeSuccess(
-      isLike,
+      isLike: isLike,
     );
   }
 }
@@ -657,14 +657,14 @@ class __$LikeSuccessCopyWithImpl<$Res>
     Object isLike = freezed,
   }) {
     return _then(_LikeSuccess(
-      isLike == freezed ? _value.isLike : isLike as bool,
+      isLike: isLike == freezed ? _value.isLike : isLike as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$_LikeSuccess implements _LikeSuccess {
-  const _$_LikeSuccess(this.isLike) : assert(isLike != null);
+  const _$_LikeSuccess({this.isLike});
 
   @override
   final bool isLike;
@@ -754,7 +754,7 @@ class _$_LikeSuccess implements _LikeSuccess {
 }
 
 abstract class _LikeSuccess implements PostActorState {
-  const factory _LikeSuccess(bool isLike) = _$_LikeSuccess;
+  const factory _LikeSuccess({bool isLike}) = _$_LikeSuccess;
 
   bool get isLike;
   _$LikeSuccessCopyWith<_LikeSuccess> get copyWith;

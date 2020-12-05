@@ -13,7 +13,7 @@ part 'post_actor_bloc.freezed.dart';
 
 @injectable
 class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
-  PostActorBloc(this._postRepository) : super(_Initial());
+  PostActorBloc(this._postRepository) : super(const _Initial());
 
   final IPostRepository _postRepository;
 
@@ -28,7 +28,7 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
     );
     yield failureOrSuccess.fold(
       (failure) => PostActorState.likeFailure(failure),
-      (isLike) => PostActorState.likeSuccess(isLike),
+      (isLike) => PostActorState.likeSuccess(isLike: isLike),
     );
   }
 }

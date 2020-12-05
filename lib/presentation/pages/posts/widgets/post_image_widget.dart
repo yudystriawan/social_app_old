@@ -1,9 +1,6 @@
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/post/actor/post_actor_bloc.dart';
-
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/presentation/common/widgets/my_cached_network_image.dart';
 
@@ -82,26 +79,26 @@ class _PostImageState extends State<PostImage> with TickerProviderStateMixin {
                     });
                   });
             },
-            child: buildHeatBeatAnimation(isLiked),
+            child: buildHeatBeatAnimation(isLiked: isLiked),
           ),
         ],
       ),
     );
   }
 
-  Widget buildHeatBeatAnimation(bool isLiked) {
+  Widget buildHeatBeatAnimation({bool isLiked}) {
     if (isLiked) {
       controller.forward();
       return AnimatedBuilder(
         animation: animation,
-        child: Icon(
-          Icons.favorite,
-          size: 80.0,
-          color: Colors.red,
-        ),
         builder: (context, child) => Transform.scale(
           scale: animation.value,
           child: child,
+        ),
+        child: const Icon(
+          Icons.favorite,
+          size: 80.0,
+          color: Colors.red,
         ),
       );
     } else {

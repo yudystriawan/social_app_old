@@ -26,9 +26,9 @@ class CommentPage extends StatelessWidget {
               ),
               const Divider(),
               ListTile(
-                title: CommentField(),
+                title: const CommentField(),
                 trailing: IconButton(
-                  icon: Icon(Icons.send),
+                  icon: const Icon(Icons.send),
                   onPressed: () {},
                 ),
               )
