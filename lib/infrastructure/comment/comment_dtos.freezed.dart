@@ -168,7 +168,7 @@ class __$CommentDtoCopyWithImpl<$Res> extends _$CommentDtoCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_CommentDto extends _CommentDto {
+class _$_CommentDto extends _CommentDto with DiagnosticableTreeMixin {
   const _$_CommentDto(
       {@JsonKey(ignore: true)
           this.id,
@@ -211,8 +211,21 @@ class _$_CommentDto extends _CommentDto {
   final FieldValue serverTimestamp;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommentDto(id: $id, body: $body, avatarUrl: $avatarUrl, username: $username, userId: $userId, serverTimestamp: $serverTimestamp)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommentDto'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('body', body))
+      ..add(DiagnosticsProperty('avatarUrl', avatarUrl))
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('serverTimestamp', serverTimestamp));
   }
 
   @override

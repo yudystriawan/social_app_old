@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:my_social_app/domain/comment/comment.dart';
 import 'package:my_social_app/domain/comment/value_objects.dart';
@@ -25,14 +26,14 @@ abstract class CommentDto with _$CommentDto {
         FieldValue serverTimestamp,
   }) = _CommentDto;
 
-  CommentDomain toDomain() {
+  CommentDomain toDomain(DocumentSnapshot doc) {
     return CommentDomain(
       id: UniqueId.fromUniqueString(id),
       body: CommentBody(body),
       username: StringSingleLine(username),
       avatarUrl: PhotoUrl(avatarUrl),
       userId: StringSingleLine(userId),
-      timestamp: Timestamp.fromDate((serverTimestamp as Timestamp).toDate()),
+      timestamp: doc['server_timestamp'] as Timestamp,
     );
   }
 

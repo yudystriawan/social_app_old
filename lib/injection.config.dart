@@ -16,6 +16,7 @@ import 'application/auth/auth_bloc.dart';
 import 'infrastructure/auth/auth_repository.dart';
 import 'application/comment/form/comment_form_bloc.dart';
 import 'infrastructure/comment/comment_repository.dart';
+import 'application/comment/watcher/comment_watcher_bloc.dart';
 import 'application/file/loader/file_loader_bloc.dart';
 import 'infrastructure/file/file_repository.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
@@ -69,6 +70,8 @@ GetIt $initGetIt(
   gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthRepository>()));
   gh.factory<CommentFormBloc>(() => CommentFormBloc(get<ICommentRepository>()));
+  gh.factory<CommentWatcherBloc>(
+      () => CommentWatcherBloc(get<ICommentRepository>()));
   gh.factory<IFileRepository>(
       () => FileRepositoy(get<ImagePicker>(), get<FirebaseStorage>()));
   gh.factory<PostFormBloc>(

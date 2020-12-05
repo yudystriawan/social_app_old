@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/comment/form/comment_form_bloc.dart';
+import 'package:my_social_app/application/comment/watcher/comment_watcher_bloc.dart';
 
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/injection.dart';
 import 'package:my_social_app/presentation/common/app_bar.dart';
+import 'package:my_social_app/presentation/pages/comment/widgets/list_comment_widget.dart';
 
 import 'widgets/comment_field_widget.dart';
 
@@ -50,8 +52,26 @@ class CommentPage extends StatelessWidget with AutoRouteWrapper {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                const Expanded(
-                  child: Text('list_comments'),
+                Expanded(
+                  child: BlocBuilder<CommentWatcherBloc, CommentWatcherState>(
+                    builder: (context, state) {
+                      return state.map(
+                        initial: (_) => Container(),
+                        loadInProgress: (_) => const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        loadSuccess: (state) =>
+                            ListComment(comments: state.comments),
+                        loadFailure: (state) => Center(
+                          child: Text(
+                            state.maybeMap(
+                              orElse: () => 'Something went wrong',
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 const Divider(),
                 BlocBuilder<AuthBloc, AuthState>(
@@ -94,8 +114,16 @@ class CommentPage extends StatelessWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<CommentFormBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<CommentFormBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<CommentWatcherBloc>()
+            ..add(CommentWatcherEvent.watchAllStarted(post.id.getOrCrash())),
+        ),
+      ],
       child: this,
     );
   }
