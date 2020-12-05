@@ -16,7 +16,7 @@ abstract class CommentDto with _$CommentDto {
   const factory CommentDto({
     @JsonKey(ignore: true) String id,
     @required String body,
-    @required String photoUrl,
+    @required String avatarUrl,
     @required String username,
     @required String userId,
     @JsonKey(name: 'server_timestamp')
@@ -30,7 +30,7 @@ abstract class CommentDto with _$CommentDto {
       id: UniqueId.fromUniqueString(id),
       body: CommentBody(body),
       username: StringSingleLine(username),
-      photoUrl: PhotoUrl(photoUrl),
+      avatarUrl: PhotoUrl(avatarUrl),
       userId: StringSingleLine(userId),
       timestamp: Timestamp.fromDate((serverTimestamp as Timestamp).toDate()),
     );
@@ -39,7 +39,7 @@ abstract class CommentDto with _$CommentDto {
   factory CommentDto.fromDomain(CommentDomain comment) {
     return CommentDto(
       body: comment.body.getOrCrash(),
-      photoUrl: comment.photoUrl.getOrCrash(),
+      avatarUrl: comment.avatarUrl.getOrCrash(),
       username: comment.username.getOrCrash(),
       userId: comment.userId.getOrCrash(),
       serverTimestamp: FieldValue.serverTimestamp(),

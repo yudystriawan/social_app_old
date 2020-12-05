@@ -14,10 +14,13 @@ import 'package:image_picker/image_picker.dart';
 
 import 'application/auth/auth_bloc.dart';
 import 'infrastructure/auth/auth_repository.dart';
+import 'application/comment/form/comment_form_bloc.dart';
+import 'infrastructure/comment/comment_repository.dart';
 import 'application/file/loader/file_loader_bloc.dart';
 import 'infrastructure/file/file_repository.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
 import 'domain/auth/i_auth_repository.dart';
+import 'domain/comment/i_comment_repository.dart';
 import 'domain/file/i_file_repository.dart';
 import 'domain/post/i_post_repository.dart';
 import 'domain/user/i_user_repository.dart';
@@ -52,6 +55,8 @@ GetIt $initGetIt(
         get<GoogleSignIn>(),
         get<FirebaseFirestore>(),
       ));
+  gh.factory<ICommentRepository>(
+      () => CommentRepostiory(get<FirebaseFirestore>()));
   gh.lazySingleton<IPostRepository>(
       () => PostRepository(get<FirebaseFirestore>()));
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
@@ -63,6 +68,7 @@ GetIt $initGetIt(
   gh.factory<UserGetByIdBloc>(() => UserGetByIdBloc(get<IUserRepository>()));
   gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthRepository>()));
+  gh.factory<CommentFormBloc>(() => CommentFormBloc(get<ICommentRepository>()));
   gh.factory<IFileRepository>(
       () => FileRepositoy(get<ImagePicker>(), get<FirebaseStorage>()));
   gh.factory<PostFormBloc>(

@@ -11,6 +11,10 @@ extension FirebaseFirestoreX on FirebaseFirestore {
     return FirebaseFirestore.instance.collection('posts').doc(userId);
   }
 
+  Future<DocumentReference> commentDocument(String postId) async {
+    return FirebaseFirestore.instance.collection('comments').doc(postId);
+  }
+
   Future<QuerySnapshot> findUserDocument(String query) async {
     return FirebaseFirestore.instance
         .collection('users')
@@ -34,4 +38,5 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get userCollection => collection('users');
   CollectionReference get postCollection => collection('posts');
   CollectionReference get userPostCollection => collection('myPosts');
+  CollectionReference get commentPostCollection => collection('comments');
 }

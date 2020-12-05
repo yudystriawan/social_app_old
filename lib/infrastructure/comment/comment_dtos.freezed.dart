@@ -23,7 +23,7 @@ class _$CommentDtoTearOff {
       @required
           String body,
       @required
-          String photoUrl,
+          String avatarUrl,
       @required
           String username,
       @required
@@ -35,7 +35,7 @@ class _$CommentDtoTearOff {
     return _CommentDto(
       id: id,
       body: body,
-      photoUrl: photoUrl,
+      avatarUrl: avatarUrl,
       username: username,
       userId: userId,
       serverTimestamp: serverTimestamp,
@@ -57,7 +57,7 @@ mixin _$CommentDto {
   @JsonKey(ignore: true)
   String get id;
   String get body;
-  String get photoUrl;
+  String get avatarUrl;
   String get username;
   String get userId;
   @JsonKey(name: 'server_timestamp')
@@ -77,7 +77,7 @@ abstract class $CommentDtoCopyWith<$Res> {
       {@JsonKey(ignore: true)
           String id,
       String body,
-      String photoUrl,
+      String avatarUrl,
       String username,
       String userId,
       @JsonKey(name: 'server_timestamp')
@@ -97,7 +97,7 @@ class _$CommentDtoCopyWithImpl<$Res> implements $CommentDtoCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object body = freezed,
-    Object photoUrl = freezed,
+    Object avatarUrl = freezed,
     Object username = freezed,
     Object userId = freezed,
     Object serverTimestamp = freezed,
@@ -105,7 +105,7 @@ class _$CommentDtoCopyWithImpl<$Res> implements $CommentDtoCopyWith<$Res> {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       body: body == freezed ? _value.body : body as String,
-      photoUrl: photoUrl == freezed ? _value.photoUrl : photoUrl as String,
+      avatarUrl: avatarUrl == freezed ? _value.avatarUrl : avatarUrl as String,
       username: username == freezed ? _value.username : username as String,
       userId: userId == freezed ? _value.userId : userId as String,
       serverTimestamp: serverTimestamp == freezed
@@ -125,7 +125,7 @@ abstract class _$CommentDtoCopyWith<$Res> implements $CommentDtoCopyWith<$Res> {
       {@JsonKey(ignore: true)
           String id,
       String body,
-      String photoUrl,
+      String avatarUrl,
       String username,
       String userId,
       @JsonKey(name: 'server_timestamp')
@@ -147,7 +147,7 @@ class __$CommentDtoCopyWithImpl<$Res> extends _$CommentDtoCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object body = freezed,
-    Object photoUrl = freezed,
+    Object avatarUrl = freezed,
     Object username = freezed,
     Object userId = freezed,
     Object serverTimestamp = freezed,
@@ -155,7 +155,7 @@ class __$CommentDtoCopyWithImpl<$Res> extends _$CommentDtoCopyWithImpl<$Res>
     return _then(_CommentDto(
       id: id == freezed ? _value.id : id as String,
       body: body == freezed ? _value.body : body as String,
-      photoUrl: photoUrl == freezed ? _value.photoUrl : photoUrl as String,
+      avatarUrl: avatarUrl == freezed ? _value.avatarUrl : avatarUrl as String,
       username: username == freezed ? _value.username : username as String,
       userId: userId == freezed ? _value.userId : userId as String,
       serverTimestamp: serverTimestamp == freezed
@@ -175,7 +175,7 @@ class _$_CommentDto extends _CommentDto {
       @required
           this.body,
       @required
-          this.photoUrl,
+          this.avatarUrl,
       @required
           this.username,
       @required
@@ -185,7 +185,7 @@ class _$_CommentDto extends _CommentDto {
       @ServerTimestampConverter()
           this.serverTimestamp})
       : assert(body != null),
-        assert(photoUrl != null),
+        assert(avatarUrl != null),
         assert(username != null),
         assert(userId != null),
         assert(serverTimestamp != null),
@@ -200,7 +200,7 @@ class _$_CommentDto extends _CommentDto {
   @override
   final String body;
   @override
-  final String photoUrl;
+  final String avatarUrl;
   @override
   final String username;
   @override
@@ -212,7 +212,7 @@ class _$_CommentDto extends _CommentDto {
 
   @override
   String toString() {
-    return 'CommentDto(id: $id, body: $body, photoUrl: $photoUrl, username: $username, userId: $userId, serverTimestamp: $serverTimestamp)';
+    return 'CommentDto(id: $id, body: $body, avatarUrl: $avatarUrl, username: $username, userId: $userId, serverTimestamp: $serverTimestamp)';
   }
 
   @override
@@ -223,9 +223,9 @@ class _$_CommentDto extends _CommentDto {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.body, body) ||
                 const DeepCollectionEquality().equals(other.body, body)) &&
-            (identical(other.photoUrl, photoUrl) ||
+            (identical(other.avatarUrl, avatarUrl) ||
                 const DeepCollectionEquality()
-                    .equals(other.photoUrl, photoUrl)) &&
+                    .equals(other.avatarUrl, avatarUrl)) &&
             (identical(other.username, username) ||
                 const DeepCollectionEquality()
                     .equals(other.username, username)) &&
@@ -241,7 +241,7 @@ class _$_CommentDto extends _CommentDto {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(body) ^
-      const DeepCollectionEquality().hash(photoUrl) ^
+      const DeepCollectionEquality().hash(avatarUrl) ^
       const DeepCollectionEquality().hash(username) ^
       const DeepCollectionEquality().hash(userId) ^
       const DeepCollectionEquality().hash(serverTimestamp);
@@ -264,7 +264,7 @@ abstract class _CommentDto extends CommentDto {
       @required
           String body,
       @required
-          String photoUrl,
+          String avatarUrl,
       @required
           String username,
       @required
@@ -283,7 +283,7 @@ abstract class _CommentDto extends CommentDto {
   @override
   String get body;
   @override
-  String get photoUrl;
+  String get avatarUrl;
   @override
   String get username;
   @override

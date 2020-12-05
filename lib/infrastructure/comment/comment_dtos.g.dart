@@ -9,7 +9,7 @@ part of 'comment_dtos.dart';
 _$_CommentDto _$_$_CommentDtoFromJson(Map<String, dynamic> json) {
   return _$_CommentDto(
     body: json['body'] as String,
-    photoUrl: json['photoUrl'] as String,
+    avatarUrl: json['avatarUrl'] as String,
     username: json['username'] as String,
     userId: json['userId'] as String,
     serverTimestamp:
@@ -20,7 +20,7 @@ _$_CommentDto _$_$_CommentDtoFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_CommentDtoToJson(_$_CommentDto instance) =>
     <String, dynamic>{
       'body': instance.body,
-      'photoUrl': instance.photoUrl,
+      'avatarUrl': instance.avatarUrl,
       'username': instance.username,
       'userId': instance.userId,
       'server_timestamp':

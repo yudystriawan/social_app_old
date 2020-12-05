@@ -97,7 +97,7 @@ class Router extends RouterBase {
         builder: (context) => CommentPage(
           key: args.key,
           post: args.post,
-        ),
+        ).wrappedRoute(context),
         settings: data,
       );
     },

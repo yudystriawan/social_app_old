@@ -12,7 +12,7 @@ class CommentBody extends ValueObject<String> {
   factory CommentBody(String input) {
     assert(input != null);
     return CommentBody._(
-      validateMaxStringLength(input, maxLength),
+      validateMaxStringLength(input, maxLength).flatMap(validateStringNotEmpty),
     );
   }
 

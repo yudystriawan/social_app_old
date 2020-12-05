@@ -45,6 +45,7 @@ dependencies:
   kt_dart: ^0.8.0
   path_provider: ^1.6.24
   rxdart: ^0.24.1
+  timeago: ^2.0.29
   uuid: ^2.2.2
 
 dev_dependencies:

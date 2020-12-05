@@ -16,7 +16,7 @@ abstract class CommentDomain with _$CommentDomain {
     @required UniqueId id,
     @required CommentBody body,
     @required StringSingleLine username,
-    @required PhotoUrl photoUrl,
+    @required PhotoUrl avatarUrl,
     @required StringSingleLine userId,
     Timestamp timestamp,
   }) = _CommentDomain;
@@ -25,14 +25,14 @@ abstract class CommentDomain with _$CommentDomain {
         id: UniqueId(),
         body: CommentBody(''),
         username: StringSingleLine(''),
-        photoUrl: PhotoUrl(''),
+        avatarUrl: PhotoUrl(''),
         userId: StringSingleLine(''),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
     return body.failureOrUnit
         .andThen(username.failureOrUnit)
-        .andThen(photoUrl.failureOrUnit)
+        .andThen(avatarUrl.failureOrUnit)
         .andThen(userId.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }

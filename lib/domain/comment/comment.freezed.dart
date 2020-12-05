@@ -18,14 +18,14 @@ class _$CommentDomainTearOff {
       {@required UniqueId id,
       @required CommentBody body,
       @required StringSingleLine username,
-      @required PhotoUrl photoUrl,
+      @required PhotoUrl avatarUrl,
       @required StringSingleLine userId,
       Timestamp timestamp}) {
     return _CommentDomain(
       id: id,
       body: body,
       username: username,
-      photoUrl: photoUrl,
+      avatarUrl: avatarUrl,
       userId: userId,
       timestamp: timestamp,
     );
@@ -41,7 +41,7 @@ mixin _$CommentDomain {
   UniqueId get id;
   CommentBody get body;
   StringSingleLine get username;
-  PhotoUrl get photoUrl;
+  PhotoUrl get avatarUrl;
   StringSingleLine get userId;
   Timestamp get timestamp;
 
@@ -57,7 +57,7 @@ abstract class $CommentDomainCopyWith<$Res> {
       {UniqueId id,
       CommentBody body,
       StringSingleLine username,
-      PhotoUrl photoUrl,
+      PhotoUrl avatarUrl,
       StringSingleLine userId,
       Timestamp timestamp});
 }
@@ -76,7 +76,7 @@ class _$CommentDomainCopyWithImpl<$Res>
     Object id = freezed,
     Object body = freezed,
     Object username = freezed,
-    Object photoUrl = freezed,
+    Object avatarUrl = freezed,
     Object userId = freezed,
     Object timestamp = freezed,
   }) {
@@ -85,7 +85,8 @@ class _$CommentDomainCopyWithImpl<$Res>
       body: body == freezed ? _value.body : body as CommentBody,
       username:
           username == freezed ? _value.username : username as StringSingleLine,
-      photoUrl: photoUrl == freezed ? _value.photoUrl : photoUrl as PhotoUrl,
+      avatarUrl:
+          avatarUrl == freezed ? _value.avatarUrl : avatarUrl as PhotoUrl,
       userId: userId == freezed ? _value.userId : userId as StringSingleLine,
       timestamp:
           timestamp == freezed ? _value.timestamp : timestamp as Timestamp,
@@ -104,7 +105,7 @@ abstract class _$CommentDomainCopyWith<$Res>
       {UniqueId id,
       CommentBody body,
       StringSingleLine username,
-      PhotoUrl photoUrl,
+      PhotoUrl avatarUrl,
       StringSingleLine userId,
       Timestamp timestamp});
 }
@@ -125,7 +126,7 @@ class __$CommentDomainCopyWithImpl<$Res>
     Object id = freezed,
     Object body = freezed,
     Object username = freezed,
-    Object photoUrl = freezed,
+    Object avatarUrl = freezed,
     Object userId = freezed,
     Object timestamp = freezed,
   }) {
@@ -134,7 +135,8 @@ class __$CommentDomainCopyWithImpl<$Res>
       body: body == freezed ? _value.body : body as CommentBody,
       username:
           username == freezed ? _value.username : username as StringSingleLine,
-      photoUrl: photoUrl == freezed ? _value.photoUrl : photoUrl as PhotoUrl,
+      avatarUrl:
+          avatarUrl == freezed ? _value.avatarUrl : avatarUrl as PhotoUrl,
       userId: userId == freezed ? _value.userId : userId as StringSingleLine,
       timestamp:
           timestamp == freezed ? _value.timestamp : timestamp as Timestamp,
@@ -148,13 +150,13 @@ class _$_CommentDomain extends _CommentDomain {
       {@required this.id,
       @required this.body,
       @required this.username,
-      @required this.photoUrl,
+      @required this.avatarUrl,
       @required this.userId,
       this.timestamp})
       : assert(id != null),
         assert(body != null),
         assert(username != null),
-        assert(photoUrl != null),
+        assert(avatarUrl != null),
         assert(userId != null),
         super._();
 
@@ -165,7 +167,7 @@ class _$_CommentDomain extends _CommentDomain {
   @override
   final StringSingleLine username;
   @override
-  final PhotoUrl photoUrl;
+  final PhotoUrl avatarUrl;
   @override
   final StringSingleLine userId;
   @override
@@ -173,7 +175,7 @@ class _$_CommentDomain extends _CommentDomain {
 
   @override
   String toString() {
-    return 'CommentDomain(id: $id, body: $body, username: $username, photoUrl: $photoUrl, userId: $userId, timestamp: $timestamp)';
+    return 'CommentDomain(id: $id, body: $body, username: $username, avatarUrl: $avatarUrl, userId: $userId, timestamp: $timestamp)';
   }
 
   @override
@@ -187,9 +189,9 @@ class _$_CommentDomain extends _CommentDomain {
             (identical(other.username, username) ||
                 const DeepCollectionEquality()
                     .equals(other.username, username)) &&
-            (identical(other.photoUrl, photoUrl) ||
+            (identical(other.avatarUrl, avatarUrl) ||
                 const DeepCollectionEquality()
-                    .equals(other.photoUrl, photoUrl)) &&
+                    .equals(other.avatarUrl, avatarUrl)) &&
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.timestamp, timestamp) ||
@@ -203,7 +205,7 @@ class _$_CommentDomain extends _CommentDomain {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(username) ^
-      const DeepCollectionEquality().hash(photoUrl) ^
+      const DeepCollectionEquality().hash(avatarUrl) ^
       const DeepCollectionEquality().hash(userId) ^
       const DeepCollectionEquality().hash(timestamp);
 
@@ -218,7 +220,7 @@ abstract class _CommentDomain extends CommentDomain {
       {@required UniqueId id,
       @required CommentBody body,
       @required StringSingleLine username,
-      @required PhotoUrl photoUrl,
+      @required PhotoUrl avatarUrl,
       @required StringSingleLine userId,
       Timestamp timestamp}) = _$_CommentDomain;
 
@@ -229,7 +231,7 @@ abstract class _CommentDomain extends CommentDomain {
   @override
   StringSingleLine get username;
   @override
-  PhotoUrl get photoUrl;
+  PhotoUrl get avatarUrl;
   @override
   StringSingleLine get userId;
   @override
