@@ -33,8 +33,9 @@ class PostFooter extends StatelessWidget {
                       onPressed: () => context
                           .read<PostActorBloc>()
                           .add(PostActorEvent.toggleLike(
-                            post.userId.getOrCrash(),
-                            post.id.getOrCrash(),
+                            currentUser: myUser,
+                            ownerId: post.userId.getOrCrash(),
+                            post: post,
                           )),
                     ),
                     IconButton(

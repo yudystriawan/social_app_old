@@ -14,10 +14,14 @@ class _$PostActorEventTearOff {
   const _$PostActorEventTearOff();
 
 // ignore: unused_element
-  _ToggleLike toggleLike(String ownerId, String postId) {
+  _ToggleLike toggleLike(
+      {@required UserDomain currentUser,
+      @required PostDomain post,
+      @required String ownerId}) {
     return _ToggleLike(
-      ownerId,
-      postId,
+      currentUser: currentUser,
+      post: post,
+      ownerId: ownerId,
     );
   }
 }
@@ -28,16 +32,19 @@ const $PostActorEvent = _$PostActorEventTearOff();
 
 /// @nodoc
 mixin _$PostActorEvent {
+  UserDomain get currentUser;
+  PostDomain get post;
   String get ownerId;
-  String get postId;
 
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult toggleLike(String ownerId, String postId),
+    @required
+        TResult toggleLike(
+            UserDomain currentUser, PostDomain post, String ownerId),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult toggleLike(String ownerId, String postId),
+    TResult toggleLike(UserDomain currentUser, PostDomain post, String ownerId),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -58,7 +65,10 @@ abstract class $PostActorEventCopyWith<$Res> {
   factory $PostActorEventCopyWith(
           PostActorEvent value, $Res Function(PostActorEvent) then) =
       _$PostActorEventCopyWithImpl<$Res>;
-  $Res call({String ownerId, String postId});
+  $Res call({UserDomain currentUser, PostDomain post, String ownerId});
+
+  $UserDomainCopyWith<$Res> get currentUser;
+  $PostDomainCopyWith<$Res> get post;
 }
 
 /// @nodoc
@@ -72,13 +82,37 @@ class _$PostActorEventCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object currentUser = freezed,
+    Object post = freezed,
     Object ownerId = freezed,
-    Object postId = freezed,
   }) {
     return _then(_value.copyWith(
+      currentUser: currentUser == freezed
+          ? _value.currentUser
+          : currentUser as UserDomain,
+      post: post == freezed ? _value.post : post as PostDomain,
       ownerId: ownerId == freezed ? _value.ownerId : ownerId as String,
-      postId: postId == freezed ? _value.postId : postId as String,
     ));
+  }
+
+  @override
+  $UserDomainCopyWith<$Res> get currentUser {
+    if (_value.currentUser == null) {
+      return null;
+    }
+    return $UserDomainCopyWith<$Res>(_value.currentUser, (value) {
+      return _then(_value.copyWith(currentUser: value));
+    });
+  }
+
+  @override
+  $PostDomainCopyWith<$Res> get post {
+    if (_value.post == null) {
+      return null;
+    }
+    return $PostDomainCopyWith<$Res>(_value.post, (value) {
+      return _then(_value.copyWith(post: value));
+    });
   }
 }
 
@@ -89,7 +123,12 @@ abstract class _$ToggleLikeCopyWith<$Res>
           _ToggleLike value, $Res Function(_ToggleLike) then) =
       __$ToggleLikeCopyWithImpl<$Res>;
   @override
-  $Res call({String ownerId, String postId});
+  $Res call({UserDomain currentUser, PostDomain post, String ownerId});
+
+  @override
+  $UserDomainCopyWith<$Res> get currentUser;
+  @override
+  $PostDomainCopyWith<$Res> get post;
 }
 
 /// @nodoc
@@ -104,48 +143,59 @@ class __$ToggleLikeCopyWithImpl<$Res> extends _$PostActorEventCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object currentUser = freezed,
+    Object post = freezed,
     Object ownerId = freezed,
-    Object postId = freezed,
   }) {
     return _then(_ToggleLike(
-      ownerId == freezed ? _value.ownerId : ownerId as String,
-      postId == freezed ? _value.postId : postId as String,
+      currentUser: currentUser == freezed
+          ? _value.currentUser
+          : currentUser as UserDomain,
+      post: post == freezed ? _value.post : post as PostDomain,
+      ownerId: ownerId == freezed ? _value.ownerId : ownerId as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_ToggleLike implements _ToggleLike {
-  const _$_ToggleLike(this.ownerId, this.postId)
-      : assert(ownerId != null),
-        assert(postId != null);
+  const _$_ToggleLike(
+      {@required this.currentUser, @required this.post, @required this.ownerId})
+      : assert(currentUser != null),
+        assert(post != null),
+        assert(ownerId != null);
 
   @override
-  final String ownerId;
+  final UserDomain currentUser;
   @override
-  final String postId;
+  final PostDomain post;
+  @override
+  final String ownerId;
 
   @override
   String toString() {
-    return 'PostActorEvent.toggleLike(ownerId: $ownerId, postId: $postId)';
+    return 'PostActorEvent.toggleLike(currentUser: $currentUser, post: $post, ownerId: $ownerId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ToggleLike &&
-            (identical(other.ownerId, ownerId) ||
+            (identical(other.currentUser, currentUser) ||
                 const DeepCollectionEquality()
-                    .equals(other.ownerId, ownerId)) &&
-            (identical(other.postId, postId) ||
-                const DeepCollectionEquality().equals(other.postId, postId)));
+                    .equals(other.currentUser, currentUser)) &&
+            (identical(other.post, post) ||
+                const DeepCollectionEquality().equals(other.post, post)) &&
+            (identical(other.ownerId, ownerId) ||
+                const DeepCollectionEquality().equals(other.ownerId, ownerId)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(ownerId) ^
-      const DeepCollectionEquality().hash(postId);
+      const DeepCollectionEquality().hash(currentUser) ^
+      const DeepCollectionEquality().hash(post) ^
+      const DeepCollectionEquality().hash(ownerId);
 
   @override
   _$ToggleLikeCopyWith<_ToggleLike> get copyWith =>
@@ -154,21 +204,23 @@ class _$_ToggleLike implements _ToggleLike {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult toggleLike(String ownerId, String postId),
+    @required
+        TResult toggleLike(
+            UserDomain currentUser, PostDomain post, String ownerId),
   }) {
     assert(toggleLike != null);
-    return toggleLike(ownerId, postId);
+    return toggleLike(currentUser, post, ownerId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult toggleLike(String ownerId, String postId),
+    TResult toggleLike(UserDomain currentUser, PostDomain post, String ownerId),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleLike != null) {
-      return toggleLike(ownerId, postId);
+      return toggleLike(currentUser, post, ownerId);
     }
     return orElse();
   }
@@ -197,12 +249,17 @@ class _$_ToggleLike implements _ToggleLike {
 }
 
 abstract class _ToggleLike implements PostActorEvent {
-  const factory _ToggleLike(String ownerId, String postId) = _$_ToggleLike;
+  const factory _ToggleLike(
+      {@required UserDomain currentUser,
+      @required PostDomain post,
+      @required String ownerId}) = _$_ToggleLike;
 
   @override
-  String get ownerId;
+  UserDomain get currentUser;
   @override
-  String get postId;
+  PostDomain get post;
+  @override
+  String get ownerId;
   @override
   _$ToggleLikeCopyWith<_ToggleLike> get copyWith;
 }

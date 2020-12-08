@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/post/actor/post_actor_bloc.dart';
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/presentation/common/widgets/my_cached_network_image.dart';
@@ -56,33 +57,41 @@ class _PostImageState extends State<PostImage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onDoubleTap: () {
-        context.read<PostActorBloc>().add(PostActorEvent.toggleLike(
-              widget.post.userId.getOrCrash(),
-              widget.post.id.getOrCrash(),
-            ));
-      },
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          MyCachedNetworkImage(
-            imageUrl: widget.post.imageUrl.getOrCrash(),
-          ),
-          BlocListener<PostActorBloc, PostActorState>(
-            listener: (context, state) {
-              state.maybeMap(
-                  orElse: () {},
-                  likeSuccess: (state) {
-                    setState(() {
-                      isLiked = state.isLike;
-                    });
-                  });
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        return state.maybeMap(
+          orElse: () => Container(),
+          authenticated: (state) => GestureDetector(
+            onDoubleTap: () {
+              context.read<PostActorBloc>().add(PostActorEvent.toggleLike(
+                    post: widget.post,
+                    ownerId: widget.post.userId.getOrCrash(),
+                    currentUser: state.user,
+                  ));
             },
-            child: buildHeatBeatAnimation(isLiked: isLiked),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                MyCachedNetworkImage(
+                  imageUrl: widget.post.imageUrl.getOrCrash(),
+                ),
+                BlocListener<PostActorBloc, PostActorState>(
+                  listener: (context, state) {
+                    state.maybeMap(
+                        orElse: () {},
+                        likeSuccess: (state) {
+                          setState(() {
+                            isLiked = state.isLike;
+                          });
+                        });
+                  },
+                  child: buildHeatBeatAnimation(isLiked: isLiked),
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
