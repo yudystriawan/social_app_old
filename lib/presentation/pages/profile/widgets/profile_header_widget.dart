@@ -23,63 +23,68 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
+    return Container(
+      constraints: const BoxConstraints(minHeight: 150),
+      child: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              radius: 40.0,
-              backgroundColor: Colors.grey,
-              backgroundImage:
-                  CachedNetworkImageProvider(user.photoUrl.getOrCrash()),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 40.0,
+                  backgroundColor: Colors.grey,
+                  backgroundImage:
+                      CachedNetworkImageProvider(user.photoUrl.getOrCrash()),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
                     children: [
-                      ColumnCount(label: 'Posts', count: posts.length),
-                      const ColumnCount(label: 'Followers', count: 0),
-                      const ColumnCount(label: 'Following', count: 0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ColumnCount(label: 'Posts', count: posts.length),
+                          const ColumnCount(label: 'Followers', count: 0),
+                          const ColumnCount(label: 'Following', count: 0),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      BlocBuilder<AuthBloc, AuthState>(
+                        builder: (context, state) {
+                          return state.maybeMap(
+                            orElse: () => Container(),
+                            authenticated: (state) {
+                              if (state.user.id == user.id) {
+                                return OutlineButtonProfile(
+                                  onPressed: () =>
+                                      ExtendedNavigator.of(context).push(
+                                    Routes.editProfilePage,
+                                    arguments: EditProfilePageArguments(
+                                        editedUser: state.user),
+                                  ),
+                                  label: 'Edit Profile',
+                                );
+                              } else {
+                                return const OutlineButtonProfile(
+                                  onPressed: null,
+                                  label: 'Follow/Unfollow',
+                                );
+                              }
+                            },
+                          );
+                        },
+                      )
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  BlocBuilder<AuthBloc, AuthState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        orElse: () => Container(),
-                        authenticated: (state) {
-                          if (state.user.id == user.id) {
-                            return OutlineButtonProfile(
-                              onPressed: () =>
-                                  ExtendedNavigator.of(context).push(
-                                Routes.editProfilePage,
-                                arguments: EditProfilePageArguments(
-                                    editedUser: state.user),
-                              ),
-                              label: 'Edit Profile',
-                            );
-                          } else {
-                            return const OutlineButtonProfile(
-                              onPressed: null,
-                              label: 'Follow/Unfollow',
-                            );
-                          }
-                        },
-                      );
-                    },
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
+            const SizedBox(height: 16),
+            ColumnProfileInfo(user: user),
           ],
         ),
-        const SizedBox(height: 16),
-        ColumnProfileInfo(user: user),
-      ],
+      ),
     );
   }
 }

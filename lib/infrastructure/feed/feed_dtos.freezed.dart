@@ -32,6 +32,8 @@ class _$FeedDtoTearOff {
           String userAvatarUrl,
       @required
           String thumbnailUrl,
+      @JsonKey(name: 'comment_body')
+          String commentBody,
       @required
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
@@ -44,6 +46,7 @@ class _$FeedDtoTearOff {
       postId: postId,
       userAvatarUrl: userAvatarUrl,
       thumbnailUrl: thumbnailUrl,
+      commentBody: commentBody,
       serverTimestamp: serverTimestamp,
     );
   }
@@ -68,6 +71,8 @@ mixin _$FeedDto {
   String get postId;
   String get userAvatarUrl;
   String get thumbnailUrl;
+  @JsonKey(name: 'comment_body')
+  String get commentBody;
   @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()
   FieldValue get serverTimestamp;
@@ -89,6 +94,8 @@ abstract class $FeedDtoCopyWith<$Res> {
       String postId,
       String userAvatarUrl,
       String thumbnailUrl,
+      @JsonKey(name: 'comment_body')
+          String commentBody,
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
           FieldValue serverTimestamp});
@@ -111,6 +118,7 @@ class _$FeedDtoCopyWithImpl<$Res> implements $FeedDtoCopyWith<$Res> {
     Object postId = freezed,
     Object userAvatarUrl = freezed,
     Object thumbnailUrl = freezed,
+    Object commentBody = freezed,
     Object serverTimestamp = freezed,
   }) {
     return _then(_value.copyWith(
@@ -125,6 +133,8 @@ class _$FeedDtoCopyWithImpl<$Res> implements $FeedDtoCopyWith<$Res> {
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl as String,
+      commentBody:
+          commentBody == freezed ? _value.commentBody : commentBody as String,
       serverTimestamp: serverTimestamp == freezed
           ? _value.serverTimestamp
           : serverTimestamp as FieldValue,
@@ -146,6 +156,8 @@ abstract class _$FeedDtoCopyWith<$Res> implements $FeedDtoCopyWith<$Res> {
       String postId,
       String userAvatarUrl,
       String thumbnailUrl,
+      @JsonKey(name: 'comment_body')
+          String commentBody,
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
           FieldValue serverTimestamp});
@@ -169,6 +181,7 @@ class __$FeedDtoCopyWithImpl<$Res> extends _$FeedDtoCopyWithImpl<$Res>
     Object postId = freezed,
     Object userAvatarUrl = freezed,
     Object thumbnailUrl = freezed,
+    Object commentBody = freezed,
     Object serverTimestamp = freezed,
   }) {
     return _then(_FeedDto(
@@ -183,6 +196,8 @@ class __$FeedDtoCopyWithImpl<$Res> extends _$FeedDtoCopyWithImpl<$Res>
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl as String,
+      commentBody:
+          commentBody == freezed ? _value.commentBody : commentBody as String,
       serverTimestamp: serverTimestamp == freezed
           ? _value.serverTimestamp
           : serverTimestamp as FieldValue,
@@ -209,6 +224,8 @@ class _$_FeedDto extends _FeedDto {
           this.userAvatarUrl,
       @required
           this.thumbnailUrl,
+      @JsonKey(name: 'comment_body')
+          this.commentBody,
       @required
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
@@ -241,13 +258,16 @@ class _$_FeedDto extends _FeedDto {
   @override
   final String thumbnailUrl;
   @override
+  @JsonKey(name: 'comment_body')
+  final String commentBody;
+  @override
   @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()
   final FieldValue serverTimestamp;
 
   @override
   String toString() {
-    return 'FeedDto(id: $id, type: $type, username: $username, userId: $userId, postId: $postId, userAvatarUrl: $userAvatarUrl, thumbnailUrl: $thumbnailUrl, serverTimestamp: $serverTimestamp)';
+    return 'FeedDto(id: $id, type: $type, username: $username, userId: $userId, postId: $postId, userAvatarUrl: $userAvatarUrl, thumbnailUrl: $thumbnailUrl, commentBody: $commentBody, serverTimestamp: $serverTimestamp)';
   }
 
   @override
@@ -271,6 +291,9 @@ class _$_FeedDto extends _FeedDto {
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.thumbnailUrl, thumbnailUrl)) &&
+            (identical(other.commentBody, commentBody) ||
+                const DeepCollectionEquality()
+                    .equals(other.commentBody, commentBody)) &&
             (identical(other.serverTimestamp, serverTimestamp) ||
                 const DeepCollectionEquality()
                     .equals(other.serverTimestamp, serverTimestamp)));
@@ -286,6 +309,7 @@ class _$_FeedDto extends _FeedDto {
       const DeepCollectionEquality().hash(postId) ^
       const DeepCollectionEquality().hash(userAvatarUrl) ^
       const DeepCollectionEquality().hash(thumbnailUrl) ^
+      const DeepCollectionEquality().hash(commentBody) ^
       const DeepCollectionEquality().hash(serverTimestamp);
 
   @override
@@ -315,6 +339,8 @@ abstract class _FeedDto extends FeedDto {
           String userAvatarUrl,
       @required
           String thumbnailUrl,
+      @JsonKey(name: 'comment_body')
+          String commentBody,
       @required
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
@@ -337,6 +363,9 @@ abstract class _FeedDto extends FeedDto {
   String get userAvatarUrl;
   @override
   String get thumbnailUrl;
+  @override
+  @JsonKey(name: 'comment_body')
+  String get commentBody;
   @override
   @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()

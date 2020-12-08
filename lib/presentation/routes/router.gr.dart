@@ -18,6 +18,7 @@ import '../pages/home/home_page.dart';
 import '../pages/posts/detail/post_detail_page.dart';
 import '../pages/posts/form/post_form_page.dart';
 import '../pages/profile/edit/edit_page.dart';
+import '../pages/profile/profile_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
 import '../pages/splash/splash_page.dart';
 
@@ -29,6 +30,7 @@ class Routes {
   static const String postFormPage = '/post-form-page';
   static const String commentPage = '/comment-page';
   static const String postDetailPage = '/post-detail-page';
+  static const String profilePage = '/profile-page';
   static const all = <String>{
     splashPage,
     signInPage,
@@ -37,6 +39,7 @@ class Routes {
     postFormPage,
     commentPage,
     postDetailPage,
+    profilePage,
   };
 }
 
@@ -51,6 +54,7 @@ class Router extends RouterBase {
     RouteDef(Routes.postFormPage, page: PostFormPage),
     RouteDef(Routes.commentPage, page: CommentPage),
     RouteDef(Routes.postDetailPage, page: PostDetailPage),
+    RouteDef(Routes.profilePage, page: ProfilePage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -117,6 +121,16 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    ProfilePage: (data) {
+      final args = data.getArgs<ProfilePageArguments>(nullOk: false);
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => ProfilePage(
+          key: args.key,
+          userId: args.userId,
+        ),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -157,4 +171,11 @@ class PostDetailPageArguments {
   final StringSingleLine postId;
   PostDetailPageArguments(
       {this.key, @required this.userId, @required this.postId});
+}
+
+/// ProfilePage arguments holder class
+class ProfilePageArguments {
+  final Key key;
+  final String userId;
+  ProfilePageArguments({this.key, @required this.userId});
 }

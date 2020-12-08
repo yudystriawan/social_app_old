@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:my_social_app/domain/comment/value_objects.dart';
 import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:my_social_app/domain/feed/feed.dart';
 import 'package:my_social_app/domain/user/value_objects.dart';
@@ -20,6 +21,7 @@ abstract class FeedDto with _$FeedDto {
     @required String postId,
     @required String userAvatarUrl,
     @required String thumbnailUrl,
+    @JsonKey(name: 'comment_body') String commentBody,
     @JsonKey(name: 'server_timestamp')
     @required
     @ServerTimestampConverter()
@@ -37,6 +39,7 @@ abstract class FeedDto with _$FeedDto {
       postId: feed.postId.getOrCrash(),
       userAvatarUrl: feed.userAvatarUrl.getOrCrash(),
       thumbnailUrl: feed.thumbnailUrl.getOrCrash(),
+      commentBody: feed.commentBody.getOrCrash(),
       serverTimestamp: FieldValue.serverTimestamp(),
     );
   }
@@ -54,6 +57,7 @@ abstract class FeedDto with _$FeedDto {
       postId: StringSingleLine(postId),
       userAvatarUrl: PhotoUrl(userAvatarUrl),
       thumbnailUrl: PhotoUrl(thumbnailUrl),
+      commentBody: CommentBody(commentBody),
       timestamp: doc['server_timestamp'] as Timestamp,
     );
   }

@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                         create: (context) => getIt<UserSearchBloc>(),
                         child: const SearchPage(),
                       ),
-                      ProfilePage(user: user),
+                      ProfilePage(userId: user.id.getOrCrash()),
                     ],
                   );
                 },

@@ -14,6 +14,7 @@ _$_FeedDto _$_$_FeedDtoFromJson(Map<String, dynamic> json) {
     postId: json['postId'] as String,
     userAvatarUrl: json['userAvatarUrl'] as String,
     thumbnailUrl: json['thumbnailUrl'] as String,
+    commentBody: json['comment_body'] as String,
     serverTimestamp:
         const ServerTimestampConverter().fromJson(json['server_timestamp']),
   );
@@ -27,6 +28,7 @@ Map<String, dynamic> _$_$_FeedDtoToJson(_$_FeedDto instance) =>
       'postId': instance.postId,
       'userAvatarUrl': instance.userAvatarUrl,
       'thumbnailUrl': instance.thumbnailUrl,
+      'comment_body': instance.commentBody,
       'server_timestamp':
           const ServerTimestampConverter().toJson(instance.serverTimestamp),
     };

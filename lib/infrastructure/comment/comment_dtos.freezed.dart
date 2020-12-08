@@ -28,8 +28,6 @@ class _$CommentDtoTearOff {
           String username,
       @required
           String userId,
-      @JsonKey(name: 'comment_body')
-          String commentBody,
       @required
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
@@ -40,7 +38,6 @@ class _$CommentDtoTearOff {
       avatarUrl: avatarUrl,
       username: username,
       userId: userId,
-      commentBody: commentBody,
       serverTimestamp: serverTimestamp,
     );
   }
@@ -63,8 +60,6 @@ mixin _$CommentDto {
   String get avatarUrl;
   String get username;
   String get userId;
-  @JsonKey(name: 'comment_body')
-  String get commentBody;
   @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()
   FieldValue get serverTimestamp;
@@ -85,8 +80,6 @@ abstract class $CommentDtoCopyWith<$Res> {
       String avatarUrl,
       String username,
       String userId,
-      @JsonKey(name: 'comment_body')
-          String commentBody,
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
           FieldValue serverTimestamp});
@@ -107,7 +100,6 @@ class _$CommentDtoCopyWithImpl<$Res> implements $CommentDtoCopyWith<$Res> {
     Object avatarUrl = freezed,
     Object username = freezed,
     Object userId = freezed,
-    Object commentBody = freezed,
     Object serverTimestamp = freezed,
   }) {
     return _then(_value.copyWith(
@@ -116,8 +108,6 @@ class _$CommentDtoCopyWithImpl<$Res> implements $CommentDtoCopyWith<$Res> {
       avatarUrl: avatarUrl == freezed ? _value.avatarUrl : avatarUrl as String,
       username: username == freezed ? _value.username : username as String,
       userId: userId == freezed ? _value.userId : userId as String,
-      commentBody:
-          commentBody == freezed ? _value.commentBody : commentBody as String,
       serverTimestamp: serverTimestamp == freezed
           ? _value.serverTimestamp
           : serverTimestamp as FieldValue,
@@ -138,8 +128,6 @@ abstract class _$CommentDtoCopyWith<$Res> implements $CommentDtoCopyWith<$Res> {
       String avatarUrl,
       String username,
       String userId,
-      @JsonKey(name: 'comment_body')
-          String commentBody,
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
           FieldValue serverTimestamp});
@@ -162,7 +150,6 @@ class __$CommentDtoCopyWithImpl<$Res> extends _$CommentDtoCopyWithImpl<$Res>
     Object avatarUrl = freezed,
     Object username = freezed,
     Object userId = freezed,
-    Object commentBody = freezed,
     Object serverTimestamp = freezed,
   }) {
     return _then(_CommentDto(
@@ -171,8 +158,6 @@ class __$CommentDtoCopyWithImpl<$Res> extends _$CommentDtoCopyWithImpl<$Res>
       avatarUrl: avatarUrl == freezed ? _value.avatarUrl : avatarUrl as String,
       username: username == freezed ? _value.username : username as String,
       userId: userId == freezed ? _value.userId : userId as String,
-      commentBody:
-          commentBody == freezed ? _value.commentBody : commentBody as String,
       serverTimestamp: serverTimestamp == freezed
           ? _value.serverTimestamp
           : serverTimestamp as FieldValue,
@@ -195,8 +180,6 @@ class _$_CommentDto extends _CommentDto with DiagnosticableTreeMixin {
           this.username,
       @required
           this.userId,
-      @JsonKey(name: 'comment_body')
-          this.commentBody,
       @required
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
@@ -223,16 +206,13 @@ class _$_CommentDto extends _CommentDto with DiagnosticableTreeMixin {
   @override
   final String userId;
   @override
-  @JsonKey(name: 'comment_body')
-  final String commentBody;
-  @override
   @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()
   final FieldValue serverTimestamp;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CommentDto(id: $id, body: $body, avatarUrl: $avatarUrl, username: $username, userId: $userId, commentBody: $commentBody, serverTimestamp: $serverTimestamp)';
+    return 'CommentDto(id: $id, body: $body, avatarUrl: $avatarUrl, username: $username, userId: $userId, serverTimestamp: $serverTimestamp)';
   }
 
   @override
@@ -245,7 +225,6 @@ class _$_CommentDto extends _CommentDto with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('avatarUrl', avatarUrl))
       ..add(DiagnosticsProperty('username', username))
       ..add(DiagnosticsProperty('userId', userId))
-      ..add(DiagnosticsProperty('commentBody', commentBody))
       ..add(DiagnosticsProperty('serverTimestamp', serverTimestamp));
   }
 
@@ -265,9 +244,6 @@ class _$_CommentDto extends _CommentDto with DiagnosticableTreeMixin {
                     .equals(other.username, username)) &&
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
-            (identical(other.commentBody, commentBody) ||
-                const DeepCollectionEquality()
-                    .equals(other.commentBody, commentBody)) &&
             (identical(other.serverTimestamp, serverTimestamp) ||
                 const DeepCollectionEquality()
                     .equals(other.serverTimestamp, serverTimestamp)));
@@ -281,7 +257,6 @@ class _$_CommentDto extends _CommentDto with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(avatarUrl) ^
       const DeepCollectionEquality().hash(username) ^
       const DeepCollectionEquality().hash(userId) ^
-      const DeepCollectionEquality().hash(commentBody) ^
       const DeepCollectionEquality().hash(serverTimestamp);
 
   @override
@@ -307,8 +282,6 @@ abstract class _CommentDto extends CommentDto {
           String username,
       @required
           String userId,
-      @JsonKey(name: 'comment_body')
-          String commentBody,
       @required
       @JsonKey(name: 'server_timestamp')
       @ServerTimestampConverter()
@@ -328,9 +301,6 @@ abstract class _CommentDto extends CommentDto {
   String get username;
   @override
   String get userId;
-  @override
-  @JsonKey(name: 'comment_body')
-  String get commentBody;
   @override
   @JsonKey(name: 'server_timestamp')
   @ServerTimestampConverter()

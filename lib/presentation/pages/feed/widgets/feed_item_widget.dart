@@ -32,8 +32,9 @@ class FeedItem extends StatelessWidget {
       ],
       child: ListTile(
         title: GestureDetector(
-          onTap: () => FlushbarHelper.createInformation(message: 'show profile')
-              .show(context),
+          onTap: () => ExtendedNavigator.of(context).push(Routes.profilePage,
+              arguments:
+                  ProfilePageArguments(userId: feed.userId.getOrCrash())),
           child: RichText(
             overflow: TextOverflow.ellipsis,
             text: TextSpan(

@@ -20,7 +20,6 @@ abstract class CommentDto with _$CommentDto {
     @required String avatarUrl,
     @required String username,
     @required String userId,
-    @JsonKey(name: 'comment_body') String commentBody,
     @JsonKey(name: 'server_timestamp')
     @required
     @ServerTimestampConverter()

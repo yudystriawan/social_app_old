@@ -4,6 +4,7 @@ import 'package:my_social_app/presentation/pages/home/home_page.dart';
 import 'package:my_social_app/presentation/pages/posts/detail/post_detail_page.dart';
 import 'package:my_social_app/presentation/pages/posts/form/post_form_page.dart';
 import 'package:my_social_app/presentation/pages/profile/edit/edit_page.dart';
+import 'package:my_social_app/presentation/pages/profile/profile_page.dart';
 import 'package:my_social_app/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:my_social_app/presentation/pages/splash/splash_page.dart';
 
@@ -16,6 +17,7 @@ import 'package:my_social_app/presentation/pages/splash/splash_page.dart';
     AdaptiveRoute(page: PostFormPage),
     AdaptiveRoute(page: CommentPage),
     AdaptiveRoute(page: PostDetailPage),
+    AdaptiveRoute(page: ProfilePage),
   ],
 )
 class $Router {}
