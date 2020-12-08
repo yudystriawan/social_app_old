@@ -39,21 +39,29 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
 
     final isNotMyPost = event.post.userId.getOrCrash() != event.ownerId;
 
-    if (failureOrSuccess.isRight() &&
-        failureOrSuccess.fold((l) => false, (isLike) => isLike) &&
-        isNotMyPost) {
+    if (failureOrSuccess.isRight() && isNotMyPost) {
       final feed = FeedDomain.empty();
 
-      await _feedRepository.create(
-        ownerUserId: StringSingleLine(event.ownerId),
-        feed: feed.copyWith.call(
-            type: StringSingleLine('like'),
-            username: StringSingleLine(event.currentUser.username.getOrCrash()),
-            userId: StringSingleLine(event.currentUser.id.getOrCrash()),
-            postId: StringSingleLine(event.post.id.getOrCrash()),
-            userAvatarUrl: PhotoUrl(event.currentUser.photoUrl.getOrCrash()),
-            thumbnailUrl: PhotoUrl(event.post.imageUrl.getOrCrash())),
-      );
+      final isLike = failureOrSuccess.fold((l) => false, (isLike) => isLike);
+
+      if (isLike) {
+        await _feedRepository.create(
+          ownerUserId: StringSingleLine(event.ownerId),
+          feed: feed.copyWith.call(
+              type: StringSingleLine('like'),
+              username:
+                  StringSingleLine(event.currentUser.username.getOrCrash()),
+              userId: StringSingleLine(event.currentUser.id.getOrCrash()),
+              postId: StringSingleLine(event.post.id.getOrCrash()),
+              userAvatarUrl: PhotoUrl(event.currentUser.photoUrl.getOrCrash()),
+              thumbnailUrl: PhotoUrl(event.post.imageUrl.getOrCrash())),
+        );
+      } else {
+        await _feedRepository.delete(
+          ownerUserId: StringSingleLine(event.ownerId),
+          postId: StringSingleLine(event.post.id.getOrCrash()),
+        );
+      }
     }
 
     yield failureOrSuccess.fold(

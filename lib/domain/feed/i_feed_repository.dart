@@ -9,4 +9,8 @@ abstract class IFeedRepository {
     @required StringSingleLine ownerUserId,
     @required FeedDomain feed,
   });
+  Future<Either<FeedFailure, Unit>> delete({
+    @required StringSingleLine ownerUserId,
+    @required StringSingleLine postId,
+  });
 }
