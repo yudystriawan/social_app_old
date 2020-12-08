@@ -38,18 +38,7 @@ class _ProfilePageState extends State<ProfilePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.exit_to_app),
-            onPressed: () =>
-                context.read<AuthBloc>().add(const AuthEvent.signedOut()),
-          ),
-        ],
-      ),
-      body: MultiBlocProvider(
+    return MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) => getIt<PostByUserWatcherBloc>()
@@ -62,87 +51,102 @@ class _ProfilePageState extends State<ProfilePage>
               ..add(UserGetByIdEvent.getUserById(widget.userId)),
           )
         ],
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: BlocBuilder<PostByUserWatcherBloc, PostByUserWatcherState>(
-            builder: (context, state) {
-              return state.map(
-                initial: (_) => Container(),
-                loadInProgress: (_) => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                loadSuccess: (state) {
-                  final posts = state.posts;
-                  return NestedScrollView(
-                    headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                      BlocBuilder<UserGetByIdBloc, UserGetByIdState>(
-                        builder: (context, state) {
-                          return SliverToBoxAdapter(
-                              child: Container(
-                            constraints: BoxConstraints(minHeight: 150),
-                            child: state.map(
-                              initial: (_) => Container(),
-                              loadInProgress: (_) => const Center(
-                                child: CircularProgressIndicator(),
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Profile'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.exit_to_app),
+                onPressed: () =>
+                    context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+              ),
+            ],
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: BlocBuilder<UserGetByIdBloc, UserGetByIdState>(
+              builder: (context, state) {
+                return state.map(
+                  initial: (_) => Container(),
+                  loadInProgress: (_) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  loadFailure: (_) => const Center(
+                    child: Text('Something went wrong.'),
+                  ),
+                  loadSuccess: (state) {
+                    final user = state.user;
+                    return BlocBuilder<PostByUserWatcherBloc,
+                        PostByUserWatcherState>(
+                      builder: (context, state) {
+                        return state.map(
+                          initial: (_) => Container(),
+                          loadInProgress: (_) => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          loadSuccess: (state) => NestedScrollView(
+                            headerSliverBuilder:
+                                (context, innerBoxIsScrolled) => [
+                              SliverToBoxAdapter(
+                                child: Container(
+                                  constraints:
+                                      const BoxConstraints(minHeight: 150),
+                                  child: ProfileHeader(
+                                    user: user,
+                                    posts: state.posts,
+                                  ),
+                                ),
                               ),
-                              loadFailure: (_) => Container(),
-                              loadSuccess: (state) => ProfileHeader(
-                                user: state.user,
-                                posts: posts,
-                              ),
-                            ),
-                          ));
-                        },
-                      )
-                    ],
-                    body: Column(
-                      children: [
-                        TabBar(
-                          controller: _tabController,
-                          tabs: [
-                            Tab(
-                              icon: Icon(
-                                Icons.grid_on,
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            ),
-                            Tab(
-                              icon: Icon(
-                                Icons.list,
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            )
-                          ],
-                        ),
-                        Expanded(
-                          child: state.posts.isEmpty
-                              ? const Center(
-                                  child:
-                                      Text('This user does not have any post.'),
-                                )
-                              : TabBarView(
+                            ],
+                            body: Column(
+                              children: [
+                                TabBar(
                                   controller: _tabController,
-                                  children: [
-                                    ProfileGridViewPost(posts: state.posts),
-                                    ProfileListViewPosts(posts: state.posts),
+                                  tabs: [
+                                    Tab(
+                                      icon: Icon(
+                                        Icons.grid_on,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                                    Tab(
+                                      icon: Icon(
+                                        Icons.list,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    )
                                   ],
                                 ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                loadFailure: (state) => Text(
-                  state.failure.maybeMap(
-                    orElse: () => 'Something went wrong.',
-                    unexpected: (_) => 'Unexpected.',
-                  ),
-                ),
-              );
-            },
+                                Expanded(
+                                  child: state.posts.isEmpty
+                                      ? const Center(
+                                          child: Text(
+                                              'This user does not have any post.'),
+                                        )
+                                      : TabBarView(
+                                          controller: _tabController,
+                                          children: [
+                                            ProfileGridViewPost(
+                                                posts: state.posts),
+                                            ProfileListViewPosts(
+                                                posts: state.posts),
+                                          ],
+                                        ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          loadFailure: (_) => const Center(
+                            child: Text('Something went wrong.'),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                );
+              },
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
