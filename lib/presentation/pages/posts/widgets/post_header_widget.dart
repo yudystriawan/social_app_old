@@ -1,10 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:my_social_app/application/auth/auth_bloc.dart';
+import 'package:my_social_app/application/user/get_by_id/user_get_by_id_bloc.dart';
 import 'package:my_social_app/domain/post/post.dart';
+import 'package:my_social_app/injection.dart';
+import 'package:my_social_app/presentation/routes/router.gr.dart';
 
 class PostHeader extends StatelessWidget {
   const PostHeader({
@@ -16,21 +18,25 @@ class PostHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
-        return state.maybeMap(
-          orElse: () => Container(),
-          authenticated: (state) {
-            final user = state.user;
-            return ListTile(
+    return BlocProvider(
+      create: (context) => getIt<UserGetByIdBloc>()
+        ..add(UserGetByIdEvent.getUserById(post.userId.getOrCrash())),
+      child: BlocBuilder<UserGetByIdBloc, UserGetByIdState>(
+        builder: (context, state) {
+          return state.map(
+            initial: (_) => Container(),
+            loadInProgress: (_) => Container(),
+            loadFailure: (_) => Container(),
+            loadSuccess: (state) => ListTile(
               leading: CircleAvatar(
-                  backgroundImage:
-                      CachedNetworkImageProvider(user.photoUrl.getOrCrash())),
+                  backgroundImage: CachedNetworkImageProvider(
+                      state.user.photoUrl.getOrCrash())),
               title: GestureDetector(
-                onTap: () => FlushbarHelper.createInformation(
-                  message: 'Go to user profile.',
-                ).show(context),
-                child: Text(user.username.getOrCrash()),
+                onTap: () => ExtendedNavigator.of(context).push(
+                    Routes.profilePage,
+                    arguments: ProfilePageArguments(
+                        userId: state.user.id.getOrCrash())),
+                child: Text(state.user.username.getOrCrash()),
               ),
               subtitle: Text(post.location.getOrCrash()),
               trailing: IconButton(
@@ -39,10 +45,10 @@ class PostHeader extends StatelessWidget {
                   message: 'Delete post.',
                 ).show(context),
               ),
-            );
-          },
-        );
-      },
+            ),
+          );
+        },
+      ),
     );
   }
 }

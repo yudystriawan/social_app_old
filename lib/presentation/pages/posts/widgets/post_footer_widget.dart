@@ -90,11 +90,13 @@ class PostFooter extends StatelessWidget {
   Icon buildIconLike(String myUserId) {
     bool isMyLike = false;
 
-    post.likes.forEach((key, value) {
-      if (key.getOrCrash() == myUserId) {
-        isMyLike = value;
-      }
-    });
+    if (post.likes != null) {
+      post.likes.forEach((key, value) {
+        if (key.getOrCrash() == myUserId) {
+          isMyLike = value;
+        }
+      });
+    }
 
     return Icon(
       isMyLike ? Icons.favorite : Icons.favorite_border,
@@ -105,11 +107,13 @@ class PostFooter extends StatelessWidget {
 
   Widget buildGetCountLikes() {
     int counter = 0;
-    post.likes.forEach((key, value) {
-      if (value == true) {
-        counter++;
-      }
-    });
+    if (post.likes != null) {
+      post.likes.forEach((key, value) {
+        if (value == true) {
+          counter++;
+        }
+      });
+    }
     return Text('$counter Likes');
   }
 }
