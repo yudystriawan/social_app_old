@@ -120,4 +120,27 @@ class PostRepository implements IPostRepository {
       return left(const PostFailure.unexpected());
     }
   }
+
+  @override
+  Stream<Either<PostFailure, PostDomain>> fetchPost({
+    StringSingleLine userId,
+    StringSingleLine postId,
+  }) async* {
+    final postRef = await _firestore.postDocument(userId.getOrCrash());
+    yield* postRef.userPostCollection
+        .doc(postId.getOrCrash())
+        .snapshots()
+        .map(
+          (snapshot) => right<PostFailure, PostDomain>(
+              PostDto.fromFirestore(snapshot).toDomain()),
+        )
+        .onErrorReturnWith((e) {
+      if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
+        return left(const PostFailure.insufficientPermissions());
+      } else {
+        log('error', name: 'getMyPost()', error: e);
+        return left(const PostFailure.unexpected());
+      }
+    });
+  }
 }

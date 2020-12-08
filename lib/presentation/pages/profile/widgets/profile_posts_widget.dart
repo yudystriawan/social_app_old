@@ -21,7 +21,7 @@ class ProfileListViewPosts extends StatelessWidget {
         return Card(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListViewPost(post: posts[index]),
+            child: Post(post: posts[index]),
           ),
         );
       },
@@ -45,7 +45,7 @@ class ProfileGridViewPost extends StatelessWidget {
       crossAxisSpacing: 1.5,
       children: List.generate(
         posts.length,
-        (index) => GridViewPost(
+        (index) => GridPost(
           post: posts[index],
         ),
       ),

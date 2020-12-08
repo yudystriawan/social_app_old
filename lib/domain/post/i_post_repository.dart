@@ -14,4 +14,8 @@ abstract class IPostRepository {
   Stream<Either<PostFailure, List<PostDomain>>> getMyPosts(
     StringSingleLine userId,
   );
+  Stream<Either<PostFailure, PostDomain>> fetchPost({
+    @required StringSingleLine userId,
+    @required StringSingleLine postId,
+  });
 }

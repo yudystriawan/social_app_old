@@ -10,10 +10,12 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/core/value_objects.dart';
 import '../../domain/post/post.dart';
 import '../../domain/user/user.dart';
 import '../pages/comment/comment_page.dart';
 import '../pages/home/home_page.dart';
+import '../pages/posts/detail/post_detail_page.dart';
 import '../pages/posts/form/post_form_page.dart';
 import '../pages/profile/edit/edit_page.dart';
 import '../pages/sign_in/sign_in_page.dart';
@@ -26,6 +28,7 @@ class Routes {
   static const String editProfilePage = '/edit-profile-page';
   static const String postFormPage = '/post-form-page';
   static const String commentPage = '/comment-page';
+  static const String postDetailPage = '/post-detail-page';
   static const all = <String>{
     splashPage,
     signInPage,
@@ -33,6 +36,7 @@ class Routes {
     editProfilePage,
     postFormPage,
     commentPage,
+    postDetailPage,
   };
 }
 
@@ -46,6 +50,7 @@ class Router extends RouterBase {
     RouteDef(Routes.editProfilePage, page: EditProfilePage),
     RouteDef(Routes.postFormPage, page: PostFormPage),
     RouteDef(Routes.commentPage, page: CommentPage),
+    RouteDef(Routes.postDetailPage, page: PostDetailPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -101,6 +106,17 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    PostDetailPage: (data) {
+      final args = data.getArgs<PostDetailPageArguments>(nullOk: false);
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => PostDetailPage(
+          key: args.key,
+          userId: args.userId,
+          postId: args.postId,
+        ).wrappedRoute(context),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -132,4 +148,13 @@ class CommentPageArguments {
   final Key key;
   final PostDomain post;
   CommentPageArguments({this.key, @required this.post});
+}
+
+/// PostDetailPage arguments holder class
+class PostDetailPageArguments {
+  final Key key;
+  final StringSingleLine userId;
+  final StringSingleLine postId;
+  PostDetailPageArguments(
+      {this.key, @required this.userId, @required this.postId});
 }

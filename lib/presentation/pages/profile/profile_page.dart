@@ -2,8 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
-import 'package:my_social_app/application/post/actor/post_actor_bloc.dart';
-import 'package:my_social_app/application/post/by_user_wathcer/post_by_user_watcher_bloc.dart';
+import 'package:my_social_app/application/post/by_user_watcher/post_by_user_watcher_bloc.dart';
 import 'package:my_social_app/domain/user/user.dart';
 import 'package:my_social_app/injection.dart';
 import 'package:my_social_app/presentation/pages/profile/widgets/profile_header_widget.dart';
@@ -58,9 +57,6 @@ class _ProfilePageState extends State<ProfilePage>
                 PostByUserWatcherEvent.watchAllStarted(
                     widget.user.id.getOrCrash()),
               ),
-          ),
-          BlocProvider(
-            create: (context) => getIt<PostActorBloc>(),
           ),
         ],
         child: Padding(

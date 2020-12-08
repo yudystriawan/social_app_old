@@ -30,10 +30,11 @@ import 'domain/post/i_post_repository.dart';
 import 'domain/user/i_user_repository.dart';
 import 'infrastructure/core/image_picker_injectable_module.dart';
 import 'application/post/actor/post_actor_bloc.dart';
-import 'application/post/by_user_wathcer/post_by_user_watcher_bloc.dart';
+import 'application/post/by_user_watcher/post_by_user_watcher_bloc.dart';
 import 'application/post/form/post_form_bloc.dart';
 import 'infrastructure/post/post_repository.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'application/post/single/bloc/single_post_watcher_bloc.dart';
 import 'application/user/form/user_form_bloc.dart';
 import 'application/user/get_by_id/user_get_by_id_bloc.dart';
 import 'infrastructure/user/user_repository.dart';
@@ -70,6 +71,8 @@ GetIt $initGetIt(
   gh.factory<PostByUserWatcherBloc>(
       () => PostByUserWatcherBloc(get<IPostRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthRepository>()));
+  gh.factory<SinglePostWatcherBloc>(
+      () => SinglePostWatcherBloc(get<IPostRepository>()));
   gh.factory<UserFormBloc>(() => UserFormBloc(get<IUserRepository>()));
   gh.factory<UserGetByIdBloc>(() => UserGetByIdBloc(get<IUserRepository>()));
   gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));

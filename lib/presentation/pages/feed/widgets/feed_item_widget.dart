@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:my_social_app/domain/feed/feed.dart';
+import 'package:my_social_app/presentation/routes/router.gr.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class FeedItem extends StatelessWidget {
@@ -85,8 +87,13 @@ class FeedItem extends StatelessWidget {
     if (feed.type.getOrCrash() == 'like' ||
         feed.type.getOrCrash() == 'comment') {
       return GestureDetector(
-        onTap: () => FlushbarHelper.createInformation(message: 'show post')
-            .show(context),
+        onTap: () => ExtendedNavigator.of(context).push(
+          Routes.postDetailPage,
+          arguments: PostDetailPageArguments(
+            userId: feed.userId,
+            postId: feed.postId,
+          ),
+        ),
         child: SizedBox(
           width: 50,
           height: 50,

@@ -1,14 +1,19 @@
-import 'package:flushbar/flushbar_helper.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_social_app/application/post/actor/post_actor_bloc.dart';
+import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/presentation/common/widgets/my_cached_network_image.dart';
 import 'package:my_social_app/presentation/pages/posts/widgets/post_footer_widget.dart';
 import 'package:my_social_app/presentation/pages/posts/widgets/post_header_widget.dart';
 import 'package:my_social_app/presentation/pages/posts/widgets/post_image_widget.dart';
+import 'package:my_social_app/presentation/routes/router.gr.dart';
 
-class ListViewPost extends StatelessWidget {
-  const ListViewPost({
+import '../../../injection.dart';
+
+class Post extends StatelessWidget {
+  const Post({
     Key key,
     @required this.post,
   }) : super(key: key);
@@ -17,19 +22,22 @@ class ListViewPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        PostHeader(post: post),
-        PostImage(post: post),
-        const SizedBox(height: 8),
-        PostFooter(post: post),
-      ],
+    return BlocProvider(
+      create: (context) => getIt<PostActorBloc>(),
+      child: Column(
+        children: [
+          PostHeader(post: post),
+          PostImage(post: post),
+          const SizedBox(height: 8),
+          PostFooter(post: post),
+        ],
+      ),
     );
   }
 }
 
-class GridViewPost extends StatelessWidget {
-  const GridViewPost({
+class GridPost extends StatelessWidget {
+  const GridPost({
     Key key,
     @required this.post,
   }) : super(key: key);
@@ -39,8 +47,13 @@ class GridViewPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FlushbarHelper.createInformation(message: 'Showing post')
-          .show(context),
+      onTap: () => ExtendedNavigator.of(context).push(
+        Routes.postDetailPage,
+        arguments: PostDetailPageArguments(
+          userId: post.userId,
+          postId: StringSingleLine(post.id.getOrCrash()),
+        ),
+      ),
       child: MyCachedNetworkImage(
         imageUrl: post.imageUrl.getOrCrash(),
       ),
