@@ -49,9 +49,9 @@ class _$CommentFormEventTearOff {
   }
 
 // ignore: unused_element
-  _Submit submit(String postId) {
+  _Submit submit(PostDomain post) {
     return _Submit(
-      postId,
+      post,
     );
   }
 }
@@ -69,7 +69,7 @@ mixin _$CommentFormEvent {
     @required TResult usernameChanged(String usernameStr),
     @required TResult avatarUrlChanged(String url),
     @required TResult userIdChanged(String userId),
-    @required TResult submit(String postId),
+    @required TResult submit(PostDomain post),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -78,7 +78,7 @@ mixin _$CommentFormEvent {
     TResult usernameChanged(String usernameStr),
     TResult avatarUrlChanged(String url),
     TResult userIdChanged(String userId),
-    TResult submit(String postId),
+    TResult submit(PostDomain post),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -188,7 +188,7 @@ class _$_Initialized implements _Initialized {
     @required TResult usernameChanged(String usernameStr),
     @required TResult avatarUrlChanged(String url),
     @required TResult userIdChanged(String userId),
-    @required TResult submit(String postId),
+    @required TResult submit(PostDomain post),
   }) {
     assert(initialized != null);
     assert(bodyChanged != null);
@@ -207,7 +207,7 @@ class _$_Initialized implements _Initialized {
     TResult usernameChanged(String usernameStr),
     TResult avatarUrlChanged(String url),
     TResult userIdChanged(String userId),
-    TResult submit(String postId),
+    TResult submit(PostDomain post),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -328,7 +328,7 @@ class _$_BodyChanged implements _BodyChanged {
     @required TResult usernameChanged(String usernameStr),
     @required TResult avatarUrlChanged(String url),
     @required TResult userIdChanged(String userId),
-    @required TResult submit(String postId),
+    @required TResult submit(PostDomain post),
   }) {
     assert(initialized != null);
     assert(bodyChanged != null);
@@ -347,7 +347,7 @@ class _$_BodyChanged implements _BodyChanged {
     TResult usernameChanged(String usernameStr),
     TResult avatarUrlChanged(String url),
     TResult userIdChanged(String userId),
-    TResult submit(String postId),
+    TResult submit(PostDomain post),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -468,7 +468,7 @@ class _$_UsernameChanged implements _UsernameChanged {
     @required TResult usernameChanged(String usernameStr),
     @required TResult avatarUrlChanged(String url),
     @required TResult userIdChanged(String userId),
-    @required TResult submit(String postId),
+    @required TResult submit(PostDomain post),
   }) {
     assert(initialized != null);
     assert(bodyChanged != null);
@@ -487,7 +487,7 @@ class _$_UsernameChanged implements _UsernameChanged {
     TResult usernameChanged(String usernameStr),
     TResult avatarUrlChanged(String url),
     TResult userIdChanged(String userId),
-    TResult submit(String postId),
+    TResult submit(PostDomain post),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -607,7 +607,7 @@ class _$_AvatarUrlChanged implements _AvatarUrlChanged {
     @required TResult usernameChanged(String usernameStr),
     @required TResult avatarUrlChanged(String url),
     @required TResult userIdChanged(String userId),
-    @required TResult submit(String postId),
+    @required TResult submit(PostDomain post),
   }) {
     assert(initialized != null);
     assert(bodyChanged != null);
@@ -626,7 +626,7 @@ class _$_AvatarUrlChanged implements _AvatarUrlChanged {
     TResult usernameChanged(String usernameStr),
     TResult avatarUrlChanged(String url),
     TResult userIdChanged(String userId),
-    TResult submit(String postId),
+    TResult submit(PostDomain post),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -746,7 +746,7 @@ class _$_UserIdChanged implements _UserIdChanged {
     @required TResult usernameChanged(String usernameStr),
     @required TResult avatarUrlChanged(String url),
     @required TResult userIdChanged(String userId),
-    @required TResult submit(String postId),
+    @required TResult submit(PostDomain post),
   }) {
     assert(initialized != null);
     assert(bodyChanged != null);
@@ -765,7 +765,7 @@ class _$_UserIdChanged implements _UserIdChanged {
     TResult usernameChanged(String usernameStr),
     TResult avatarUrlChanged(String url),
     TResult userIdChanged(String userId),
-    TResult submit(String postId),
+    TResult submit(PostDomain post),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -824,7 +824,9 @@ abstract class _UserIdChanged implements CommentFormEvent {
 abstract class _$SubmitCopyWith<$Res> {
   factory _$SubmitCopyWith(_Submit value, $Res Function(_Submit) then) =
       __$SubmitCopyWithImpl<$Res>;
-  $Res call({String postId});
+  $Res call({PostDomain post});
+
+  $PostDomainCopyWith<$Res> get post;
 }
 
 /// @nodoc
@@ -838,37 +840,47 @@ class __$SubmitCopyWithImpl<$Res> extends _$CommentFormEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object postId = freezed,
+    Object post = freezed,
   }) {
     return _then(_Submit(
-      postId == freezed ? _value.postId : postId as String,
+      post == freezed ? _value.post : post as PostDomain,
     ));
+  }
+
+  @override
+  $PostDomainCopyWith<$Res> get post {
+    if (_value.post == null) {
+      return null;
+    }
+    return $PostDomainCopyWith<$Res>(_value.post, (value) {
+      return _then(_value.copyWith(post: value));
+    });
   }
 }
 
 /// @nodoc
 class _$_Submit implements _Submit {
-  const _$_Submit(this.postId) : assert(postId != null);
+  const _$_Submit(this.post) : assert(post != null);
 
   @override
-  final String postId;
+  final PostDomain post;
 
   @override
   String toString() {
-    return 'CommentFormEvent.submit(postId: $postId)';
+    return 'CommentFormEvent.submit(post: $post)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Submit &&
-            (identical(other.postId, postId) ||
-                const DeepCollectionEquality().equals(other.postId, postId)));
+            (identical(other.post, post) ||
+                const DeepCollectionEquality().equals(other.post, post)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(postId);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(post);
 
   @override
   _$SubmitCopyWith<_Submit> get copyWith =>
@@ -882,7 +894,7 @@ class _$_Submit implements _Submit {
     @required TResult usernameChanged(String usernameStr),
     @required TResult avatarUrlChanged(String url),
     @required TResult userIdChanged(String userId),
-    @required TResult submit(String postId),
+    @required TResult submit(PostDomain post),
   }) {
     assert(initialized != null);
     assert(bodyChanged != null);
@@ -890,7 +902,7 @@ class _$_Submit implements _Submit {
     assert(avatarUrlChanged != null);
     assert(userIdChanged != null);
     assert(submit != null);
-    return submit(postId);
+    return submit(post);
   }
 
   @override
@@ -901,12 +913,12 @@ class _$_Submit implements _Submit {
     TResult usernameChanged(String usernameStr),
     TResult avatarUrlChanged(String url),
     TResult userIdChanged(String userId),
-    TResult submit(String postId),
+    TResult submit(PostDomain post),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (submit != null) {
-      return submit(postId);
+      return submit(post);
     }
     return orElse();
   }
@@ -950,9 +962,9 @@ class _$_Submit implements _Submit {
 }
 
 abstract class _Submit implements CommentFormEvent {
-  const factory _Submit(String postId) = _$_Submit;
+  const factory _Submit(PostDomain post) = _$_Submit;
 
-  String get postId;
+  PostDomain get post;
   _$SubmitCopyWith<_Submit> get copyWith;
 }
 

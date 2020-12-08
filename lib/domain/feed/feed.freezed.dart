@@ -22,6 +22,7 @@ class _$FeedDomainTearOff {
       @required StringSingleLine postId,
       @required PhotoUrl userAvatarUrl,
       @required PhotoUrl thumbnailUrl,
+      CommentBody commentBody,
       Timestamp timestamp}) {
     return _FeedDomain(
       id: id,
@@ -31,6 +32,7 @@ class _$FeedDomainTearOff {
       postId: postId,
       userAvatarUrl: userAvatarUrl,
       thumbnailUrl: thumbnailUrl,
+      commentBody: commentBody,
       timestamp: timestamp,
     );
   }
@@ -49,6 +51,7 @@ mixin _$FeedDomain {
   StringSingleLine get postId;
   PhotoUrl get userAvatarUrl;
   PhotoUrl get thumbnailUrl;
+  CommentBody get commentBody;
   Timestamp get timestamp;
 
   $FeedDomainCopyWith<FeedDomain> get copyWith;
@@ -67,6 +70,7 @@ abstract class $FeedDomainCopyWith<$Res> {
       StringSingleLine postId,
       PhotoUrl userAvatarUrl,
       PhotoUrl thumbnailUrl,
+      CommentBody commentBody,
       Timestamp timestamp});
 }
 
@@ -87,6 +91,7 @@ class _$FeedDomainCopyWithImpl<$Res> implements $FeedDomainCopyWith<$Res> {
     Object postId = freezed,
     Object userAvatarUrl = freezed,
     Object thumbnailUrl = freezed,
+    Object commentBody = freezed,
     Object timestamp = freezed,
   }) {
     return _then(_value.copyWith(
@@ -102,6 +107,9 @@ class _$FeedDomainCopyWithImpl<$Res> implements $FeedDomainCopyWith<$Res> {
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl as PhotoUrl,
+      commentBody: commentBody == freezed
+          ? _value.commentBody
+          : commentBody as CommentBody,
       timestamp:
           timestamp == freezed ? _value.timestamp : timestamp as Timestamp,
     ));
@@ -122,6 +130,7 @@ abstract class _$FeedDomainCopyWith<$Res> implements $FeedDomainCopyWith<$Res> {
       StringSingleLine postId,
       PhotoUrl userAvatarUrl,
       PhotoUrl thumbnailUrl,
+      CommentBody commentBody,
       Timestamp timestamp});
 }
 
@@ -144,6 +153,7 @@ class __$FeedDomainCopyWithImpl<$Res> extends _$FeedDomainCopyWithImpl<$Res>
     Object postId = freezed,
     Object userAvatarUrl = freezed,
     Object thumbnailUrl = freezed,
+    Object commentBody = freezed,
     Object timestamp = freezed,
   }) {
     return _then(_FeedDomain(
@@ -159,6 +169,9 @@ class __$FeedDomainCopyWithImpl<$Res> extends _$FeedDomainCopyWithImpl<$Res>
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl as PhotoUrl,
+      commentBody: commentBody == freezed
+          ? _value.commentBody
+          : commentBody as CommentBody,
       timestamp:
           timestamp == freezed ? _value.timestamp : timestamp as Timestamp,
     ));
@@ -175,6 +188,7 @@ class _$_FeedDomain extends _FeedDomain {
       @required this.postId,
       @required this.userAvatarUrl,
       @required this.thumbnailUrl,
+      this.commentBody,
       this.timestamp})
       : assert(id != null),
         assert(type != null),
@@ -200,11 +214,13 @@ class _$_FeedDomain extends _FeedDomain {
   @override
   final PhotoUrl thumbnailUrl;
   @override
+  final CommentBody commentBody;
+  @override
   final Timestamp timestamp;
 
   @override
   String toString() {
-    return 'FeedDomain(id: $id, type: $type, username: $username, userId: $userId, postId: $postId, userAvatarUrl: $userAvatarUrl, thumbnailUrl: $thumbnailUrl, timestamp: $timestamp)';
+    return 'FeedDomain(id: $id, type: $type, username: $username, userId: $userId, postId: $postId, userAvatarUrl: $userAvatarUrl, thumbnailUrl: $thumbnailUrl, commentBody: $commentBody, timestamp: $timestamp)';
   }
 
   @override
@@ -228,6 +244,9 @@ class _$_FeedDomain extends _FeedDomain {
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.thumbnailUrl, thumbnailUrl)) &&
+            (identical(other.commentBody, commentBody) ||
+                const DeepCollectionEquality()
+                    .equals(other.commentBody, commentBody)) &&
             (identical(other.timestamp, timestamp) ||
                 const DeepCollectionEquality()
                     .equals(other.timestamp, timestamp)));
@@ -243,6 +262,7 @@ class _$_FeedDomain extends _FeedDomain {
       const DeepCollectionEquality().hash(postId) ^
       const DeepCollectionEquality().hash(userAvatarUrl) ^
       const DeepCollectionEquality().hash(thumbnailUrl) ^
+      const DeepCollectionEquality().hash(commentBody) ^
       const DeepCollectionEquality().hash(timestamp);
 
   @override
@@ -260,6 +280,7 @@ abstract class _FeedDomain extends FeedDomain {
       @required StringSingleLine postId,
       @required PhotoUrl userAvatarUrl,
       @required PhotoUrl thumbnailUrl,
+      CommentBody commentBody,
       Timestamp timestamp}) = _$_FeedDomain;
 
   @override
@@ -276,6 +297,8 @@ abstract class _FeedDomain extends FeedDomain {
   PhotoUrl get userAvatarUrl;
   @override
   PhotoUrl get thumbnailUrl;
+  @override
+  CommentBody get commentBody;
   @override
   Timestamp get timestamp;
   @override

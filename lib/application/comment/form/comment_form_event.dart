@@ -10,5 +10,5 @@ abstract class CommentFormEvent with _$CommentFormEvent {
   const factory CommentFormEvent.avatarUrlChanged(String url) =
       _AvatarUrlChanged;
   const factory CommentFormEvent.userIdChanged(String userId) = _UserIdChanged;
-  const factory CommentFormEvent.submit(String postId) = _Submit;
+  const factory CommentFormEvent.submit(PostDomain post) = _Submit;
 }

@@ -138,8 +138,6 @@ class CommentPage extends StatelessWidget with AutoRouteWrapper {
     context
         .read<CommentFormBloc>()
         .add(CommentFormEvent.userIdChanged(user.id.getOrCrash()));
-    context
-        .read<CommentFormBloc>()
-        .add(CommentFormEvent.submit(post.id.getOrCrash()));
+    context.read<CommentFormBloc>().add(CommentFormEvent.submit(post));
   }
 }

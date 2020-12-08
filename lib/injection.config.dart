@@ -73,7 +73,8 @@ GetIt $initGetIt(
   gh.factory<UserGetByIdBloc>(() => UserGetByIdBloc(get<IUserRepository>()));
   gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthRepository>()));
-  gh.factory<CommentFormBloc>(() => CommentFormBloc(get<ICommentRepository>()));
+  gh.factory<CommentFormBloc>(
+      () => CommentFormBloc(get<ICommentRepository>(), get<IFeedRepository>()));
   gh.factory<CommentWatcherBloc>(
       () => CommentWatcherBloc(get<ICommentRepository>()));
   gh.factory<IFileRepository>(
