@@ -13,4 +13,7 @@ abstract class IFeedRepository {
     @required StringSingleLine ownerUserId,
     @required StringSingleLine postId,
   });
+  Stream<Either<FeedFailure, List<FeedDomain>>> fetchFeeds(
+    StringSingleLine userId,
+  );
 }

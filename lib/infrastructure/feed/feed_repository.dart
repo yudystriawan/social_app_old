@@ -10,6 +10,7 @@ import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:my_social_app/domain/feed/i_feed_repository.dart';
 import 'package:my_social_app/infrastructure/feed/feed_dtos.dart';
 import 'package:my_social_app/infrastructure/core/firestore_helpers.dart';
+import 'package:rxdart/rxdart.dart';
 
 @Injectable(as: IFeedRepository)
 class FeedRepository implements IFeedRepository {
@@ -56,5 +57,26 @@ class FeedRepository implements IFeedRepository {
       log('error', name: 'create', error: e);
       return left(const FeedFailure.unexpected());
     }
+  }
+
+  @override
+  Stream<Either<FeedFailure, List<FeedDomain>>> fetchFeeds(
+      StringSingleLine userId) async* {
+    final feedRef = await _firestore.feedDocument(userId.getOrCrash());
+    yield* feedRef.feedCollection
+        .orderBy('server_timestamp', descending: true)
+        .limit(50)
+        .snapshots()
+        .map(
+          (snapshot) => right<FeedFailure, List<FeedDomain>>(
+            snapshot.docs
+                .map((doc) => FeedDto.fromFirestore(doc).toDomain(doc))
+                .toList(),
+          ),
+        )
+        .onErrorReturnWith((error) {
+      log('error', name: 'getMyPost()', error: error);
+      return left(const FeedFailure.unexpected());
+    });
   }
 }

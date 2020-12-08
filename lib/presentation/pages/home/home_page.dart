@@ -75,7 +75,9 @@ class _HomePageState extends State<HomePage> {
                     },
                     children: [
                       const TimelinePage(),
-                      const FeedPage(),
+                      FeedPage(
+                        user: user,
+                      ),
                       BlocProvider(
                         create: (context) => getIt<FileLoaderBloc>(),
                         child: UploadPage(
