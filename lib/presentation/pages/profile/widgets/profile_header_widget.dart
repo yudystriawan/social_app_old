@@ -6,6 +6,7 @@ import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/domain/post/post.dart';
 
 import 'package:my_social_app/domain/user/user.dart';
+import 'package:my_social_app/presentation/pages/profile/widgets/button_follow_widget.dart';
 import 'package:my_social_app/presentation/pages/profile/widgets/column_count_widget.dart';
 import 'package:my_social_app/presentation/pages/profile/widgets/column_profile_info_widget.dart';
 import 'package:my_social_app/presentation/pages/profile/widgets/outline_button_profile_widget.dart';
@@ -66,9 +67,9 @@ class ProfileHeader extends StatelessWidget {
                                   label: 'Edit Profile',
                                 );
                               } else {
-                                return const OutlineButtonProfile(
-                                  onPressed: null,
-                                  label: 'Follow/Unfollow',
+                                return ButtonFollow(
+                                  currentUser: state.user,
+                                  userId: user.id.getOrCrash(),
                                 );
                               }
                             },

@@ -18,9 +18,9 @@ abstract class FeedDto with _$FeedDto {
     @required String type,
     @required String username,
     @required String userId,
-    @required String postId,
     @required String userAvatarUrl,
-    @required String thumbnailUrl,
+    String thumbnailUrl,
+    String postId,
     @JsonKey(name: 'comment_body') String commentBody,
     @JsonKey(name: 'server_timestamp')
     @required
@@ -33,13 +33,14 @@ abstract class FeedDto with _$FeedDto {
 
   factory FeedDto.fromDomain(FeedDomain feed) {
     return FeedDto(
+      id: feed.id.getOrCrash(),
       type: feed.type.getOrCrash(),
       username: feed.username.getOrCrash(),
       userId: feed.userId.getOrCrash(),
-      postId: feed.postId.getOrCrash(),
+      postId: feed.postId?.getOrCrash(),
       userAvatarUrl: feed.userAvatarUrl.getOrCrash(),
-      thumbnailUrl: feed.thumbnailUrl.getOrCrash(),
-      commentBody: feed.commentBody.getOrCrash(),
+      thumbnailUrl: feed.thumbnailUrl?.getOrCrash(),
+      commentBody: feed.commentBody?.getOrCrash(),
       serverTimestamp: FieldValue.serverTimestamp(),
     );
   }
@@ -54,10 +55,10 @@ abstract class FeedDto with _$FeedDto {
       type: StringSingleLine(type),
       username: StringSingleLine(username),
       userId: StringSingleLine(userId),
-      postId: StringSingleLine(postId),
+      postId: StringSingleLine(postId ?? 'empty'),
       userAvatarUrl: PhotoUrl(userAvatarUrl),
-      thumbnailUrl: PhotoUrl(thumbnailUrl),
-      commentBody: CommentBody(commentBody),
+      thumbnailUrl: PhotoUrl(thumbnailUrl ?? 'empty'),
+      commentBody: CommentBody(commentBody ?? 'empty'),
       timestamp: doc['server_timestamp'] as Timestamp,
     );
   }

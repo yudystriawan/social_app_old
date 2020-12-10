@@ -114,7 +114,9 @@ class FeedItem extends StatelessWidget {
         ),
       );
     } else {
-      return Container();
+      return Container(
+        width: 0,
+      );
     }
   }
 }

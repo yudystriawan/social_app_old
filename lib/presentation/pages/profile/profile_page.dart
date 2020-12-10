@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
+import 'package:my_social_app/application/follow/actor/follow_actor_bloc.dart';
+import 'package:my_social_app/application/follow/watch/follow_watcher_bloc.dart';
 import 'package:my_social_app/application/post/by_user_watcher/post_by_user_watcher_bloc.dart';
 import 'package:my_social_app/application/user/get_by_id/user_get_by_id_bloc.dart';
 import 'package:my_social_app/injection.dart';
@@ -49,7 +51,14 @@ class _ProfilePageState extends State<ProfilePage>
           BlocProvider(
             create: (context) => getIt<UserGetByIdBloc>()
               ..add(UserGetByIdEvent.getUserById(widget.userId)),
-          )
+          ),
+          BlocProvider(
+            create: (context) => getIt<FollowWatcherBloc>()
+              ..add(FollowWatcherEvent.watchUserFollowing(widget.userId)),
+          ),
+          BlocProvider(
+            create: (context) => getIt<FollowActorBloc>(),
+          ),
         ],
         child: Scaffold(
           appBar: AppBar(

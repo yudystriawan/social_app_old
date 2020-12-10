@@ -39,6 +39,7 @@ abstract class CommentDto with _$CommentDto {
 
   factory CommentDto.fromDomain(CommentDomain comment) {
     return CommentDto(
+      id: comment.id.getOrCrash(),
       body: comment.body.getOrCrash(),
       avatarUrl: comment.avatarUrl.getOrCrash(),
       username: comment.username.getOrCrash(),

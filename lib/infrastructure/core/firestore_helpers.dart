@@ -19,6 +19,15 @@ extension FirebaseFirestoreX on FirebaseFirestore {
     return FirebaseFirestore.instance.collection('feed').doc(ownerId);
   }
 
+  Future<DocumentReference> followerDocument(String userId) async {
+    return FirebaseFirestore.instance.collection('followers').doc(userId);
+  }
+
+  Future<DocumentReference> followingDocument() async {
+    final user = FirebaseAuth.instance.currentUser;
+    return FirebaseFirestore.instance.collection('following').doc(user?.uid);
+  }
+
   Future<QuerySnapshot> findUserDocument(String query) async {
     return FirebaseFirestore.instance
         .collection('users')
@@ -44,4 +53,7 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get userPostCollection => collection('myPosts');
   CollectionReference get commentPostCollection => collection('comments');
   CollectionReference get feedCollection => collection('feedItems');
+  CollectionReference get userFollowerCollection => collection('userFollowers');
+  CollectionReference get userFollowingCollection =>
+      collection('userFollowing');
 }

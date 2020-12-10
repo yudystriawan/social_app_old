@@ -22,10 +22,14 @@ import 'application/feed/watcher/feed_watcher_bloc.dart';
 import 'application/file/loader/file_loader_bloc.dart';
 import 'infrastructure/file/file_repository.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
+import 'application/follow/actor/follow_actor_bloc.dart';
+import 'infrastructure/follow/follow_repository.dart';
+import 'application/follow/watch/follow_watcher_bloc.dart';
 import 'domain/auth/i_auth_repository.dart';
 import 'domain/comment/i_comment_repository.dart';
 import 'domain/feed/i_feed_repository.dart';
 import 'domain/file/i_file_repository.dart';
+import 'domain/follow/i_follow_repository.dart';
 import 'domain/post/i_post_repository.dart';
 import 'domain/user/i_user_repository.dart';
 import 'infrastructure/core/image_picker_injectable_module.dart';
@@ -63,6 +67,8 @@ GetIt $initGetIt(
   gh.factory<ICommentRepository>(
       () => CommentRepostiory(get<FirebaseFirestore>()));
   gh.factory<IFeedRepository>(() => FeedRepository(get<FirebaseFirestore>()));
+  gh.factory<IFollowRepository>(
+      () => FollowRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IPostRepository>(
       () => PostRepository(get<FirebaseFirestore>()));
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
@@ -82,6 +88,10 @@ GetIt $initGetIt(
   gh.factory<CommentWatcherBloc>(
       () => CommentWatcherBloc(get<ICommentRepository>()));
   gh.factory<FeedWatcherBloc>(() => FeedWatcherBloc(get<IFeedRepository>()));
+  gh.factory<FollowActorBloc>(
+      () => FollowActorBloc(get<IFollowRepository>(), get<IFeedRepository>()));
+  gh.factory<FollowWatcherBloc>(
+      () => FollowWatcherBloc(get<IFollowRepository>()));
   gh.factory<IFileRepository>(
       () => FileRepositoy(get<ImagePicker>(), get<FirebaseStorage>()));
   gh.factory<PostFormBloc>(

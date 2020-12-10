@@ -27,8 +27,10 @@ class FeedRepository implements IFeedRepository {
       final feedDto = FeedDto.fromDomain(feed);
       final feedDoc = await _firestore.feedDocument(ownerUserId.getOrCrash());
 
+      final isFollow = feed.type.getOrCrash() == 'follow';
+
       await feedDoc.feedCollection
-          .doc(feed.postId.getOrCrash())
+          .doc(isFollow ? feed.userId.getOrCrash() : feed.postId.getOrCrash())
           .set(feedDto.toJson());
 
       return right(unit);
@@ -41,12 +43,15 @@ class FeedRepository implements IFeedRepository {
   @override
   Future<Either<FeedFailure, Unit>> delete({
     StringSingleLine ownerUserId,
-    StringSingleLine postId,
+    StringSingleLine currentUserOrPostId,
   }) async {
     try {
       final feedDoc = await _firestore.feedDocument(ownerUserId.getOrCrash());
 
-      feedDoc.feedCollection.doc(postId.getOrCrash()).get().then((doc) {
+      feedDoc.feedCollection
+          .doc(currentUserOrPostId.getOrCrash())
+          .get()
+          .then((doc) {
         if (doc.exists) {
           doc.reference.delete();
         }

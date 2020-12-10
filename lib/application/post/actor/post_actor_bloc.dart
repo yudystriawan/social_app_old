@@ -59,7 +59,7 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
       } else {
         await _feedRepository.delete(
           ownerUserId: StringSingleLine(event.ownerId),
-          postId: StringSingleLine(event.post.id.getOrCrash()),
+          currentUserOrPostId: StringSingleLine(event.post.id.getOrCrash()),
         );
       }
     }

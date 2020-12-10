@@ -11,7 +11,7 @@ abstract class IFeedRepository {
   });
   Future<Either<FeedFailure, Unit>> delete({
     @required StringSingleLine ownerUserId,
-    @required StringSingleLine postId,
+    @required StringSingleLine currentUserOrPostId,
   });
   Stream<Either<FeedFailure, List<FeedDomain>>> fetchFeeds(
     StringSingleLine userId,

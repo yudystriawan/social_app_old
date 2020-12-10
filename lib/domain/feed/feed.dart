@@ -17,9 +17,9 @@ abstract class FeedDomain with _$FeedDomain {
     @required StringSingleLine type,
     @required StringSingleLine username,
     @required StringSingleLine userId,
-    @required StringSingleLine postId,
     @required PhotoUrl userAvatarUrl,
-    @required PhotoUrl thumbnailUrl,
+    PhotoUrl thumbnailUrl,
+    StringSingleLine postId,
     CommentBody commentBody,
     Timestamp timestamp,
   }) = _FeedDomain;
@@ -29,18 +29,14 @@ abstract class FeedDomain with _$FeedDomain {
         type: StringSingleLine(''),
         username: StringSingleLine(''),
         userId: StringSingleLine(''),
-        postId: StringSingleLine(''),
         userAvatarUrl: PhotoUrl(''),
-        thumbnailUrl: PhotoUrl(''),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
     return type.failureOrUnit
         .andThen(username.failureOrUnit)
         .andThen(userId.failureOrUnit)
-        .andThen(postId.failureOrUnit)
         .andThen(userAvatarUrl.failureOrUnit)
-        .andThen(thumbnailUrl.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }
 }

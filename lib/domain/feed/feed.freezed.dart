@@ -19,9 +19,9 @@ class _$FeedDomainTearOff {
       @required StringSingleLine type,
       @required StringSingleLine username,
       @required StringSingleLine userId,
-      @required StringSingleLine postId,
       @required PhotoUrl userAvatarUrl,
-      @required PhotoUrl thumbnailUrl,
+      PhotoUrl thumbnailUrl,
+      StringSingleLine postId,
       CommentBody commentBody,
       Timestamp timestamp}) {
     return _FeedDomain(
@@ -29,9 +29,9 @@ class _$FeedDomainTearOff {
       type: type,
       username: username,
       userId: userId,
-      postId: postId,
       userAvatarUrl: userAvatarUrl,
       thumbnailUrl: thumbnailUrl,
+      postId: postId,
       commentBody: commentBody,
       timestamp: timestamp,
     );
@@ -48,9 +48,9 @@ mixin _$FeedDomain {
   StringSingleLine get type;
   StringSingleLine get username;
   StringSingleLine get userId;
-  StringSingleLine get postId;
   PhotoUrl get userAvatarUrl;
   PhotoUrl get thumbnailUrl;
+  StringSingleLine get postId;
   CommentBody get commentBody;
   Timestamp get timestamp;
 
@@ -67,9 +67,9 @@ abstract class $FeedDomainCopyWith<$Res> {
       StringSingleLine type,
       StringSingleLine username,
       StringSingleLine userId,
-      StringSingleLine postId,
       PhotoUrl userAvatarUrl,
       PhotoUrl thumbnailUrl,
+      StringSingleLine postId,
       CommentBody commentBody,
       Timestamp timestamp});
 }
@@ -88,9 +88,9 @@ class _$FeedDomainCopyWithImpl<$Res> implements $FeedDomainCopyWith<$Res> {
     Object type = freezed,
     Object username = freezed,
     Object userId = freezed,
-    Object postId = freezed,
     Object userAvatarUrl = freezed,
     Object thumbnailUrl = freezed,
+    Object postId = freezed,
     Object commentBody = freezed,
     Object timestamp = freezed,
   }) {
@@ -100,13 +100,13 @@ class _$FeedDomainCopyWithImpl<$Res> implements $FeedDomainCopyWith<$Res> {
       username:
           username == freezed ? _value.username : username as StringSingleLine,
       userId: userId == freezed ? _value.userId : userId as StringSingleLine,
-      postId: postId == freezed ? _value.postId : postId as StringSingleLine,
       userAvatarUrl: userAvatarUrl == freezed
           ? _value.userAvatarUrl
           : userAvatarUrl as PhotoUrl,
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl as PhotoUrl,
+      postId: postId == freezed ? _value.postId : postId as StringSingleLine,
       commentBody: commentBody == freezed
           ? _value.commentBody
           : commentBody as CommentBody,
@@ -127,9 +127,9 @@ abstract class _$FeedDomainCopyWith<$Res> implements $FeedDomainCopyWith<$Res> {
       StringSingleLine type,
       StringSingleLine username,
       StringSingleLine userId,
-      StringSingleLine postId,
       PhotoUrl userAvatarUrl,
       PhotoUrl thumbnailUrl,
+      StringSingleLine postId,
       CommentBody commentBody,
       Timestamp timestamp});
 }
@@ -150,9 +150,9 @@ class __$FeedDomainCopyWithImpl<$Res> extends _$FeedDomainCopyWithImpl<$Res>
     Object type = freezed,
     Object username = freezed,
     Object userId = freezed,
-    Object postId = freezed,
     Object userAvatarUrl = freezed,
     Object thumbnailUrl = freezed,
+    Object postId = freezed,
     Object commentBody = freezed,
     Object timestamp = freezed,
   }) {
@@ -162,13 +162,13 @@ class __$FeedDomainCopyWithImpl<$Res> extends _$FeedDomainCopyWithImpl<$Res>
       username:
           username == freezed ? _value.username : username as StringSingleLine,
       userId: userId == freezed ? _value.userId : userId as StringSingleLine,
-      postId: postId == freezed ? _value.postId : postId as StringSingleLine,
       userAvatarUrl: userAvatarUrl == freezed
           ? _value.userAvatarUrl
           : userAvatarUrl as PhotoUrl,
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl as PhotoUrl,
+      postId: postId == freezed ? _value.postId : postId as StringSingleLine,
       commentBody: commentBody == freezed
           ? _value.commentBody
           : commentBody as CommentBody,
@@ -185,18 +185,16 @@ class _$_FeedDomain extends _FeedDomain {
       @required this.type,
       @required this.username,
       @required this.userId,
-      @required this.postId,
       @required this.userAvatarUrl,
-      @required this.thumbnailUrl,
+      this.thumbnailUrl,
+      this.postId,
       this.commentBody,
       this.timestamp})
       : assert(id != null),
         assert(type != null),
         assert(username != null),
         assert(userId != null),
-        assert(postId != null),
         assert(userAvatarUrl != null),
-        assert(thumbnailUrl != null),
         super._();
 
   @override
@@ -208,11 +206,11 @@ class _$_FeedDomain extends _FeedDomain {
   @override
   final StringSingleLine userId;
   @override
-  final StringSingleLine postId;
-  @override
   final PhotoUrl userAvatarUrl;
   @override
   final PhotoUrl thumbnailUrl;
+  @override
+  final StringSingleLine postId;
   @override
   final CommentBody commentBody;
   @override
@@ -220,7 +218,7 @@ class _$_FeedDomain extends _FeedDomain {
 
   @override
   String toString() {
-    return 'FeedDomain(id: $id, type: $type, username: $username, userId: $userId, postId: $postId, userAvatarUrl: $userAvatarUrl, thumbnailUrl: $thumbnailUrl, commentBody: $commentBody, timestamp: $timestamp)';
+    return 'FeedDomain(id: $id, type: $type, username: $username, userId: $userId, userAvatarUrl: $userAvatarUrl, thumbnailUrl: $thumbnailUrl, postId: $postId, commentBody: $commentBody, timestamp: $timestamp)';
   }
 
   @override
@@ -236,14 +234,14 @@ class _$_FeedDomain extends _FeedDomain {
                     .equals(other.username, username)) &&
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
-            (identical(other.postId, postId) ||
-                const DeepCollectionEquality().equals(other.postId, postId)) &&
             (identical(other.userAvatarUrl, userAvatarUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.userAvatarUrl, userAvatarUrl)) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.thumbnailUrl, thumbnailUrl)) &&
+            (identical(other.postId, postId) ||
+                const DeepCollectionEquality().equals(other.postId, postId)) &&
             (identical(other.commentBody, commentBody) ||
                 const DeepCollectionEquality()
                     .equals(other.commentBody, commentBody)) &&
@@ -259,9 +257,9 @@ class _$_FeedDomain extends _FeedDomain {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(username) ^
       const DeepCollectionEquality().hash(userId) ^
-      const DeepCollectionEquality().hash(postId) ^
       const DeepCollectionEquality().hash(userAvatarUrl) ^
       const DeepCollectionEquality().hash(thumbnailUrl) ^
+      const DeepCollectionEquality().hash(postId) ^
       const DeepCollectionEquality().hash(commentBody) ^
       const DeepCollectionEquality().hash(timestamp);
 
@@ -277,9 +275,9 @@ abstract class _FeedDomain extends FeedDomain {
       @required StringSingleLine type,
       @required StringSingleLine username,
       @required StringSingleLine userId,
-      @required StringSingleLine postId,
       @required PhotoUrl userAvatarUrl,
-      @required PhotoUrl thumbnailUrl,
+      PhotoUrl thumbnailUrl,
+      StringSingleLine postId,
       CommentBody commentBody,
       Timestamp timestamp}) = _$_FeedDomain;
 
@@ -292,11 +290,11 @@ abstract class _FeedDomain extends FeedDomain {
   @override
   StringSingleLine get userId;
   @override
-  StringSingleLine get postId;
-  @override
   PhotoUrl get userAvatarUrl;
   @override
   PhotoUrl get thumbnailUrl;
+  @override
+  StringSingleLine get postId;
   @override
   CommentBody get commentBody;
   @override
