@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/follow/actor/follow_actor_bloc.dart';
+import 'package:my_social_app/application/follow/follower_count/follower_count_watcher_bloc.dart';
+import 'package:my_social_app/application/follow/following_count/following_count_watcher_bloc.dart';
 import 'package:my_social_app/application/follow/watch/follow_watcher_bloc.dart';
 import 'package:my_social_app/application/post/by_user_watcher/post_by_user_watcher_bloc.dart';
 import 'package:my_social_app/application/user/get_by_id/user_get_by_id_bloc.dart';
@@ -30,6 +34,7 @@ class _ProfilePageState extends State<ProfilePage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    log('USERID ${widget.userId}');
   }
 
   @override
@@ -59,6 +64,16 @@ class _ProfilePageState extends State<ProfilePage>
           BlocProvider(
             create: (context) => getIt<FollowActorBloc>(),
           ),
+          BlocProvider(
+            create: (context) => getIt<FollowerCountWatcherBloc>()
+              ..add(FollowerCountWatcherEvent.watchFollowerStarted(
+                  widget.userId)),
+          ),
+          BlocProvider(
+            create: (context) => getIt<FollowingCountWatcherBloc>()
+              ..add(FollowingCountWatcherEvent.watchFollowingStarted(
+                  widget.userId)),
+          )
         ],
         child: Scaffold(
           appBar: AppBar(

@@ -25,6 +25,8 @@ import 'infrastructure/core/firebase_injectable_module.dart';
 import 'application/follow/actor/follow_actor_bloc.dart';
 import 'infrastructure/follow/follow_repository.dart';
 import 'application/follow/watch/follow_watcher_bloc.dart';
+import 'application/follow/follower_count/follower_count_watcher_bloc.dart';
+import 'application/follow/following_count/following_count_watcher_bloc.dart';
 import 'domain/auth/i_auth_repository.dart';
 import 'domain/comment/i_comment_repository.dart';
 import 'domain/feed/i_feed_repository.dart';
@@ -92,6 +94,10 @@ GetIt $initGetIt(
       () => FollowActorBloc(get<IFollowRepository>(), get<IFeedRepository>()));
   gh.factory<FollowWatcherBloc>(
       () => FollowWatcherBloc(get<IFollowRepository>()));
+  gh.factory<FollowerCountWatcherBloc>(
+      () => FollowerCountWatcherBloc(get<IFollowRepository>()));
+  gh.factory<FollowingCountWatcherBloc>(
+      () => FollowingCountWatcherBloc(get<IFollowRepository>()));
   gh.factory<IFileRepository>(
       () => FileRepositoy(get<ImagePicker>(), get<FirebaseStorage>()));
   gh.factory<PostFormBloc>(

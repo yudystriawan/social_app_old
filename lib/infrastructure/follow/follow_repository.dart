@@ -87,7 +87,7 @@ class FollowRepository implements IFollowRepository {
       StringSingleLine userId) async* {
     yield* _firestore
         .getFollowerCount(userId.getOrCrash())
-        .map((snapshot) => right<FollowFailure, int>(snapshot.size))
+        .map((snapshot) => right<FollowFailure, int>(snapshot.docs.length))
         .onErrorReturnWith((error) {
       log('error', name: 'fetchFollowerCount', error: error);
       return left(const FollowFailure.unexpected());
@@ -99,7 +99,7 @@ class FollowRepository implements IFollowRepository {
       StringSingleLine userId) async* {
     yield* _firestore
         .getFollowingCount(userId.getOrCrash())
-        .map((snapshot) => right<FollowFailure, int>(snapshot.size))
+        .map((snapshot) => right<FollowFailure, int>(snapshot.docs.length))
         .onErrorReturnWith((error) {
       log('error', name: 'fetchFollowingCount', error: error);
       return left(const FollowFailure.unexpected());

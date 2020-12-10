@@ -3,6 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
+import 'package:my_social_app/application/follow/follower_count/follower_count_watcher_bloc.dart';
+import 'package:my_social_app/application/follow/following_count/following_count_watcher_bloc.dart';
 import 'package:my_social_app/domain/post/post.dart';
 
 import 'package:my_social_app/domain/user/user.dart';
@@ -46,8 +48,36 @@ class ProfileHeader extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ColumnCount(label: 'Posts', count: posts.length),
-                          const ColumnCount(label: 'Followers', count: 0),
-                          const ColumnCount(label: 'Following', count: 0),
+                          BlocBuilder<FollowerCountWatcherBloc,
+                              FollowerCountWatcherState>(
+                            builder: (context, state) {
+                              return state.maybeMap(
+                                orElse: () => const ColumnCount(
+                                  label: 'Followers',
+                                  count: 0,
+                                ),
+                                loadSuccess: (state) => ColumnCount(
+                                  label: 'Followers',
+                                  count: state.count,
+                                ),
+                              );
+                            },
+                          ),
+                          BlocBuilder<FollowingCountWatcherBloc,
+                              FollowingCountWatcherState>(
+                            builder: (context, state) {
+                              return state.maybeMap(
+                                orElse: () => const ColumnCount(
+                                  label: 'Following',
+                                  count: 0,
+                                ),
+                                loadSuccess: (state) => ColumnCount(
+                                  label: 'Following',
+                                  count: state.count,
+                                ),
+                              );
+                            },
+                          ),
                         ],
                       ),
                       const SizedBox(height: 8),
