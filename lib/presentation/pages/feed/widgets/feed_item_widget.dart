@@ -3,22 +3,27 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:my_social_app/domain/feed/feed.dart';
-import 'package:my_social_app/presentation/routes/router.gr.dart';
+import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import 'package:my_social_app/domain/feed/feed.dart';
+import 'package:my_social_app/domain/user/user.dart';
+import 'package:my_social_app/presentation/routes/router.gr.dart';
 
 class FeedItem extends StatelessWidget {
   const FeedItem({
     Key key,
     @required this.feed,
+    @required this.user,
   }) : super(key: key);
 
   final FeedDomain feed;
+  final UserDomain user;
 
   @override
   Widget build(BuildContext context) {
     final textTypeStr = _getTextType(feed);
-    final mediaPreviewWidget = _buildMediaPreview(feed, context);
+    final mediaPreviewWidget = _buildMediaPreview(feed, user, context);
     return Slidable(
       actionPane: const SlidableDrawerActionPane(),
       secondaryActions: [
@@ -84,14 +89,18 @@ class FeedItem extends StatelessWidget {
     }
   }
 
-  Widget _buildMediaPreview(FeedDomain feed, BuildContext context) {
+  Widget _buildMediaPreview(
+    FeedDomain feed,
+    UserDomain user,
+    BuildContext context,
+  ) {
     if (feed.type.getOrCrash() == 'like' ||
         feed.type.getOrCrash() == 'comment') {
       return GestureDetector(
         onTap: () => ExtendedNavigator.of(context).push(
           Routes.postDetailPage,
           arguments: PostDetailPageArguments(
-            userId: feed.userId,
+            userId: StringSingleLine(user.id.getOrCrash()),
             postId: feed.postId,
           ),
         ),

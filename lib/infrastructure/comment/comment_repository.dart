@@ -27,7 +27,9 @@ class CommentRepostiory implements ICommentRepository {
       final commentDto = CommentDto.fromDomain(comment);
       final commentDoc = await _firestore.commentDocument(postId.getOrCrash());
 
-      await commentDoc.commentPostCollection.add(commentDto.toJson());
+      await commentDoc.commentPostCollection
+          .doc(commentDto.id)
+          .set(commentDto.toJson());
 
       return right(unit);
     } on PlatformException catch (e) {

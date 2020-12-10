@@ -36,7 +36,10 @@ class FeedPage extends StatelessWidget {
                   : ListView.builder(
                       itemCount: state.feeds.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return FeedItem(feed: state.feeds[index]);
+                        return FeedItem(
+                          feed: state.feeds[index],
+                          user: user,
+                        );
                       },
                     ),
               loadFailure: (state) => Center(

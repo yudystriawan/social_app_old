@@ -95,7 +95,7 @@ class CommentFormBloc extends Bloc<CommentFormEvent, CommentFormState> {
           final feed = FeedDomain.empty();
 
           await _feedRepository.create(
-            ownerUserId: StringSingleLine(state.comment.userId.getOrCrash()),
+            ownerUserId: StringSingleLine(e.post.userId.getOrCrash()),
             feed: feed.copyWith.call(
               type: StringSingleLine('comment'),
               username: StringSingleLine(state.comment.username.getOrCrash()),

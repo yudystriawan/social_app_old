@@ -80,7 +80,7 @@ class PostRepository implements IPostRepository {
       if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
         return left(const PostFailure.insufficientPermissions());
       } else {
-        log('error', name: 'getMyPost()', error: e);
+        log('error', name: 'getMyPost', error: e);
         return left(const PostFailure.unexpected());
       }
     });
