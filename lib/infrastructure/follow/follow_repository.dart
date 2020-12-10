@@ -24,7 +24,7 @@ class FollowRepository implements IFollowRepository {
   }) async {
     final currentUser = FirebaseAuth.instance.currentUser;
     final followerDoc = await _firestore.followerDocument(userId.getOrCrash());
-    final followingDoc = await _firestore.followingDocument();
+    final followingDoc = await _firestore.followingDocument(currentUser?.uid);
 
     try {
       if (isFollowing) {
@@ -80,14 +80,29 @@ class FollowRepository implements IFollowRepository {
       log('error', name: 'checkFollowUser', error: error);
       return left(const FollowFailure.unexpected());
     });
-    // try {
-    //   final doc =
-    //       await followerDoc.userFollowerCollection.doc(currentUser?.uid).get();
+  }
 
-    //   return right(doc.exists);
-    // } catch (e) {
-    //   log('error', name: 'toggleFollow', error: e);
-    //   return left(const FollowFailure.unexpected());
-    // }
+  @override
+  Stream<Either<FollowFailure, int>> fetchFollowerCount(
+      StringSingleLine userId) async* {
+    yield* _firestore
+        .getFollowerCount(userId.getOrCrash())
+        .map((snapshot) => right<FollowFailure, int>(snapshot.size))
+        .onErrorReturnWith((error) {
+      log('error', name: 'fetchFollowerCount', error: error);
+      return left(const FollowFailure.unexpected());
+    });
+  }
+
+  @override
+  Stream<Either<FollowFailure, int>> fetchFollowingCount(
+      StringSingleLine userId) async* {
+    yield* _firestore
+        .getFollowingCount(userId.getOrCrash())
+        .map((snapshot) => right<FollowFailure, int>(snapshot.size))
+        .onErrorReturnWith((error) {
+      log('error', name: 'fetchFollowingCount', error: error);
+      return left(const FollowFailure.unexpected());
+    });
   }
 }

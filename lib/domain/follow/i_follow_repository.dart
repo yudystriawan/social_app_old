@@ -9,7 +9,10 @@ abstract class IFollowRepository {
     @required bool isFollowing,
   });
   Stream<Either<FollowFailure, bool>> checkFollowUser(StringSingleLine userId);
-  // Stream<Either<FollowFailure, List<StringSingleLine>>> fetchFollow(
-  //   StringSingleLine userId,
-  // );
+  Stream<Either<FollowFailure, int>> fetchFollowerCount(
+    StringSingleLine userId,
+  );
+  Stream<Either<FollowFailure, int>> fetchFollowingCount(
+    StringSingleLine userId,
+  );
 }

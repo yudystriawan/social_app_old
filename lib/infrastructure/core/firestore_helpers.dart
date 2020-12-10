@@ -23,9 +23,12 @@ extension FirebaseFirestoreX on FirebaseFirestore {
     return FirebaseFirestore.instance.collection('followers').doc(userId);
   }
 
-  Future<DocumentReference> followingDocument() async {
-    final user = FirebaseAuth.instance.currentUser;
-    return FirebaseFirestore.instance.collection('following').doc(user?.uid);
+  Future<DocumentReference> followingDocument(String userId) async {
+    return FirebaseFirestore.instance.collection('following').doc(userId);
+  }
+
+  Future<DocumentReference> findUserDocumentById(String userId) async {
+    return FirebaseFirestore.instance.collection('users').doc(userId);
   }
 
   Future<QuerySnapshot> findUserDocument(String query) async {
@@ -42,8 +45,16 @@ extension FirebaseFirestoreX on FirebaseFirestore {
         .get();
   }
 
-  Future<DocumentReference> findUserDocumentById(String userId) async {
-    return FirebaseFirestore.instance.collection('users').doc(userId);
+  Stream<QuerySnapshot> getFollowerCount(String userId) async* {
+    final followersRef =
+        await FirebaseFirestore.instance.followerDocument(userId);
+    yield* followersRef.userFollowerCollection.snapshots();
+  }
+
+  Stream<QuerySnapshot> getFollowingCount(String userId) async* {
+    final followingRef =
+        await FirebaseFirestore.instance.followingDocument(userId);
+    yield* followingRef.userFollowingCollection.snapshots();
   }
 }
 
