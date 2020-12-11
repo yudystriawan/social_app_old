@@ -27,11 +27,18 @@ class FeedRepository implements IFeedRepository {
       final feedDto = FeedDto.fromDomain(feed);
       final feedDoc = await _firestore.feedDocument(ownerUserId.getOrCrash());
 
+      final isComment = feed.type.getOrCrash() == 'comment';
       final isFollow = feed.type.getOrCrash() == 'follow';
 
-      await feedDoc.feedCollection
-          .doc(isFollow ? feed.userId.getOrCrash() : feed.postId.getOrCrash())
-          .set(feedDto.toJson());
+      if (isComment) {
+        //comment
+        await feedDoc.feedCollection.add(feedDto.toJson());
+      } else {
+        //like follow
+        await feedDoc.feedCollection
+            .doc(isFollow ? feed.userId.getOrCrash() : feed.postId.getOrCrash())
+            .set(feedDto.toJson());
+      }
 
       return right(unit);
     } on PlatformException catch (e) {
@@ -94,7 +101,7 @@ class FeedRepository implements IFeedRepository {
       final feedDoc = await _firestore.feedDocument(ownerUserId.getOrCrash());
 
       feedDoc.feedCollection
-          .where('postId', isEqualTo: currentUserOrPostId)
+          .where('postId', isEqualTo: currentUserOrPostId.getOrCrash())
           .get()
           .then((snapshot) {
         for (final doc in snapshot.docs) {

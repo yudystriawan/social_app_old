@@ -9,6 +9,7 @@ abstract class ICommentRepository {
     @required CommentDomain comment,
     @required StringSingleLine postId,
   });
+  Future<Either<CommentFailure, Unit>> deleteByPostId(StringSingleLine postId);
   Stream<Either<CommentFailure, List<CommentDomain>>> getComments(
     StringSingleLine postId,
   );

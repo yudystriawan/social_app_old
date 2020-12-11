@@ -57,4 +57,24 @@ class CommentRepostiory implements ICommentRepository {
       return left(const CommentFailure.unexpected());
     });
   }
+
+  @override
+  Future<Either<CommentFailure, Unit>> deleteByPostId(
+      StringSingleLine postId) async {
+    try {
+      final commentsRef = await _firestore.commentDocument(postId.getOrCrash());
+      commentsRef.commentPostCollection.get().then((snapshot) {
+        for (final doc in snapshot.docs) {
+          if (doc.exists) {
+            doc.reference.delete();
+          }
+        }
+      });
+
+      return right(unit);
+    } on PlatformException catch (e) {
+      log('error', name: 'delete', error: e);
+      return left(const CommentFailure.unexpected());
+    }
+  }
 }

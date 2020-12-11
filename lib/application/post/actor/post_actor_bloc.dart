@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:my_social_app/domain/comment/i_comment_repository.dart';
 
 import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:my_social_app/domain/feed/feed.dart';
@@ -22,10 +23,12 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
   PostActorBloc(
     this._postRepository,
     this._feedRepository,
+    this._commentRepository,
   ) : super(const _Initial());
 
   final IPostRepository _postRepository;
   final IFeedRepository _feedRepository;
+  final ICommentRepository _commentRepository;
 
   @override
   Stream<PostActorState> mapEventToState(
@@ -80,11 +83,15 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
             yield PostActorState.deleteFailure(failure);
           },
           (_) async* {
-            //delete feed activity
+            //delete feed activity related
             await _feedRepository.deletePostRelated(
               ownerUserId: e.post.userId,
               currentUserOrPostId: StringSingleLine(e.post.id.getOrCrash()),
             );
+
+            //delete comment related
+            await _commentRepository
+                .deleteByPostId(StringSingleLine(e.post.id.getOrCrash()));
 
             yield const PostActorState.deleteSuccess();
           },

@@ -39,6 +39,7 @@ class CommentFormBloc extends Bloc<CommentFormEvent, CommentFormState> {
           (comment) => state.copyWith.call(
             comment: comment,
             isEditing: true,
+            failureOrSuccessOption: none(),
           ),
         );
       },
@@ -110,6 +111,7 @@ class CommentFormBloc extends Bloc<CommentFormEvent, CommentFormState> {
 
         yield state.copyWith.call(
           isSubmitting: false,
+          isEditing: false,
           showErrorMessages: true,
           failureOrSuccessOption: optionOf(failureOrSuccess),
         );

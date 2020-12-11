@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_social_app/application/auth/auth_bloc.dart';
 import 'package:my_social_app/application/comment/form/comment_form_bloc.dart';
 import 'package:my_social_app/application/comment/watcher/comment_watcher_bloc.dart';
+import 'package:my_social_app/domain/comment/comment.dart';
 
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/domain/user/user.dart';
@@ -39,9 +41,9 @@ class CommentPage extends StatelessWidget with AutoRouteWrapper {
                 unexpected: (_) => 'Unexpected error',
               )).show(context),
               (_) {
-                context
-                    .read<CommentFormBloc>()
-                    .add(const CommentFormEvent.bodyChanged(''));
+                context.read<CommentFormBloc>().add(
+                    CommentFormEvent.initialized(
+                        optionOf(CommentDomain.empty())));
                 FlushbarHelper.createSuccess(message: 'Sent').show(context);
               },
             ),
