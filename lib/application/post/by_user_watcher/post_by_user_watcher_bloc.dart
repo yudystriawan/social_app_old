@@ -16,7 +16,8 @@ part 'post_by_user_watcher_bloc.freezed.dart';
 @injectable
 class PostByUserWatcherBloc
     extends Bloc<PostByUserWatcherEvent, PostByUserWatcherState> {
-  PostByUserWatcherBloc(this._postRepository) : super(const _Initial());
+  PostByUserWatcherBloc(this._postRepository)
+      : super(const PostByUserWatcherState.initial());
 
   final IPostRepository _postRepository;
 

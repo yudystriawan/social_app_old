@@ -14,7 +14,7 @@ part 'user_search_bloc.freezed.dart';
 
 @injectable
 class UserSearchBloc extends Bloc<UserSearchEvent, UserSearchState> {
-  UserSearchBloc(this._userRepository) : super(const _Initial());
+  UserSearchBloc(this._userRepository) : super(const UserSearchState.initial());
 
   final IUserRepository _userRepository;
 

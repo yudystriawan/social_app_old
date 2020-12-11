@@ -18,7 +18,7 @@ part 'follow_actor_bloc.freezed.dart';
 @injectable
 class FollowActorBloc extends Bloc<FollowActorEvent, FollowActorState> {
   FollowActorBloc(this._followRepository, this._feedRepository)
-      : super(const _Initial());
+      : super(const FollowActorState.initial());
 
   final IFollowRepository _followRepository;
   final IFeedRepository _feedRepository;

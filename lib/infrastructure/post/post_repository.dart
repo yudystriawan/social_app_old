@@ -173,4 +173,28 @@ class PostRepository implements IPostRepository {
       return left(const PostFailure.unexpected());
     }
   }
+
+  @override
+  Stream<Either<PostFailure, List<PostDomain>>> fetchTimelinePosts() async* {
+    final postRef = await _firestore.timelinePostDocument();
+
+    yield* postRef.timelinePostCollection
+        .orderBy('server_timestamp', descending: true)
+        .snapshots()
+        .map(
+          (snapshot) => right<PostFailure, List<PostDomain>>(
+            snapshot.docs
+                .map((doc) => PostDto.fromFirestore(doc).toDomain())
+                .toList(),
+          ),
+        )
+        .onErrorReturnWith((e) {
+      if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
+        return left(const PostFailure.insufficientPermissions());
+      } else {
+        log('error', name: 'fetchTimelinePosts', error: e);
+        return left(const PostFailure.unexpected());
+      }
+    });
+  }
 }

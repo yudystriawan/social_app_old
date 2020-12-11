@@ -24,7 +24,7 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
     this._postRepository,
     this._feedRepository,
     this._commentRepository,
-  ) : super(const _Initial());
+  ) : super(const PostActorState.initial());
 
   final IPostRepository _postRepository;
   final IFeedRepository _feedRepository;

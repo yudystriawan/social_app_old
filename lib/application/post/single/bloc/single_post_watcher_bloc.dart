@@ -16,7 +16,8 @@ part 'single_post_watcher_bloc.freezed.dart';
 @injectable
 class SinglePostWatcherBloc
     extends Bloc<SinglePostWatcherEvent, SinglePostWatcherState> {
-  SinglePostWatcherBloc(this._postRepository) : super(const _Initial());
+  SinglePostWatcherBloc(this._postRepository)
+      : super(const SinglePostWatcherState.initial());
 
   final IPostRepository _postRepository;
 

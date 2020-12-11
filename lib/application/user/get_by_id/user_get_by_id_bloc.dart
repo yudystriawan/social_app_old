@@ -15,7 +15,8 @@ part 'user_get_by_id_state.dart';
 
 @injectable
 class UserGetByIdBloc extends Bloc<UserGetByIdEvent, UserGetByIdState> {
-  UserGetByIdBloc(this._userRepository) : super(const _Initial());
+  UserGetByIdBloc(this._userRepository)
+      : super(const UserGetByIdState.initial());
 
   final IUserRepository _userRepository;
 

@@ -19,4 +19,5 @@ abstract class IPostRepository {
     @required StringSingleLine userId,
     @required StringSingleLine postId,
   });
+  Stream<Either<PostFailure, List<PostDomain>>> fetchTimelinePosts();
 }

@@ -15,7 +15,8 @@ part 'following_count_watcher_state.dart';
 @injectable
 class FollowingCountWatcherBloc
     extends Bloc<FollowingCountWatcherEvent, FollowingCountWatcherState> {
-  FollowingCountWatcherBloc(this._followRepository) : super(const _Initial());
+  FollowingCountWatcherBloc(this._followRepository)
+      : super(const FollowingCountWatcherState.initial());
 
   final IFollowRepository _followRepository;
 

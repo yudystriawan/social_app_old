@@ -31,6 +31,11 @@ extension FirebaseFirestoreX on FirebaseFirestore {
     return FirebaseFirestore.instance.collection('users').doc(userId);
   }
 
+  Future<DocumentReference> timelinePostDocument() async {
+    final user = FirebaseAuth.instance.currentUser;
+    return FirebaseFirestore.instance.collection('timeline').doc(user?.uid);
+  }
+
   Future<QuerySnapshot> findUserDocument(String query) async {
     return FirebaseFirestore.instance
         .collection('users')
@@ -67,4 +72,5 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get userFollowerCollection => collection('userFollowers');
   CollectionReference get userFollowingCollection =>
       collection('userFollowing');
+  CollectionReference get timelinePostCollection => collection('timelinePosts');
 }

@@ -16,7 +16,8 @@ part 'comment_watcher_bloc.freezed.dart';
 @injectable
 class CommentWatcherBloc
     extends Bloc<CommentWatcherEvent, CommentWatcherState> {
-  CommentWatcherBloc(this._commentRepository) : super(const _Initial());
+  CommentWatcherBloc(this._commentRepository)
+      : super(const CommentWatcherState.initial());
 
   final ICommentRepository _commentRepository;
 

@@ -18,7 +18,7 @@ part 'feed_watcher_state.dart';
 class FeedWatcherBloc extends Bloc<FeedWatcherEvent, FeedWatcherState> {
   FeedWatcherBloc(
     this._feedRepository,
-  ) : super(const _Initial());
+  ) : super(const FeedWatcherState.initial());
 
   final IFeedRepository _feedRepository;
 
