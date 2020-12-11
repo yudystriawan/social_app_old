@@ -31,42 +31,67 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
   Stream<PostActorState> mapEventToState(
     PostActorEvent event,
   ) async* {
-    yield const PostActorState.actionInPorgress();
-    final failureOrSuccess = await _postRepository.toggleLike(
-      postId: StringSingleLine(event.post.id.getOrCrash()),
-      ownerId: StringSingleLine(event.ownerId),
-    );
-
-    final isNotMyPost = event.post.userId.getOrCrash() != event.ownerId;
-
-    if (failureOrSuccess.isRight() && isNotMyPost) {
-      final feed = FeedDomain.empty();
-
-      final isLike = failureOrSuccess.fold((l) => false, (isLike) => isLike);
-
-      if (isLike) {
-        await _feedRepository.create(
-          ownerUserId: StringSingleLine(event.ownerId),
-          feed: feed.copyWith.call(
-              type: StringSingleLine('like'),
-              username:
-                  StringSingleLine(event.currentUser.username.getOrCrash()),
-              userId: StringSingleLine(event.currentUser.id.getOrCrash()),
-              postId: StringSingleLine(event.post.id.getOrCrash()),
-              userAvatarUrl: PhotoUrl(event.currentUser.photoUrl.getOrCrash()),
-              thumbnailUrl: PhotoUrl(event.post.imageUrl.getOrCrash())),
+    yield* event.map(
+      toggleLike: (e) async* {
+        yield const PostActorState.actionInPorgress();
+        final failureOrSuccess = await _postRepository.toggleLike(
+          postId: StringSingleLine(e.post.id.getOrCrash()),
+          ownerId: StringSingleLine(e.ownerId),
         );
-      } else {
-        await _feedRepository.delete(
-          ownerUserId: StringSingleLine(event.ownerId),
-          currentUserOrPostId: StringSingleLine(event.post.id.getOrCrash()),
-        );
-      }
-    }
 
-    yield failureOrSuccess.fold(
-      (failure) => PostActorState.likeFailure(failure),
-      (isLike) => PostActorState.likeSuccess(isLike: isLike),
+        final isNotMyPost = e.post.userId.getOrCrash() != e.ownerId;
+
+        if (failureOrSuccess.isRight() && isNotMyPost) {
+          final feed = FeedDomain.empty();
+
+          final isLike =
+              failureOrSuccess.fold((l) => false, (isLike) => isLike);
+
+          if (isLike) {
+            await _feedRepository.create(
+              ownerUserId: StringSingleLine(e.ownerId),
+              feed: feed.copyWith.call(
+                  type: StringSingleLine('like'),
+                  username:
+                      StringSingleLine(e.currentUser.username.getOrCrash()),
+                  userId: StringSingleLine(e.currentUser.id.getOrCrash()),
+                  postId: StringSingleLine(e.post.id.getOrCrash()),
+                  userAvatarUrl: PhotoUrl(e.currentUser.photoUrl.getOrCrash()),
+                  thumbnailUrl: PhotoUrl(e.post.imageUrl.getOrCrash())),
+            );
+          } else {
+            await _feedRepository.delete(
+              ownerUserId: StringSingleLine(e.ownerId),
+              currentUserOrPostId: StringSingleLine(e.post.id.getOrCrash()),
+            );
+          }
+        }
+
+        yield failureOrSuccess.fold(
+          (failure) => PostActorState.likeFailure(failure),
+          (isLike) => PostActorState.likeSuccess(isLike: isLike),
+        );
+      },
+      deleted: (e) async* {
+        yield const PostActorState.actionInPorgress();
+
+        final failureOrSuccess = await _postRepository.delete(e.post);
+
+        yield* failureOrSuccess.fold(
+          (failure) async* {
+            yield PostActorState.deleteFailure(failure);
+          },
+          (_) async* {
+            //delete feed activity
+            await _feedRepository.delete(
+              ownerUserId: e.post.userId,
+              currentUserOrPostId: StringSingleLine(e.post.id.getOrCrash()),
+            );
+
+            yield const PostActorState.deleteSuccess();
+          },
+        );
+      },
     );
   }
 }

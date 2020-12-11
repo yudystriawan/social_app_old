@@ -7,4 +7,5 @@ abstract class PostActorEvent with _$PostActorEvent {
     @required PostDomain post,
     @required String ownerId,
   }) = _ToggleLike;
+  const factory PostActorEvent.deleted(PostDomain post) = _Deleted;
 }

@@ -72,7 +72,7 @@ GetIt $initGetIt(
   gh.factory<IFollowRepository>(
       () => FollowRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IPostRepository>(
-      () => PostRepository(get<FirebaseFirestore>()));
+      () => PostRepository(get<FirebaseFirestore>(), get<FirebaseStorage>()));
   gh.factory<IUserRepository>(() => UserRepository(get<FirebaseFirestore>()));
   gh.factory<PostActorBloc>(
       () => PostActorBloc(get<IPostRepository>(), get<IFeedRepository>()));

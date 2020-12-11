@@ -6,6 +6,7 @@ import 'package:my_social_app/domain/post/post_failure.dart';
 
 abstract class IPostRepository {
   Future<Either<PostFailure, Unit>> create(PostDomain post);
+  Future<Either<PostFailure, Unit>> delete(PostDomain post);
   Future<Either<PostFailure, int>> getLikeCount(StringSingleLine postId);
   Future<Either<PostFailure, bool>> toggleLike({
     @required StringSingleLine postId,

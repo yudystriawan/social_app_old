@@ -3,21 +3,28 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rxdart/rxdart.dart';
+
 import 'package:my_social_app/domain/core/value_objects.dart';
 import 'package:my_social_app/domain/post/i_post_repository.dart';
 import 'package:my_social_app/domain/post/post.dart';
 import 'package:my_social_app/domain/post/post_failure.dart';
 import 'package:my_social_app/infrastructure/core/firestore_helpers.dart';
 import 'package:my_social_app/infrastructure/post/post_dtos.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:my_social_app/infrastructure/core/storage_helpers.dart';
 
 @LazySingleton(as: IPostRepository)
 class PostRepository implements IPostRepository {
   final FirebaseFirestore _firestore;
+  final FirebaseStorage _storage;
 
-  PostRepository(this._firestore);
+  PostRepository(
+    this._firestore,
+    this._storage,
+  );
 
   @override
   Future<Either<PostFailure, Unit>> create(PostDomain post) async {
@@ -142,5 +149,28 @@ class PostRepository implements IPostRepository {
         return left(const PostFailure.unexpected());
       }
     });
+  }
+
+  @override
+  Future<Either<PostFailure, Unit>> delete(PostDomain post) async {
+    try {
+      final postDto = PostDto.fromDomain(post);
+      final postDoc = await _firestore.postDocument(post.userId.getOrCrash());
+
+      // delete post
+      await postDoc.userPostCollection.doc(postDto.id).get().then((doc) {
+        if (doc.exists) {
+          doc.reference.delete();
+        }
+      });
+
+      // delete image post
+      await _storage.postImageReference(post.id.getOrCrash()).delete();
+
+      return right(unit);
+    } on PlatformException catch (e) {
+      log('delete ${e.message}');
+      return left(const PostFailure.unexpected());
+    }
   }
 }
