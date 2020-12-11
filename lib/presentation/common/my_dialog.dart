@@ -25,4 +25,28 @@ class MyDialog {
       },
     );
   }
+
+  static Future<bool> deletePostConfirmation(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Remove this post?'),
+        content: const Text('Are you sure want to delete this post?'),
+        actions: [
+          TextButton(
+            onPressed: () => ExtendedNavigator.of(context).pop(true),
+            child: Text('Delete',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(color: Colors.red)),
+          ),
+          TextButton(
+            onPressed: () => ExtendedNavigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+        ],
+      ),
+    );
+  }
 }
