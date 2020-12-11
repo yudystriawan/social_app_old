@@ -84,4 +84,30 @@ class FeedRepository implements IFeedRepository {
       return left(const FeedFailure.unexpected());
     });
   }
+
+  @override
+  Future<Either<FeedFailure, Unit>> deletePostRelated({
+    StringSingleLine ownerUserId,
+    StringSingleLine currentUserOrPostId,
+  }) async {
+    try {
+      final feedDoc = await _firestore.feedDocument(ownerUserId.getOrCrash());
+
+      feedDoc.feedCollection
+          .where('postId', isEqualTo: currentUserOrPostId)
+          .get()
+          .then((snapshot) {
+        for (final doc in snapshot.docs) {
+          if (doc.exists) {
+            doc.reference.delete();
+          }
+        }
+      });
+
+      return right(unit);
+    } on PlatformException catch (e) {
+      log('error', name: 'deletePostRelated', error: e);
+      return left(const FeedFailure.unexpected());
+    }
+  }
 }

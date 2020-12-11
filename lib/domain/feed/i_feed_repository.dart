@@ -13,6 +13,10 @@ abstract class IFeedRepository {
     @required StringSingleLine ownerUserId,
     @required StringSingleLine currentUserOrPostId,
   });
+  Future<Either<FeedFailure, Unit>> deletePostRelated({
+    @required StringSingleLine ownerUserId,
+    @required StringSingleLine currentUserOrPostId,
+  });
   Stream<Either<FeedFailure, List<FeedDomain>>> fetchFeeds(
     StringSingleLine userId,
   );
