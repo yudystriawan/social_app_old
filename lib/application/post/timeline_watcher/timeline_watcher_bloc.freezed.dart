@@ -14,10 +14,8 @@ class _$TimelineWatcherEventTearOff {
   const _$TimelineWatcherEventTearOff();
 
 // ignore: unused_element
-  _WatchAllStarted watchAllStarted(String userId) {
-    return _WatchAllStarted(
-      userId,
-    );
+  _WatchAllStarted watchAllStarted() {
+    return const _WatchAllStarted();
   }
 
 // ignore: unused_element
@@ -37,14 +35,14 @@ const $TimelineWatcherEvent = _$TimelineWatcherEventTearOff();
 mixin _$TimelineWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult watchAllStarted(String userId),
+    @required TResult watchAllStarted(),
     @required
         TResult postsReceived(
             Either<PostFailure, List<PostDomain>> failureOrPosts),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchAllStarted(String userId),
+    TResult watchAllStarted(),
     TResult postsReceived(Either<PostFailure, List<PostDomain>> failureOrPosts),
     @required TResult orElse(),
   });
@@ -83,7 +81,6 @@ abstract class _$WatchAllStartedCopyWith<$Res> {
   factory _$WatchAllStartedCopyWith(
           _WatchAllStarted value, $Res Function(_WatchAllStarted) then) =
       __$WatchAllStartedCopyWithImpl<$Res>;
-  $Res call({String userId});
 }
 
 /// @nodoc
@@ -96,68 +93,48 @@ class __$WatchAllStartedCopyWithImpl<$Res>
 
   @override
   _WatchAllStarted get _value => super._value as _WatchAllStarted;
-
-  @override
-  $Res call({
-    Object userId = freezed,
-  }) {
-    return _then(_WatchAllStarted(
-      userId == freezed ? _value.userId : userId as String,
-    ));
-  }
 }
 
 /// @nodoc
 class _$_WatchAllStarted implements _WatchAllStarted {
-  const _$_WatchAllStarted(this.userId) : assert(userId != null);
-
-  @override
-  final String userId;
+  const _$_WatchAllStarted();
 
   @override
   String toString() {
-    return 'TimelineWatcherEvent.watchAllStarted(userId: $userId)';
+    return 'TimelineWatcherEvent.watchAllStarted()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _WatchAllStarted &&
-            (identical(other.userId, userId) ||
-                const DeepCollectionEquality().equals(other.userId, userId)));
+    return identical(this, other) || (other is _WatchAllStarted);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userId);
-
-  @override
-  _$WatchAllStartedCopyWith<_WatchAllStarted> get copyWith =>
-      __$WatchAllStartedCopyWithImpl<_WatchAllStarted>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult watchAllStarted(String userId),
+    @required TResult watchAllStarted(),
     @required
         TResult postsReceived(
             Either<PostFailure, List<PostDomain>> failureOrPosts),
   }) {
     assert(watchAllStarted != null);
     assert(postsReceived != null);
-    return watchAllStarted(userId);
+    return watchAllStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchAllStarted(String userId),
+    TResult watchAllStarted(),
     TResult postsReceived(Either<PostFailure, List<PostDomain>> failureOrPosts),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (watchAllStarted != null) {
-      return watchAllStarted(userId);
+      return watchAllStarted();
     }
     return orElse();
   }
@@ -189,10 +166,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
 }
 
 abstract class _WatchAllStarted implements TimelineWatcherEvent {
-  const factory _WatchAllStarted(String userId) = _$_WatchAllStarted;
-
-  String get userId;
-  _$WatchAllStartedCopyWith<_WatchAllStarted> get copyWith;
+  const factory _WatchAllStarted() = _$_WatchAllStarted;
 }
 
 /// @nodoc
@@ -259,7 +233,7 @@ class _$_PostsReceived implements _PostsReceived {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult watchAllStarted(String userId),
+    @required TResult watchAllStarted(),
     @required
         TResult postsReceived(
             Either<PostFailure, List<PostDomain>> failureOrPosts),
@@ -272,7 +246,7 @@ class _$_PostsReceived implements _PostsReceived {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchAllStarted(String userId),
+    TResult watchAllStarted(),
     TResult postsReceived(Either<PostFailure, List<PostDomain>> failureOrPosts),
     @required TResult orElse(),
   }) {
