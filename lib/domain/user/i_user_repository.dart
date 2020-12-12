@@ -9,4 +9,5 @@ abstract class IUserRepository {
   Future<Either<UserFailure, UserDomain>> getUserById(
     StringSingleLine userId,
   );
+  Future<Either<UserFailure, List<UserDomain>>> fetchUsers();
 }

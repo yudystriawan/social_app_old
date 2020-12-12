@@ -105,4 +105,22 @@ class FollowRepository implements IFollowRepository {
       return left(const FollowFailure.unexpected());
     });
   }
+
+  @override
+  Future<Either<FollowFailure, List<StringSingleLine>>> fetchFollowingUserIds(
+      StringSingleLine userId) async {
+    try {
+      final followingSnapshot =
+          await _firestore.fetchAllFollowingId(userId.getOrCrash());
+
+      final userIds = followingSnapshot.docs
+          .map((doc) => StringSingleLine(doc.id))
+          .toList();
+
+      return right(userIds);
+    } catch (e) {
+      log('error', name: 'fetchFollowingUserIds', error: e);
+      return left(const FollowFailure.unexpected());
+    }
+  }
 }

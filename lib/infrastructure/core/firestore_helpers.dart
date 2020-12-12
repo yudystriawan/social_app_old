@@ -36,6 +36,18 @@ extension FirebaseFirestoreX on FirebaseFirestore {
     return FirebaseFirestore.instance.collection('timeline').doc(user?.uid);
   }
 
+  Future<QuerySnapshot> getAllUser() async {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .orderBy('serverTimeStamp', descending: true)
+        .limit(30)
+        .get();
+  }
+
+  Future<QuerySnapshot> fetchAllFollowingId(String userId) async {
+    return FirebaseFirestore.instance.collection('following').get();
+  }
+
   Future<QuerySnapshot> findUserDocument(String query) async {
     return FirebaseFirestore.instance
         .collection('users')

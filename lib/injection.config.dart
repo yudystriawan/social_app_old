@@ -46,6 +46,7 @@ import 'application/user/form/user_form_bloc.dart';
 import 'application/user/get_by_id/user_get_by_id_bloc.dart';
 import 'infrastructure/user/user_repository.dart';
 import 'application/user/search/user_search_bloc.dart';
+import 'application/user/suggest/user_suggest_bloc.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -90,6 +91,8 @@ GetIt $initGetIt(
   gh.factory<UserFormBloc>(() => UserFormBloc(get<IUserRepository>()));
   gh.factory<UserGetByIdBloc>(() => UserGetByIdBloc(get<IUserRepository>()));
   gh.factory<UserSearchBloc>(() => UserSearchBloc(get<IUserRepository>()));
+  gh.factory<UserSuggestBloc>(
+      () => UserSuggestBloc(get<IUserRepository>(), get<IFollowRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthRepository>()));
   gh.factory<CommentFormBloc>(
       () => CommentFormBloc(get<ICommentRepository>(), get<IFeedRepository>()));

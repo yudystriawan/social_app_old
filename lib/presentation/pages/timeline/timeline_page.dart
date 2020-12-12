@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:my_social_app/application/post/timeline_watcher/timeline_watcher_bloc.dart';
 import 'package:my_social_app/injection.dart';
 import 'package:my_social_app/presentation/common/app_bar.dart';
 import 'package:my_social_app/presentation/pages/posts/post.dart';
+import 'package:my_social_app/presentation/pages/timeline/widgets/user_suggestion_widget.dart';
 
 class TimelinePage extends StatelessWidget {
-  const TimelinePage({Key key}) : super(key: key);
+  const TimelinePage({
+    Key key,
+    @required this.userId,
+  }) : super(key: key);
+
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +30,7 @@ class TimelinePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               ),
               loadSuccess: (state) => state.posts.isEmpty
-                  ? const Center(
-                      child: Text('Please follow someone to get their post'),
-                    )
+                  ? UserSuggestion(userId: userId)
                   : RefreshIndicator(
                       onRefresh: () async => context
                           .read<TimelineWatcherBloc>()

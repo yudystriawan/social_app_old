@@ -74,7 +74,9 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     children: [
-                      const TimelinePage(),
+                      TimelinePage(
+                        userId: user.id.getOrCrash(),
+                      ),
                       FeedPage(
                         user: user,
                       ),

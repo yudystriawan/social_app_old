@@ -8,6 +8,8 @@ abstract class IFollowRepository {
     @required StringSingleLine userId,
     @required bool isFollowing,
   });
+  Future<Either<FollowFailure, List<StringSingleLine>>> fetchFollowingUserIds(
+      StringSingleLine userId);
   Stream<Either<FollowFailure, bool>> checkFollowUser(StringSingleLine userId);
   Stream<Either<FollowFailure, int>> fetchFollowerCount(
     StringSingleLine userId,

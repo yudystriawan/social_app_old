@@ -73,4 +73,24 @@ class UserRepository implements IUserRepository {
       return left(const UserFailure.unexpected());
     }
   }
+
+  @override
+  Future<Either<UserFailure, List<UserDomain>>> fetchUsers() async {
+    try {
+      final userSnapshot = await _firestore.getAllUser();
+
+      final users = userSnapshot.docs
+          .map((doc) => UserDto.fromFirestore(doc).toDomain())
+          .toList();
+
+      if (users.isEmpty) {
+        return left(const UserFailure.userNotFound());
+      }
+
+      return right(users);
+    } catch (e) {
+      log('error', name: 'fetchUsers', error: e);
+      return left(const UserFailure.unexpected());
+    }
+  }
 }
